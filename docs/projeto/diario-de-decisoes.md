@@ -27,6 +27,7 @@
 | 2026-06-24 | Analista | Stack definido: Next.js + Vercel | Melhor SEO para eventos indexados no Google, publicação automática gratuita e tecnologia com valor real de mercado |
 | 2026-06-24 | Analista | Templates do Dev criados | Padronizar registro de decisões técnicas e changelog |
 | 2026-06-24 | Analista | Templates do QA criados | Padronizar testes, bug reports e checklist de entrega |
+| 2026-06-24 | Analista | Playwright adotado como ferramenta de testes automatizados | Simula usuário real no navegador, ideal para garantir que novas features não quebrem o que já está em produção |
 ---
 
 ## Próximas Decisões Pendentes
@@ -46,6 +47,10 @@
 | `docs/projeto/diario-de-decisoes.md` | Projeto | Memória e histórico de decisões |
 | `docs/analista/template-historia-usuario.md` | Analista | Template para descrever features do ponto de vista do usuário |
 | `docs/analista/template-requisito.md` | Analista | Template para detalhar requisitos funcionais e não-funcionais |
+| `docs/qa/template-caso-de-teste.md` | QA | Template para descrever como testar uma feature |
+| `docs/qa/template-bug-report.md` | QA | Template para registrar bugs encontrados |
+| `docs/qa/template-checklist-entrega.md` | QA | Lista de verificação antes de publicar uma entrega |
+| `docs/qa/template-teste-automatizado.md` | QA | Template para documentar testes automatizados com Playwright |
 
 ---
 
