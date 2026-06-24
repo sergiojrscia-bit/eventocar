@@ -24,12 +24,13 @@
 | 2026-06-23 | Analista | Documentação em Markdown no GitHub | Padrão da indústria, versionado junto com o código, acessível via web |
 | 2026-06-23 | Analista | Estrutura de fábrica de software adotada | Papéis de Analista, Dev e QA com templates próprios para manter qualidade |
 | 2026-06-23 | Analista | Templates do Analista criados | Criados `template-historia-usuario.md` e `template-requisito.md` em `docs/analista/` |
-
+| 2026-06-24 | Analista | Stack definido: Next.js + Vercel | Melhor SEO para eventos indexados no Google, publicação automática gratuita e tecnologia com valor real de mercado |
 ---
 
 ## Próximas Decisões Pendentes
 
-- [ ] Escolha do stack de tecnologia (Next.js, HTML puro ou WordPress)
+- [x] Escolha do stack de tecnologia (Next.js, HTML puro ou WordPress)
+   - [x] Escolha do stack de tecnologia (Next.js + Vercel) 
 - [ ] Criação dos templates do papel Dev (decisão técnica e changelog)
 - [ ] Criação dos templates do papel QA (caso de teste, bug report, checklist de entrega)
 - [ ] Definição do domínio do site
