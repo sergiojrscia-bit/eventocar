@@ -23,14 +23,26 @@
 | 2026-06-23 | Analista | Repositório criado no GitHub como público | Necessário para aprovação futura no Google AdSense |
 | 2026-06-23 | Analista | Documentação em Markdown no GitHub | Padrão da indústria, versionado junto com o código, acessível via web |
 | 2026-06-23 | Analista | Estrutura de fábrica de software adotada | Papéis de Analista, Dev e QA com templates próprios para manter qualidade |
+| 2026-06-23 | Analista | Templates do Analista criados | Criados `template-historia-usuario.md` e `template-requisito.md` em `docs/analista/` |
 
 ---
 
 ## Próximas Decisões Pendentes
 
 - [ ] Escolha do stack de tecnologia (Next.js, HTML puro ou WordPress)
-- [ ] Criação dos templates de cada papel (Analista, Dev, QA)
+- [ ] Criação dos templates do papel Dev (decisão técnica e changelog)
+- [ ] Criação dos templates do papel QA (caso de teste, bug report, checklist de entrega)
 - [ ] Definição do domínio do site
+
+---
+
+## Arquivos criados até agora
+
+| Arquivo | Papel | Descrição |
+|---------|-------|-----------|
+| `docs/projeto/diario-de-decisoes.md` | Projeto | Memória e histórico de decisões |
+| `docs/analista/template-historia-usuario.md` | Analista | Template para descrever features do ponto de vista do usuário |
+| `docs/analista/template-requisito.md` | Analista | Template para detalhar requisitos funcionais e não-funcionais |
 
 ---
 
