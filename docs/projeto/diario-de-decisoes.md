@@ -37,6 +37,7 @@
    - [x] Escolha do stack de tecnologia (Next.js + Vercel) 
 - [x] Criação dos templates do papel Dev (decisão técnica e changelog)
 - [x] Criação dos templates do papel QA (caso de teste, bug report, checklist de entrega)
+- [ ] Criação do Makefile com comandos separados por papel (setup, setup-dev, setup-qa, dev, test, test-report, deploy)
 - [ ] Definição do domínio do site
 
 ---
