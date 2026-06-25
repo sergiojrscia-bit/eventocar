@@ -89,21 +89,13 @@ Pronto! O `make setup` vai instalar tudo que for necessário automaticamente.
 
 ```
 eventocar/
-
 ├── docs/
-
 │   ├── projeto/        # Diário de decisões e documentação geral
-
 │   ├── analista/       # Templates de histórias de usuário e requisitos
-
 │   ├── dev/            # Templates de decisão técnica e changelog
-
 │   └── qa/             # Templates de testes, bug reports e checklist
-
 ├── tests/              # Testes automatizados com Playwright
-
 ├── Makefile            # Automação de ambiente
-
 └── README.md           # Este arquivo
 ```
 
@@ -120,3 +112,5 @@ eventocar/
 ---
 
 *Última atualização: 2026-06-24*
+
+---
