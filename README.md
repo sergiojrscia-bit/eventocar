@@ -87,6 +87,7 @@ Pronto! O `make setup` vai instalar tudo que for necessário automaticamente.
 
 ## Estrutura de pastas
 
+```
 eventocar/
 
 ├── docs/
@@ -104,6 +105,7 @@ eventocar/
 ├── Makefile            # Automação de ambiente
 
 └── README.md           # Este arquivo
+```
 
 ---
 
@@ -117,3 +119,4 @@ eventocar/
 
 ---
 
+*Última atualização: 2026-06-24*
