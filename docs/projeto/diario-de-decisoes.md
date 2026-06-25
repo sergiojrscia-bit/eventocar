@@ -53,6 +53,8 @@
 | `docs/qa/template-checklist-entrega.md` | QA | Lista de verificação antes de publicar uma entrega |
 | `docs/qa/template-teste-automatizado.md` | QA | Template para documentar testes automatizados com Playwright |
 | `README.md` | Projeto | Porta de entrada do repositório com instruções de instalação e comandos disponíveis |
+| `docs/dev/template-decisao-tecnica.md` | Dev | Template para documentar decisões técnicas |
+| `docs/dev/template-changelog.md` | Dev | Registro cronológico de entregas e alterações |
 
 ---
 
