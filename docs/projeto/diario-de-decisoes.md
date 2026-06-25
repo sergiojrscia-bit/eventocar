@@ -28,6 +28,7 @@
 | 2026-06-24 | Analista | Templates do Dev criados | Padronizar registro de decisões técnicas e changelog |
 | 2026-06-24 | Analista | Templates do QA criados | Padronizar testes, bug reports e checklist de entrega |
 | 2026-06-24 | Analista | Playwright adotado como ferramenta de testes automatizados | Simula usuário real no navegador, ideal para garantir que novas features não quebrem o que já está em produção |
+| 2026-06-24 | Dev | README.md criado e revisado | Documentar pré-requisitos, comandos por papel e estrutura de pastas do projeto |
 ---
 
 ## Próximas Decisões Pendentes
@@ -51,7 +52,8 @@
 | `docs/qa/template-bug-report.md` | QA | Template para registrar bugs encontrados |
 | `docs/qa/template-checklist-entrega.md` | QA | Lista de verificação antes de publicar uma entrega |
 | `docs/qa/template-teste-automatizado.md` | QA | Template para documentar testes automatizados com Playwright |
+| `README.md` | Projeto | Porta de entrada do repositório com instruções de instalação e comandos disponíveis |
 
 ---
 
-*Última atualização: 2026-06-23*
+*Última atualização: 2026-06-24*
