@@ -34,6 +34,7 @@
 | 2026-06-24 | Analista | Playwright adotado como ferramenta de testes automatizados | Simula usuário real no navegador, ideal para garantir que novas features não quebrem o que já está em produção |
 | 2026-06-24 | Dev | README.md criado e revisado | Documentar pré-requisitos, comandos por papel e estrutura de pastas do projeto |
 | 2026-06-26 | Analista | Arquivo `docs/projeto/ideias.md` criado | Espaço para registrar ideias ainda não decididas, separado do diário para não poluir o histórico de decisões |
+| 2026-06-27 | Analista | Git Bash adotado para rodar comandos `make` no Windows | `make` não é nativo no Windows; Git Bash resolve sem instalações extras e já é familiar para quem usa Git |
 
 ---
 
@@ -42,7 +43,7 @@
 - [x] Escolha do stack de tecnologia (Next.js + Vercel)
 - [x] Criação dos templates do papel Dev (decisão técnica e changelog)
 - [x] Criação dos templates do papel QA (caso de teste, bug report, checklist de entrega)
-- [ ] Criação do Makefile com comandos separados por papel (setup, setup-dev, setup-qa, dev, test, test-report, deploy)
+- [x] Criação do Makefile com comandos separados por papel — rodando via Git Bash no Windows
 - [ ] Definição do domínio do site
 
 ---
@@ -65,4 +66,4 @@
 
 ---
 
-*Última atualização: 2026-06-26*
+*Última atualização: 2026-06-27*
