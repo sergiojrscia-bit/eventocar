@@ -4,7 +4,7 @@
 # Como usar: abra o Git Bash na pasta raiz do projeto e digite o comando.
 # Exemplo: make dev
 #
-# Papéis:
+# Papeis:
 #   [TODOS]   — qualquer pessoa do projeto pode usar
 #   [DEV]     — comandos para o desenvolvedor
 #   [QA]      — comandos para quem faz testes
@@ -12,18 +12,18 @@
 
 
 # -----------------------------------------------------------------------------
-# SETUP — Preparação do ambiente
+# SETUP — Preparacao do ambiente
 # -----------------------------------------------------------------------------
 
-## [TODOS] Instala as dependências do projeto
+## [TODOS] Instala as dependencias do projeto
 setup:
 	npm install
 
-## [DEV] Instala as dependências e prepara o ambiente de desenvolvimento
+## [DEV] Instala as dependencias e prepara o ambiente de desenvolvimento
 setup-dev:
 	npm install
 
-## [QA] Instala as dependências e o Playwright (ferramenta de testes)
+## [QA] Instala as dependencias e o Playwright (ferramenta de testes)
 setup-qa:
 	npm install
 	npx playwright install
@@ -39,29 +39,29 @@ dev:
 
 
 # -----------------------------------------------------------------------------
-# TESTES — Qualidade e verificação
+# TESTES — Qualidade e verificacao
 # -----------------------------------------------------------------------------
 
 ## [QA] Roda todos os testes automatizados com o Playwright
 test:
 	npx playwright test
 
-## [QA] Roda os testes e abre o relatório visual no navegador
+## [QA] Roda os testes e abre o relatorio visual no navegador
 test-report:
 	npx playwright test --reporter=html && npx playwright show-report
 
 
 # -----------------------------------------------------------------------------
-# GIT — Controle de versão
+# GIT — Controle de versao
 # -----------------------------------------------------------------------------
 
-## [DEV] Faz commit de todas as alterações com uma mensagem descritiva
+## [DEV] Faz commit de todas as alteracoes com uma mensagem descritiva
 ## Uso: make commit m="sua mensagem aqui"
 ## Exemplo: make commit m="adiciona listagem de eventos na home"
 commit:
 	@if [ -z "$(m)" ]; then \
 		echo ""; \
-		echo "❌ Erro: você precisa informar uma mensagem de commit."; \
+		echo "ERRO: voce precisa informar uma mensagem de commit."; \
 		echo ""; \
 		echo "   Uso correto: make commit m=\"sua mensagem aqui\""; \
 		echo "   Exemplo:     make commit m=\"adiciona listagem de eventos\""; \
@@ -72,13 +72,13 @@ commit:
 
 
 # -----------------------------------------------------------------------------
-# DEPLOY — Publicação
+# DEPLOY — Publicacao
 # -----------------------------------------------------------------------------
 
-## [DEV] Publica o site (ainda não configurado)
+## [DEV] Publica o site (ainda nao configurado)
 deploy:
 	@echo ""
-	@echo "⚠️  O deploy ainda não foi configurado."
+	@echo "AVISO: O deploy ainda nao foi configurado."
 	@echo ""
 	@echo "   Quando chegar a hora, vamos definir aqui como publicar o site na Vercel."
 	@echo ""
