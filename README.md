@@ -15,7 +15,7 @@ com data, local e valor reunidos em um só lugar.
 ## Pré-requisitos (apenas Windows)
 
 O EventoCar usa um arquivo `Makefile` para automatizar a configuração do ambiente.
-No Windows, você precisa instalar duas ferramentas antes de começar.
+No Windows, você precisa instalar duas ferramentas e configurar o Git antes de começar.
 
 ### 1. Git Bash
 
@@ -66,9 +66,39 @@ Se aparecer `GNU Make 4.4.1`, está pronto ✅
 
 ---
 
+### 3. Configurar o Git com seu nome e e-mail
+
+O Git precisa saber quem você é para registrar corretamente quem fez cada alteração no projeto.
+Essa configuração é feita uma única vez no Git Bash.
+
+**Por que isso é necessário?**
+Cada commit (salvamento de alteração) fica registrado com o nome e e-mail de quem o fez.
+Sem essa configuração, o Git recusa o commit com um erro.
+
+**Como configurar:**
+
+1. Abra o **Git Bash**
+2. Rode os dois comandos abaixo, substituindo pelos seus dados:
+
+```bash
+git config --global user.name "Seu Nome"
+git config --global user.email "seu@email.com"
+```
+
+> Use o mesmo e-mail da sua conta no GitHub.
+
+3. Confirme que funcionou:
+```bash
+git config --global user.name
+git config --global user.email
+```
+Se aparecer seu nome e e-mail, está pronto ✅
+
+---
+
 ## Configurando o ambiente
 
-Com o Git Bash e o `make` instalados, abra o Git Bash e execute:
+Com o Git Bash, o `make` instalados e o Git configurado, abra o Git Bash e execute:
 
 ```bash
 # 1. Clone o repositório
@@ -112,7 +142,7 @@ Pronto! O `make setup` vai instalar tudo que for necessário automaticamente.
 
 | Comando | Quem usa | O que faz |
 |---------|----------|-----------|
-| `make commit m="mensagem"` | Dev | Faz commit de todas as alterações com a mensagem informada |
+| `make commit m="mensagem"` | Dev | Adiciona, commita e envia todas as alterações para o GitHub |
 
 ### Deploy
 
