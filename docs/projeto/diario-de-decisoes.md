@@ -5,6 +5,10 @@
 > Ao iniciar uma nova sessão de trabalho, compartilhe este arquivo com sua IA parceira
 > para que ela retome o contexto completo do projeto.
 
+> 📎 **Este projeto também possui `docs/projeto/ideias.md`** — um caderno de rascunho com
+> ideias ainda não decididas. Sempre que uma nova feature for planejada ou entregue,
+> verificar se alguma ideia registrada lá pode ser aproveitada ou já foi resolvida.
+
 ---
 
 ## Como usar
@@ -29,12 +33,13 @@
 | 2026-06-24 | Analista | Templates do QA criados | Padronizar testes, bug reports e checklist de entrega |
 | 2026-06-24 | Analista | Playwright adotado como ferramenta de testes automatizados | Simula usuário real no navegador, ideal para garantir que novas features não quebrem o que já está em produção |
 | 2026-06-24 | Dev | README.md criado e revisado | Documentar pré-requisitos, comandos por papel e estrutura de pastas do projeto |
+| 2026-06-26 | Analista | Arquivo `docs/projeto/ideias.md` criado | Espaço para registrar ideias ainda não decididas, separado do diário para não poluir o histórico de decisões |
+
 ---
 
 ## Próximas Decisões Pendentes
 
-- [x] Escolha do stack de tecnologia (Next.js, HTML puro ou WordPress)
-   - [x] Escolha do stack de tecnologia (Next.js + Vercel) 
+- [x] Escolha do stack de tecnologia (Next.js + Vercel)
 - [x] Criação dos templates do papel Dev (decisão técnica e changelog)
 - [x] Criação dos templates do papel QA (caso de teste, bug report, checklist de entrega)
 - [ ] Criação do Makefile com comandos separados por papel (setup, setup-dev, setup-qa, dev, test, test-report, deploy)
@@ -47,16 +52,17 @@
 | Arquivo | Papel | Descrição |
 |---------|-------|-----------|
 | `docs/projeto/diario-de-decisoes.md` | Projeto | Memória e histórico de decisões |
+| `docs/projeto/ideias.md` | Projeto | Caderno de rascunho com ideias ainda não decididas |
 | `docs/analista/template-historia-usuario.md` | Analista | Template para descrever features do ponto de vista do usuário |
 | `docs/analista/template-requisito.md` | Analista | Template para detalhar requisitos funcionais e não-funcionais |
+| `docs/dev/template-decisao-tecnica.md` | Dev | Template para documentar decisões técnicas |
+| `docs/dev/template-changelog.md` | Dev | Registro cronológico de entregas e alterações |
 | `docs/qa/template-caso-de-teste.md` | QA | Template para descrever como testar uma feature |
 | `docs/qa/template-bug-report.md` | QA | Template para registrar bugs encontrados |
 | `docs/qa/template-checklist-entrega.md` | QA | Lista de verificação antes de publicar uma entrega |
 | `docs/qa/template-teste-automatizado.md` | QA | Template para documentar testes automatizados com Playwright |
 | `README.md` | Projeto | Porta de entrada do repositório com instruções de instalação e comandos disponíveis |
-| `docs/dev/template-decisao-tecnica.md` | Dev | Template para documentar decisões técnicas |
-| `docs/dev/template-changelog.md` | Dev | Registro cronológico de entregas e alterações |
 
 ---
 
-*Última atualização: 2026-06-24*
+*Última atualização: 2026-06-26*
