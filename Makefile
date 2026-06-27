@@ -55,7 +55,7 @@ test-report:
 # GIT — Controle de versao
 # -----------------------------------------------------------------------------
 
-## [DEV] Faz commit de todas as alteracoes com uma mensagem descritiva
+## [DEV] Faz commit e envia todas as alteracoes para o GitHub
 ## Uso: make commit m="sua mensagem aqui"
 ## Exemplo: make commit m="adiciona listagem de eventos na home"
 commit:
@@ -67,7 +67,7 @@ commit:
 		echo "   Exemplo:     make commit m=\"adiciona listagem de eventos\""; \
 		echo ""; \
 	else \
-		git add . && git commit -m "$(m)"; \
+		git add . && git commit -m "$(m)" && git push; \
 	fi
 
 
