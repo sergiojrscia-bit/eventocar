@@ -36,6 +36,8 @@
 | 2026-06-26 | Analista | Arquivo `docs/projeto/ideias.md` criado | Espaço para registrar ideias ainda não decididas, separado do diário para não poluir o histórico de decisões |
 | 2026-06-27 | Analista | Git Bash adotado para rodar comandos `make` no Windows | `make` não é nativo no Windows; Git Bash resolve sem instalações extras e já é familiar para quem usa Git |
 | 2026-06-27 | Dev | Makefile criado com comandos separados por papel | Padronizar e simplificar os comandos do dia a dia do projeto |
+| 2026-06-27 | Dev | Chocolatey e `make` adicionados como pré-requisitos no README | Sem essas ferramentas o Makefile não funciona no Windows; documentar evita o erro `command not found` |
+| 2026-06-27 | Dev | `make commit` atualizado para incluir `git push` | O comando precisa fazer o ciclo completo: adicionar, commitar e enviar para o GitHub em uma única etapa |
 
 ### Detalhamento: Comandos do Makefile
 
@@ -47,7 +49,7 @@
 | `make dev` | Dev | Sobe o servidor local do Next.js em `http://localhost:3000` |
 | `make test` | QA | Roda todos os testes automatizados com o Playwright |
 | `make test-report` | QA | Roda os testes e abre o relatório visual no navegador |
-| `make commit m="mensagem"` | Dev | Faz commit de todas as alterações com a mensagem informada |
+| `make commit m="mensagem"` | Dev | Adiciona, commita e envia todas as alterações para o GitHub |
 | `make deploy` | Dev | Exibe aviso de que o deploy ainda não foi configurado |
 
 > ⚠️ O comando `make deploy` está reservado para quando definirmos como publicar na Vercel.
