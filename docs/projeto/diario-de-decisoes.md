@@ -35,6 +35,22 @@
 | 2026-06-24 | Dev | README.md criado e revisado | Documentar pré-requisitos, comandos por papel e estrutura de pastas do projeto |
 | 2026-06-26 | Analista | Arquivo `docs/projeto/ideias.md` criado | Espaço para registrar ideias ainda não decididas, separado do diário para não poluir o histórico de decisões |
 | 2026-06-27 | Analista | Git Bash adotado para rodar comandos `make` no Windows | `make` não é nativo no Windows; Git Bash resolve sem instalações extras e já é familiar para quem usa Git |
+| 2026-06-27 | Dev | Makefile criado com comandos separados por papel | Padronizar e simplificar os comandos do dia a dia do projeto |
+
+### Detalhamento: Comandos do Makefile
+
+| Comando | Papel | O que faz |
+|---------|-------|-----------|
+| `make setup` | Todos | Instala as dependências do projeto (`npm install`) |
+| `make setup-dev` | Dev | Instala as dependências e prepara o ambiente de desenvolvimento |
+| `make setup-qa` | QA | Instala as dependências e o Playwright (`npx playwright install`) |
+| `make dev` | Dev | Sobe o servidor local do Next.js em `http://localhost:3000` |
+| `make test` | QA | Roda todos os testes automatizados com o Playwright |
+| `make test-report` | QA | Roda os testes e abre o relatório visual no navegador |
+| `make commit m="mensagem"` | Dev | Faz commit de todas as alterações com a mensagem informada |
+| `make deploy` | Dev | Exibe aviso de que o deploy ainda não foi configurado |
+
+> ⚠️ O comando `make deploy` está reservado para quando definirmos como publicar na Vercel.
 
 ---
 
@@ -44,6 +60,7 @@
 - [x] Criação dos templates do papel Dev (decisão técnica e changelog)
 - [x] Criação dos templates do papel QA (caso de teste, bug report, checklist de entrega)
 - [x] Criação do Makefile com comandos separados por papel — rodando via Git Bash no Windows
+- [ ] Configuração do deploy na Vercel e atualização do `make deploy`
 - [ ] Definição do domínio do site
 
 ---
@@ -63,6 +80,7 @@
 | `docs/qa/template-checklist-entrega.md` | QA | Lista de verificação antes de publicar uma entrega |
 | `docs/qa/template-teste-automatizado.md` | QA | Template para documentar testes automatizados com Playwright |
 | `README.md` | Projeto | Porta de entrada do repositório com instruções de instalação e comandos disponíveis |
+| `Makefile` | Projeto | Atalhos de comandos separados por papel (setup, dev, test, commit, deploy) |
 
 ---
 
