@@ -18,21 +18,53 @@ Siga os passos abaixo na ordem. Cada passo depende do anterior.
 
 ---
 
-### Passo 1 — Instalar o Git Bash
+### Passo 1 — Instalar o Git, configurar e baixar o projeto
 
-O Git Bash é o terminal que vamos usar para rodar todos os comandos do projeto no Windows.
+O Git é a ferramenta que conecta você ao projeto. Com ele você instala o Git Bash
+(o terminal que vamos usar), configura sua identidade e baixa o código do EventoCar.
 
-**Verificar se já está instalado:**
-1. Clique no menu Iniciar
-2. Digite **Git Bash**
-3. Se aparecer o programa, está instalado ✅ — pode ir para o Passo 2
+#### 1.1 — Instalar o Git Bash
 
-**Instalar o Git Bash:**
 1. Acesse: https://git-scm.com/downloads
 2. Clique em **Download for Windows**
 3. Execute o instalador e clique em **Next** em todas as telas
 4. Ao final, clique em **Finish**
 5. Abra o **Git Bash** pelo menu Iniciar para confirmar que funcionou ✅
+
+#### 1.2 — Configurar seu nome e e-mail no Git
+
+O Git precisa saber quem você é para registrar corretamente quem fez cada alteração.
+Essa configuração é feita uma única vez.
+
+Abra o **Git Bash** e rode os dois comandos abaixo, substituindo pelos seus dados:
+
+```bash
+git config --global user.name "Seu Nome"
+git config --global user.email "seu@email.com"
+```
+
+> Use o mesmo e-mail da sua conta no GitHub.
+
+Confirme que funcionou:
+
+```bash
+git config --global user.name
+git config --global user.email
+```
+
+Se aparecer seu nome e e-mail, está pronto ✅
+
+#### 1.3 — Baixar o projeto
+
+No **Git Bash**, escolha uma pasta onde quer salvar o projeto e rode:
+
+```bash
+# Clone o repositório (isso cria a pasta eventocar no local atual)
+git clone https://github.com/seu-usuario/eventocar.git
+
+# Entre na pasta do projeto
+cd eventocar
+```
 
 ---
 
@@ -41,7 +73,7 @@ O Git Bash é o terminal que vamos usar para rodar todos os comandos do projeto 
 O `make` lê o `Makefile` e executa os comandos do projeto (como `make setup`, `make dev`).
 O `Node.js` é o ambiente que roda o Next.js e já vem com o `npm` (gerenciador de pacotes) incluso.
 
-> 💡 **Quer automatizar esta etapa?** Existe um script que instala tudo do Passo 2 e 3 automaticamente.
+> 💡 **Quer automatizar esta etapa?** Existe um script que instala tudo automaticamente.
 > O passo a passo completo está em [`setup-windows.md`](./setup-windows.md).
 
 Vamos instalar os dois via **Chocolatey**, um gerenciador de pacotes para Windows.
@@ -49,7 +81,7 @@ Vamos instalar os dois via **Chocolatey**, um gerenciador de pacotes para Window
 1. Abra o **PowerShell como Administrador**
    - Clique no menu Iniciar → Digite **PowerShell** → botão direito → "Executar como administrador"
 
-2. Libere a execução de scripts no seu usuário (necessário para o `npm` funcionar):
+2. Libere a execução de scripts no seu usuário:
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
@@ -76,48 +108,25 @@ npm --version    # deve mostrar 10 ou superior
 
 ---
 
-### Passo 3 — Configurar o Git com seu nome e e-mail
+### Passo 3 — Setup do projeto
 
-O Git precisa saber quem você é para registrar corretamente quem fez cada alteração.
-Essa configuração é feita uma única vez.
+Com o ambiente pronto, agora vamos instalar as dependências do projeto.
+O comando varia de acordo com o seu papel:
 
-1. Abra o **Git Bash**
-2. Rode os dois comandos abaixo, substituindo pelos seus dados:
+| Papel | Comando | O que faz |
+|-------|---------|-----------|
+| Todos | `make setup` | Instala as dependências básicas do projeto |
+| Dev | `make setup-dev` | Instala as dependências e prepara o ambiente de desenvolvimento |
+| QA | `make setup-qa` | Instala as dependências e o Playwright para testes automatizados |
 
-```bash
-git config --global user.name "Seu Nome"
-git config --global user.email "seu@email.com"
-```
-
-> Use o mesmo e-mail da sua conta no GitHub.
-
-3. Confirme que funcionou:
-```bash
-git config --global user.name
-git config --global user.email
-```
-Se aparecer seu nome e e-mail, está pronto ✅
-
----
-
-### Passo 4 — Clonar o repositório e configurar o projeto
-
-Com tudo instalado e configurado, agora vamos baixar o projeto e preparar o ambiente.
-
-Abra o **Git Bash** e execute:
+Abra o **Git Bash**, entre na pasta do projeto e rode o comando do seu papel:
 
 ```bash
-# 1. Clone o repositório (isso cria a pasta eventocar no local atual)
-git clone https://github.com/seu-usuario/eventocar.git
-
-# 2. Entre na pasta do projeto
 cd eventocar
-
-# 3. Configure o ambiente completo (apenas uma vez)
-make setup
+make setup        # ou make setup-dev / make setup-qa
 ```
 
-Pronto! O `make setup` vai instalar tudo que for necessário automaticamente. ✅
+Pronto! O projeto está pronto para rodar. ✅
 
 ---
 
