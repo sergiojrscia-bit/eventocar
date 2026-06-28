@@ -16,45 +16,50 @@
 
 ## Opção rápida: rodar o script automático
 
-Se preferir automatizar a instalação, siga os passos abaixo.
+Se preferir automatizar a instalação do make e do Node.js, siga os passos abaixo.
 
-> ⚠️ O script ainda **não clona o repositório** — ele configura apenas as ferramentas.
-> Após rodar o script, volte para o **Passo 4** deste guia para clonar e configurar o projeto.
+> ⚠️ O script instala apenas as ferramentas (make e Node.js).
+> Antes de rodá-lo, complete o **Passo 1** para ter o Git instalado e o projeto clonado.
+> Após o script terminar, vá direto para o **Passo 3** para configurar o projeto.
 
-1. Abra o **PowerShell como Administrador**
+1. Complete o **Passo 1** deste guia (instalar Git, configurar e clonar o projeto)
+
+2. Abra o **PowerShell como Administrador**
    - Clique no menu Iniciar → digite `PowerShell` → botão direito → **Executar como administrador**
 
-2. Libere a execução de scripts no seu usuário:
+3. Libere a execução de scripts no seu usuário:
    ```powershell
    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
    ```
    Quando perguntar confirmação, digite `S` e pressione Enter.
 
-3. Baixe o repositório:
+4. Entre na pasta do projeto e rode o script:
    ```powershell
-   git clone https://github.com/seu-usuario/eventocar.git
-   cd eventocar
-   ```
-
-4. Rode o script:
-   ```powershell
+   cd C:\Projeto\eventocar
    .\setup-windows.ps1
    ```
 
 5. Aguarde terminar e siga o aviso final na tela.
 
+6. Vá para o **Passo 3** para configurar o projeto.
+
 ---
 
 ## Opção manual: passo a passo explicado
 
-### Passo 1 — Instalar o Git Bash
+### Passo 1 — Instalar o Git, configurar e baixar o projeto
+
+O Git é a ferramenta que conecta você ao projeto. Com ele você instala o Git Bash
+(o terminal que vamos usar), configura sua identidade e baixa o código do EventoCar.
+
+#### 1.1 — Instalar o Git Bash
 
 O Git Bash é o terminal que vamos usar para rodar todos os comandos do projeto.
 Ele já vem com o Git incluso — ou seja, instalando o Git Bash, você já tem o Git também.
 
 **Verificar se já está instalado:**
 1. Clique no menu Iniciar → digite **Git Bash**
-2. Se aparecer o programa, está instalado ✅ — pode ir para o Passo 2
+2. Se aparecer o programa, está instalado ✅ — pode ir para o item 1.2
 
 **Instalar:**
 1. Acesse: https://git-scm.com/downloads
@@ -65,15 +70,58 @@ Ele já vem com o Git incluso — ou seja, instalando o Git Bash, você já tem 
 
 ---
 
-### Passo 2 — Liberar execução de scripts no PowerShell
+#### 1.2 — Configurar seu nome e e-mail no Git
 
-Por padrão, o Windows bloqueia a execução de scripts `.ps1`. Esse passo libera essa restrição
-para o seu usuário — é necessário para que o `npm` funcione corretamente depois de instalado.
+O Git precisa saber quem você é para registrar corretamente quem fez cada alteração no projeto.
+Essa configuração é feita uma única vez.
+
+Abra o **Git Bash** e rode os dois comandos abaixo, substituindo pelos seus dados:
+
+```bash
+git config --global user.name "Seu Nome"
+git config --global user.email "seu@email.com"
+```
+
+> Use o mesmo e-mail da sua conta no GitHub.
+
+Confirme que funcionou:
+
+```bash
+git config --global user.name
+git config --global user.email
+```
+
+Se aparecer seu nome e e-mail, está pronto ✅
+
+---
+
+#### 1.3 — Baixar o projeto
+
+No **Git Bash**, escolha uma pasta onde quer salvar o projeto e rode:
+
+```bash
+# Clone o repositório (isso cria a pasta eventocar no local atual)
+git clone https://github.com/seu-usuario/eventocar.git
+
+# Entre na pasta do projeto
+cd eventocar
+```
+
+---
+
+### Passo 2 — Instalar o make e o Node.js
+
+O `make` lê o `Makefile` e executa os comandos do projeto (como `make setup`, `make dev`).
+O `Node.js` é o ambiente que roda o Next.js e já vem com o `npm` (gerenciador de pacotes) incluso.
+
+Vamos instalar os dois via **Chocolatey** — um gerenciador de pacotes para Windows que funciona
+como uma "loja de linha de comando", instalando programas automaticamente sem precisar entrar
+em vários sites.
 
 1. Abra o **PowerShell como Administrador**
    - Clique no menu Iniciar → Digite **PowerShell** → botão direito → "Executar como administrador"
 
-2. Rode o comando:
+2. Libere a execução de scripts no seu usuário:
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
@@ -84,31 +132,20 @@ Quando perguntar confirmação, digite `S` e pressione Enter.
 > de segurança — mesmo depois de instalado corretamente. Fazer isso antes de instalar o Node.js
 > evita o problema na raiz.
 
-✅ Feito! Pode deixar o PowerShell aberto para o próximo passo.
-
----
-
-### Passo 3 — Instalar o Chocolatey, o make e o Node.js
-
-O **Chocolatey** é um gerenciador de pacotes para Windows — funciona como uma "loja de linha de
-comando" que instala programas automaticamente, sem precisar entrar em vários sites.
-
-Com o **PowerShell como Administrador** ainda aberto:
-
-1. Instale o Chocolatey:
+3. Instale o Chocolatey:
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
-2. Instale o make e o Node.js de uma vez:
+4. Instale o make e o Node.js de uma vez:
 ```powershell
 choco install make nodejs -y
 ```
 
-3. Feche o PowerShell e o Git Bash, depois **reabra o Git Bash**
-   - Isso é necessário porque o Windows só reconhece os programas novos após reabrir o terminal
+5. Feche o PowerShell e o Git Bash, depois **reabra o Git Bash**
+   - O Windows só reconhece os programas novos após reabrir o terminal
 
-4. Confirme que tudo funcionou:
+6. Confirme que tudo funcionou:
 ```bash
 make --version   # deve mostrar GNU Make 4.x.x
 node --version   # deve mostrar v22 ou superior
@@ -117,54 +154,31 @@ npm --version    # deve mostrar 10 ou superior
 
 ---
 
-### Passo 4 — Configurar o Git com seu nome e e-mail
+### Passo 3 — Setup do projeto
 
-O Git precisa saber quem você é para registrar corretamente quem fez cada alteração no projeto.
-Essa configuração é feita uma única vez.
+Com o ambiente pronto, agora vamos instalar as dependências do projeto.
+O comando varia de acordo com o seu papel:
 
-1. Abra o **Git Bash**
-2. Rode os dois comandos abaixo, substituindo pelos seus dados:
+| Papel | Comando | O que faz |
+|-------|---------|-----------|
+| Todos | `make setup` | Instala as dependências básicas do projeto |
+| Dev | `make setup-dev` | Instala as dependências e prepara o ambiente de desenvolvimento |
+| QA | `make setup-qa` | Instala as dependências e o Playwright para testes automatizados |
 
-```bash
-git config --global user.name "Seu Nome"
-git config --global user.email "seu@email.com"
-```
-
-> Use o mesmo e-mail da sua conta no GitHub.
-
-3. Confirme que funcionou:
-```bash
-git config --global user.name
-git config --global user.email
-```
-Se aparecer seu nome e e-mail, está pronto ✅
-
----
-
-### Passo 5 — Clonar o repositório e configurar o projeto
-
-Agora que tudo está instalado, vamos baixar o projeto e preparar o ambiente.
-
-No **Git Bash**, rode:
+Abra o **Git Bash**, entre na pasta do projeto e rode o comando do seu papel:
 
 ```bash
-# 1. Clone o repositório (isso cria a pasta eventocar onde você estiver)
-git clone https://github.com/seu-usuario/eventocar.git
-
-# 2. Entre na pasta do projeto
 cd eventocar
-
-# 3. Configure o ambiente completo (apenas uma vez)
-make setup
+make setup        # ou make setup-dev / make setup-qa
 ```
 
-O `make setup` vai instalar todas as dependências do projeto automaticamente. ✅
+Pronto! O projeto está pronto para rodar. ✅
 
 ---
 
 ## Verificação final
 
-Após o `make setup` terminar sem erros, rode:
+Após o setup terminar sem erros, rode:
 
 ```bash
 make --version   # deve mostrar GNU Make
@@ -180,10 +194,10 @@ Se todos os comandos funcionarem, o ambiente está pronto. 🎉
 
 | Erro | Causa | Solução |
 |------|-------|---------|
-| `.\setup-windows.ps1 não pode ser carregado` | Política de execução bloqueando scripts | Rode o Passo 2 antes de qualquer outra coisa |
-| `make: command not found` | make não instalado ou terminal não foi reaberto | Instale via Chocolatey (Passo 3) e reabra o Git Bash |
-| `npm: command not found` | Node.js não instalado ou terminal não foi reaberto | Instale via Chocolatey (Passo 3) e reabra o Git Bash |
-| `npm.ps1 não pode ser carregado` | Política de execução bloqueando scripts | Rode o Passo 2 no PowerShell como Administrador |
+| `.\setup-windows.ps1 não pode ser carregado` | Política de execução bloqueando scripts | Rode o item 2 do Passo 2 antes de qualquer outra coisa |
+| `make: command not found` | make não instalado ou terminal não foi reaberto | Instale via Chocolatey (Passo 2) e reabra o Git Bash |
+| `npm: command not found` | Node.js não instalado ou terminal não foi reaberto | Instale via Chocolatey (Passo 2) e reabra o Git Bash |
+| `npm.ps1 não pode ser carregado` | Política de execução bloqueando scripts | Rode o item 2 do Passo 2 no PowerShell como Administrador |
 | `Could not read package.json` | Projeto Next.js ainda não inicializado | Normal na primeira vez — aguarde a inicialização do projeto |
 
 ---
