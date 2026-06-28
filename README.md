@@ -12,25 +12,20 @@ com data, local e valor reunidos em um só lugar.
 
 ---
 
-## Pré-requisitos (apenas Windows)
+## Configurando o ambiente (Windows)
 
-O EventoCar usa um arquivo `Makefile` para automatizar a configuração do ambiente.
-No Windows, você precisa instalar algumas ferramentas e configurar o Git antes de começar.
-
-> 💡 **Quer instalar tudo de uma vez?** Use o script automático:
-> abra o PowerShell como Administrador, navegue até a pasta do projeto e rode `.\setup-windows.ps1`.
-> O passo a passo detalhado está em [`setup-windows.md`](./setup-windows.md).
+Siga os passos abaixo na ordem. Cada passo depende do anterior.
 
 ---
 
-### 1. Git Bash
+### Passo 1 — Instalar o Git Bash
 
-O Git Bash é um terminal que permite rodar os comandos do projeto no Windows.
+O Git Bash é o terminal que vamos usar para rodar todos os comandos do projeto no Windows.
 
 **Verificar se já está instalado:**
 1. Clique no menu Iniciar
 2. Digite **Git Bash**
-3. Se aparecer o programa, está instalado ✅
+3. Se aparecer o programa, está instalado ✅ — pode ir para o Passo 2
 
 **Instalar o Git Bash:**
 1. Acesse: https://git-scm.com/downloads
@@ -41,54 +36,47 @@ O Git Bash é um terminal que permite rodar os comandos do projeto no Windows.
 
 ---
 
-### 2. make e Node.js
+### Passo 2 — Instalar o make e o Node.js
 
-O `make` interpreta o Makefile e executa os comandos do projeto.
+O `make` lê o `Makefile` e executa os comandos do projeto (como `make setup`, `make dev`).
 O `Node.js` é o ambiente que roda o Next.js e já vem com o `npm` (gerenciador de pacotes) incluso.
 
-**Instalar via Chocolatey:**
+Vamos instalar os dois via **Chocolatey**, um gerenciador de pacotes para Windows.
 
 1. Abra o **PowerShell como Administrador**
    - Clique no menu Iniciar → Digite **PowerShell** → botão direito → "Executar como administrador"
 
-2. Instale o Chocolatey (gerenciador de pacotes do Windows):
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-```
-
-3. Instale o make e o Node.js:
-```powershell
-choco install make -y
-choco install nodejs -y
-```
-
-4. Libere a execução de scripts (necessário para o npm funcionar no PowerShell):
+2. Libere a execução de scripts no seu usuário (necessário para o `npm` funcionar):
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 Quando perguntar confirmação, digite `S` e pressione Enter.
 
-5. Feche o PowerShell e o Git Bash, depois reabra o Git Bash
+3. Instale o Chocolatey:
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
 
-6. Confirme que funcionou:
+4. Instale o make e o Node.js:
+```powershell
+choco install make nodejs -y
+```
+
+5. Feche o PowerShell e o Git Bash, depois **reabra o Git Bash**
+
+6. Confirme que tudo funcionou:
 ```bash
 make --version   # deve mostrar GNU Make 4.x.x
-node --version   # deve mostrar v26 ou superior
-npm --version    # deve mostrar 11 ou superior
+node --version   # deve mostrar v22 ou superior
+npm --version    # deve mostrar 10 ou superior
 ```
 
 ---
 
-### 3. Configurar o Git com seu nome e e-mail
+### Passo 3 — Configurar o Git com seu nome e e-mail
 
-O Git precisa saber quem você é para registrar corretamente quem fez cada alteração no projeto.
-Essa configuração é feita uma única vez no Git Bash.
-
-**Por que isso é necessário?**
-Cada commit (salvamento de alteração) fica registrado com o nome e e-mail de quem o fez.
-Sem essa configuração, o Git recusa o commit com um erro.
-
-**Como configurar:**
+O Git precisa saber quem você é para registrar corretamente quem fez cada alteração.
+Essa configuração é feita uma única vez.
 
 1. Abra o **Git Bash**
 2. Rode os dois comandos abaixo, substituindo pelos seus dados:
@@ -109,12 +97,14 @@ Se aparecer seu nome e e-mail, está pronto ✅
 
 ---
 
-## Configurando o ambiente
+### Passo 4 — Clonar o repositório e configurar o projeto
 
-Com o Git Bash, o `make`, o Node.js instalados e o Git configurado, abra o Git Bash e execute:
+Com tudo instalado e configurado, agora vamos baixar o projeto e preparar o ambiente.
+
+Abra o **Git Bash** e execute:
 
 ```bash
-# 1. Clone o repositório
+# 1. Clone o repositório (isso cria a pasta eventocar no local atual)
 git clone https://github.com/seu-usuario/eventocar.git
 
 # 2. Entre na pasta do projeto
@@ -124,7 +114,7 @@ cd eventocar
 make setup
 ```
 
-Pronto! O `make setup` vai instalar tudo que for necessário automaticamente.
+Pronto! O `make setup` vai instalar tudo que for necessário automaticamente. ✅
 
 ---
 
