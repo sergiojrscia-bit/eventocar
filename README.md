@@ -15,7 +15,13 @@ com data, local e valor reunidos em um só lugar.
 ## Pré-requisitos (apenas Windows)
 
 O EventoCar usa um arquivo `Makefile` para automatizar a configuração do ambiente.
-No Windows, você precisa instalar duas ferramentas e configurar o Git antes de começar.
+No Windows, você precisa instalar algumas ferramentas e configurar o Git antes de começar.
+
+> 💡 **Quer instalar tudo de uma vez?** Use o script automático:
+> abra o PowerShell como Administrador, navegue até a pasta do projeto e rode `.\setup-windows.ps1`.
+> O passo a passo detalhado está em [`setup-windows.md`](./setup-windows.md).
+
+---
 
 ### 1. Git Bash
 
@@ -35,34 +41,41 @@ O Git Bash é um terminal que permite rodar os comandos do projeto no Windows.
 
 ---
 
-### 2. make
+### 2. make e Node.js
 
-O `make` é a ferramenta que interpreta o Makefile e executa os comandos do projeto.
+O `make` interpreta o Makefile e executa os comandos do projeto.
+O `Node.js` é o ambiente que roda o Next.js e já vem com o `npm` (gerenciador de pacotes) incluso.
 
-**Instalar o make:**
+**Instalar via Chocolatey:**
 
 1. Abra o **PowerShell como Administrador**
-   - Clique no menu Iniciar
-   - Digite **PowerShell**
-   - Clique com botão direito → "Executar como administrador"
+   - Clique no menu Iniciar → Digite **PowerShell** → botão direito → "Executar como administrador"
 
 2. Instale o Chocolatey (gerenciador de pacotes do Windows):
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
-3. Instale o make:
+3. Instale o make e o Node.js:
 ```powershell
-choco install make
+choco install make -y
+choco install nodejs -y
 ```
 
-4. Feche o PowerShell e o Git Bash, depois reabra o Git Bash
+4. Libere a execução de scripts (necessário para o npm funcionar no PowerShell):
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+Quando perguntar confirmação, digite `S` e pressione Enter.
 
-5. Confirme que funcionou:
+5. Feche o PowerShell e o Git Bash, depois reabra o Git Bash
+
+6. Confirme que funcionou:
 ```bash
-make --version
+make --version   # deve mostrar GNU Make 4.x.x
+node --version   # deve mostrar v26 ou superior
+npm --version    # deve mostrar 11 ou superior
 ```
-Se aparecer `GNU Make 4.4.1`, está pronto ✅
 
 ---
 
@@ -98,7 +111,7 @@ Se aparecer seu nome e e-mail, está pronto ✅
 
 ## Configurando o ambiente
 
-Com o Git Bash, o `make` instalados e o Git configurado, abra o Git Bash e execute:
+Com o Git Bash, o `make`, o Node.js instalados e o Git configurado, abra o Git Bash e execute:
 
 ```bash
 # 1. Clone o repositório
@@ -163,6 +176,8 @@ eventocar/
 │   └── qa/             # Templates de testes, bug reports e checklist
 ├── tests/              # Testes automatizados com Playwright
 ├── Makefile            # Automação de ambiente
+├── setup-windows.ps1   # Script automático de configuração do ambiente no Windows
+├── setup-windows.md    # Passo a passo manual de configuração do ambiente no Windows
 └── README.md           # Este arquivo
 ```
 
@@ -178,4 +193,4 @@ eventocar/
 
 ---
 
-*Última atualização: 2026-06-27*
+*Última atualização: 2026-06-28*
