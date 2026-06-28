@@ -71,11 +71,19 @@ Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "  Setup concluido!" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "IMPORTANTE: Feche este PowerShell e reabra o Git Bash" -ForegroundColor Yellow
-Write-Host "para que as mudancas no PATH entrem em vigor." -ForegroundColor Yellow
+Write-Host "----------------------------------------------" -ForegroundColor Yellow
+Write-Host "  AGORA: feche esta janela do PowerShell" -ForegroundColor Yellow
+Write-Host "----------------------------------------------" -ForegroundColor Yellow
+Write-Host "  O Windows so reconhece os programas novos" -ForegroundColor Yellow
+Write-Host "  apos reabrir o terminal." -ForegroundColor Yellow
 Write-Host ""
-Write-Host "Depois, na pasta do projeto, rode:" -ForegroundColor White
-Write-Host "  make --version   (deve mostrar GNU Make)" -ForegroundColor White
-Write-Host "  node --version   (deve mostrar v26 ou superior)" -ForegroundColor White
-Write-Host "  npm --version    (deve mostrar 11 ou superior)" -ForegroundColor White
+Write-Host "----------------------------------------------" -ForegroundColor Green
+Write-Host "  DEPOIS: abra o Git Bash e rode um a um:" -ForegroundColor Green
+Write-Host "----------------------------------------------" -ForegroundColor Green
+Write-Host ""
+Write-Host "    make --version" -ForegroundColor White
+Write-Host "    node --version" -ForegroundColor White
+Write-Host "    npm  --version" -ForegroundColor White
+Write-Host ""
+Write-Host "  Se aparecer a versao em cada um, esta tudo pronto." -ForegroundColor Green
 Write-Host ""
