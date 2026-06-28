@@ -41,6 +41,9 @@ O Git Bash é o terminal que vamos usar para rodar todos os comandos do projeto 
 O `make` lê o `Makefile` e executa os comandos do projeto (como `make setup`, `make dev`).
 O `Node.js` é o ambiente que roda o Next.js e já vem com o `npm` (gerenciador de pacotes) incluso.
 
+> 💡 **Quer automatizar esta etapa?** Existe um script que instala tudo do Passo 2 e 3 automaticamente.
+> O passo a passo completo está em [`setup-windows.md`](./setup-windows.md).
+
 Vamos instalar os dois via **Chocolatey**, um gerenciador de pacotes para Windows.
 
 1. Abra o **PowerShell como Administrador**
