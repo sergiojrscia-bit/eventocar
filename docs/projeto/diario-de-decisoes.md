@@ -42,6 +42,7 @@
 | 2026-06-28 | Dev | Política de execução `RemoteSigned` adicionada ao setup do Windows | O Windows bloqueia scripts `.ps1` por padrão; sem essa configuração o `npm` falha mesmo após instalado corretamente |
 | 2026-06-28 | Dev | Script `setup-windows.ps1` criado | Automatizar a instalação de todo o ambiente Windows em uma única execução, evitando erros manuais |
 | 2026-06-28 | Dev | Checklist `setup-windows.md` criado | Documentar o passo a passo manual com explicações didáticas e tabela de erros comuns |
+| 2026-06-28 | Dev | Estrutura de passos do README e `setup-windows.md` reorganizada | Separar a configuração do computador (Git, make, Node) da configuração do projeto em 3 passos claros, tornando o guia mais intuitivo para novos membros |
 
 ### Detalhamento: Comandos do Makefile
 
