@@ -38,6 +38,10 @@
 | 2026-06-27 | Dev | Makefile criado com comandos separados por papel | Padronizar e simplificar os comandos do dia a dia do projeto |
 | 2026-06-27 | Dev | Chocolatey e `make` adicionados como pré-requisitos no README | Sem essas ferramentas o Makefile não funciona no Windows; documentar evita o erro `command not found` |
 | 2026-06-27 | Dev | `make commit` atualizado para incluir `git push` | O comando precisa fazer o ciclo completo: adicionar, commitar e enviar para o GitHub em uma única etapa |
+| 2026-06-28 | Dev | Node.js adicionado como pré-requisito no README | O projeto Next.js exige o Node.js para rodar; sem ele o `make setup` falha com erro de `package.json` não encontrado |
+| 2026-06-28 | Dev | Política de execução `RemoteSigned` adicionada ao setup do Windows | O Windows bloqueia scripts `.ps1` por padrão; sem essa configuração o `npm` falha mesmo após instalado corretamente |
+| 2026-06-28 | Dev | Script `setup-windows.ps1` criado | Automatizar a instalação de todo o ambiente Windows em uma única execução, evitando erros manuais |
+| 2026-06-28 | Dev | Checklist `setup-windows.md` criado | Documentar o passo a passo manual com explicações didáticas e tabela de erros comuns |
 
 ### Detalhamento: Comandos do Makefile
 
@@ -62,8 +66,10 @@
 - [x] Criação dos templates do papel Dev (decisão técnica e changelog)
 - [x] Criação dos templates do papel QA (caso de teste, bug report, checklist de entrega)
 - [x] Criação do Makefile com comandos separados por papel — rodando via Git Bash no Windows
+- [x] Documentação e automação do setup do ambiente Windows
 - [ ] Configuração do deploy na Vercel e atualização do `make deploy`
 - [ ] Definição do domínio do site
+- [ ] Inicialização do projeto Next.js
 
 ---
 
@@ -83,7 +89,9 @@
 | `docs/qa/template-teste-automatizado.md` | QA | Template para documentar testes automatizados com Playwright |
 | `README.md` | Projeto | Porta de entrada do repositório com instruções de instalação e comandos disponíveis |
 | `Makefile` | Projeto | Atalhos de comandos separados por papel (setup, dev, test, commit, deploy) |
+| `setup-windows.ps1` | Projeto | Script automático de configuração do ambiente no Windows |
+| `setup-windows.md` | Projeto | Passo a passo manual de configuração do ambiente no Windows com erros comuns |
 
 ---
 
-*Última atualização: 2026-06-27*
+*Última atualização: 2026-06-28*
