@@ -43,6 +43,7 @@
 | 2026-06-28 | Dev | Script `setup-windows.ps1` criado | Automatizar a instalação de todo o ambiente Windows em uma única execução, evitando erros manuais |
 | 2026-06-28 | Dev | Checklist `setup-windows.md` criado | Documentar o passo a passo manual com explicações didáticas e tabela de erros comuns |
 | 2026-06-28 | Dev | Estrutura de passos do README e `setup-windows.md` reorganizada | Separar a configuração do computador (Git, make, Node) da configuração do projeto em 3 passos claros, tornando o guia mais intuitivo para novos membros |
+| 2026-06-28 | Dev | Projeto Next.js 16.2.9 inicializado com `create-next-app` | Estrutura base do site criada com JavaScript, ESLint e App Router; servidor local rodando em `http://localhost:3000` |
 
 ### Detalhamento: Comandos do Makefile
 
@@ -68,9 +69,10 @@
 - [x] Criação dos templates do papel QA (caso de teste, bug report, checklist de entrega)
 - [x] Criação do Makefile com comandos separados por papel — rodando via Git Bash no Windows
 - [x] Documentação e automação do setup do ambiente Windows
+- [x] Inicialização do projeto Next.js
 - [ ] Configuração do deploy na Vercel e atualização do `make deploy`
 - [ ] Definição do domínio do site
-- [ ] Inicialização do projeto Next.js
+- [ ] Construção da primeira página real do EventoCar
 
 ---
 
@@ -92,6 +94,11 @@
 | `Makefile` | Projeto | Atalhos de comandos separados por papel (setup, dev, test, commit, deploy) |
 | `setup-windows.ps1` | Projeto | Script automático de configuração do ambiente no Windows |
 | `setup-windows.md` | Projeto | Passo a passo manual de configuração do ambiente no Windows com erros comuns |
+| `app/` | Projeto | Estrutura de páginas e rotas do Next.js |
+| `package.json` | Projeto | Dependências e scripts do projeto Next.js |
+| `next.config.mjs` | Projeto | Configuração do Next.js |
+| `jsconfig.json` | Projeto | Configuração de caminhos e aliases do projeto |
+| `.eslintrc` | Projeto | Configuração do ESLint (verificador de qualidade do código) |
 
 ---
 
