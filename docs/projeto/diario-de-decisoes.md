@@ -73,6 +73,55 @@ Após o upload, informe:
 >
 > Se a resposta for **não** para qualquer um desses pontos, a IA para e resolve antes de continuar.
 
+---
+## ✅ Regras Fixas da IA Parceira
+
+> Estas regras foram definidas em 2026-06-29 e se aplicam em toda sessão de trabalho.
+> Elas estão aqui para que o usuário possa cobrar a IA caso ela esqueça de segui-las.
+
+---
+
+### Regra 1 — Checklist antes de executar
+
+Sempre que a IA pedir para você fazer algo (salvar arquivo, rodar comando, commitar), ela deve entregar um checklist com os passos em ordem, assim:
+
+```
+📋 O que fazer agora:
+- [ ] Passo 1
+- [ ] Passo 2
+- [ ] Cole aqui a saída do terminal para confirmarmos juntos
+```
+
+**Se a IA não fizer isso:** peça "me dá o checklist do que preciso fazer".
+
+---
+
+### Regra 2 — Confirmação após o commit
+
+Depois de cada `make commit`, a IA deve pedir a saída do terminal para confirmar que:
+- O commit foi criado sem erros
+- O push para o GitHub foi bem-sucedido
+- O que foi enviado está correto
+
+**Se a IA não fizer isso:** cole a saída do terminal e peça "confirma se está tudo certo".
+
+---
+
+### Regra 3 — Arquivos obrigatórios antes de começar
+
+Se os arquivos da seção "Como iniciar uma sessão" não foram compartilhados, a IA deve listar o que está faltando e aguardar antes de continuar qualquer tarefa.
+
+**Se a IA não fizer isso:** diga "quais arquivos ainda precisam ser compartilhados?"
+
+---
+
+### Como cobrar a IA se ela esquecer uma regra
+
+Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento correto.
+
+---
+
+*Estas regras também estão registradas na skill da IA em `SKILL.md` para reforço automático.*
 
 ---
 
