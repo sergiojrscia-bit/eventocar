@@ -155,6 +155,15 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-06-29 | Analista | Pasta `docs/analista/brainstorms/` criada para guardar brainstorms documentados | Separar os registros de brainstorm dos templates e das especificações |
 | 2026-06-29 | Analista | IA única mantida para todos os papéis (Analista, Dev, QA) com troca explícita de chapéu | IAs separadas por papel aumentariam complexidade operacional sem ganho real neste momento; a IA anuncia o papel ativo a cada mudança |
 | 2026-06-29 | Analista | Regra obrigatória: templates sempre preenchidos antes de qualquer entrega | Toda entrega formal (análise, código ou teste) exige o template correspondente; a IA para e preenche antes de continuar se isso não tiver sido feito |
+| 2026-06-29 | Analista | Checklist de início de sessão criado e adicionado ao diário | Garantir que a IA parceira sempre receba os arquivos necessários antes de começar, evitando perda de contexto |
+| 2026-06-29 | Analista | Regras fixas de acompanhamento adicionadas ao diário e à skill | Institucionalizar checklist antes de executar, confirmação após commit e verificação de arquivos — sem depender de memória |
+| 2026-06-29 | Analista | Template de brainstorm criado em `docs/analista/template-brainstorm.md` | Brainstorms feitos na conversa sumiam sem registro; agora toda discussão vira um arquivo documentado |
+| 2026-06-29 | Analista | Pasta `docs/analista/brainstorms/` criada para guardar brainstorms documentados | Separar registros de brainstorm dos templates e especificações |
+| 2026-06-29 | Analista | IA única mantida para todos os papéis com troca explícita de chapéu | IAs separadas aumentariam complexidade sem ganho real neste momento |
+| 2026-06-29 | Analista | Uso obrigatório de templates antes de qualquer entrega formal | Toda entrega exige o template correspondente; a IA para e preenche antes de continuar |
+| 2026-06-29 | Analista | Análise de mercado realizada — 7 concorrentes mapeados | Entender o mercado antes de especificar a página inicial; oportunidade identificada: nenhum concorrente cobre todos os tipos de evento com filtros combinados |
+| 2026-06-29 | Analista | HU-001 criada — Visualizar e filtrar eventos de carro | Definir o que o usuário precisa fazer na página inicial do ponto de vista do entusiasta |
+| 2026-06-29 | Analista | REQ-001 criado — Página inicial com listagem e filtros de eventos | Detalhar tecnicamente o que a página inicial deve fazer, como deve se comportar e os critérios de aceite |
 
 
 ### Detalhamento: Comandos do Makefile
@@ -185,9 +194,14 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 - [x] Criação do template de brainstorm e pasta de brainstorms
 - [x] Definição do procedimento de início de sessão
 - [x] Decisão sobre IAs separadas por papel (mantida IA única com troca de chapéu)
+- [x] Especificação da página inicial concluída (HU-001 + REQ-001)
+- [ ] Desenvolvimento da página inicial (cards + filtros)
+- [ ] Criação do arquivo `data/eventos.json` com eventos de exemplo
 - [ ] Configuração do deploy na Vercel e atualização do `make deploy`
 - [ ] Definição do domínio do site
-- [ ] Construção da primeira página real do EventoCar
+
+
+
 
 ---
 
@@ -216,7 +230,12 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | `next.config.mjs` | Projeto | Configuração do Next.js |
 | `jsconfig.json` | Projeto | Configuração de caminhos e aliases do projeto |
 | `.eslintrc` | Projeto | Configuração do ESLint (verificador de qualidade do código) |
+| `docs/analista/template-brainstorm.md` | Analista | Template para documentar brainstorms e discussões de decisão |
+| `docs/analista/brainstorms/2026-06-29-melhorias-processo.md` | Analista | Brainstorm das melhorias de processo adotadas na sessão |
+| `docs/analista/brainstorms/2026-06-29-analise-de-mercado.md` | Analista | Análise de 7 concorrentes com pontos positivos, negativos e oportunidade do EventoCar |
+| `docs/analista/HU-001-visualizar-filtrar-eventos.md` | Analista | História de usuário da página inicial |
+| `docs/analista/REQ-001-pagina-inicial.md` | Analista | Requisitos funcionais e não-funcionais da página inicial |
 
 ---
 
-*Última atualização: 2026-06-28*
+*Última atualização: 2026-06-29*
