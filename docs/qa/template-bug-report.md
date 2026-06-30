@@ -1,3 +1,9 @@
+---
+title: Template — Bug Report
+parent: QA
+nav_order: 2
+---
+
 # Bug Report — [Título do Bug]
 
 **Data:** AAAA-MM-DD  

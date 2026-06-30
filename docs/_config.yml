@@ -1,0 +1,31 @@
+title: EventoCar — Documentação
+description: Documentação técnica do projeto EventoCar
+theme: just-the-docs
+
+url: "https://sergiojrscia-bit.github.io"
+baseurl: "/eventocar"
+
+# Idioma
+lang: pt-BR
+
+# Navegação
+nav_sort: case_insensitive
+
+# Busca
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+
+# Rodapé
+footer_content: "EventoCar &copy; 2026"
+
+# Excluir arquivos que não são documentação
+exclude:
+  - node_modules/
+  - .next/
+  - package.json
+  - package-lock.json
+  - Makefile
+  - "*.ps1"
+  - "*.mjs"

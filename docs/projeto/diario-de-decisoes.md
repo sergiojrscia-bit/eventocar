@@ -1,3 +1,9 @@
+---
+title: Diário de Decisões
+parent: Projeto
+nav_order: 1
+---
+
 # 📓 Diário de Decisões — EventoCar
 
 > Este arquivo é a memória do projeto.

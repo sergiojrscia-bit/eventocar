@@ -1,3 +1,9 @@
+---
+title: Template — História de Usuário
+parent: Analista
+nav_order: 3
+---
+
 # 📋 Template: História de Usuário
 
 > **O que é uma história de usuário?**

@@ -1,3 +1,9 @@
+---
+title: Template — Requisito
+parent: Analista
+nav_order: 4
+---
+
 # 📋 Template: Requisito
 
 > **O que é um requisito?**

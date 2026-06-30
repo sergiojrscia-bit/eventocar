@@ -1,3 +1,9 @@
+---
+title: Template — Caso de Teste
+parent: QA
+nav_order: 1
+---
+
 # Caso de Teste — [Nome da Feature]
 
 **Data:** AAAA-MM-DD  

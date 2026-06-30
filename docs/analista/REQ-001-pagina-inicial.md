@@ -1,3 +1,9 @@
+---
+title: REQ-001 — Página inicial
+parent: Analista
+nav_order: 2
+---
+
 # 📋 Requisito: Página inicial com listagem e filtros de eventos
 
 ## Identificação

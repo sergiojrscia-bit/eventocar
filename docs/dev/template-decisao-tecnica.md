@@ -1,3 +1,9 @@
+---
+title: Template — Decisão Técnica
+parent: Dev
+nav_order: 1
+---
+
 # Decisão Técnica — [Título da Decisão]
 
 **Data:** AAAA-MM-DD  

@@ -1,3 +1,8 @@
+title: Ideias
+parent: Projeto
+nav_order: 2
+---
+
 # 💡 Ideias — EventoCar
 
 > Este arquivo é o caderno de rascunho do projeto.

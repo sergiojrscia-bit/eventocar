@@ -1,3 +1,9 @@
+---
+title: Template — Changelog
+parent: Dev
+nav_order: 2
+---
+
 # Changelog — EventoCar
 
 > Registro cronológico de tudo que foi construído ou alterado no projeto.

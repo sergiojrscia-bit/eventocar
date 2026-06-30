@@ -1,3 +1,9 @@
+---
+title: Template — Checklist de Entrega
+parent: QA
+nav_order: 3
+---
+
 # Checklist de Entrega — [Nome da Feature]
 
 **Data:** AAAA-MM-DD  

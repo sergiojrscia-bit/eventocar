@@ -1,3 +1,9 @@
+---
+title: HU-001 — Visualizar e filtrar eventos
+parent: Analista
+nav_order: 1
+---
+
 # 📋 História de Usuário: Visualizar e filtrar eventos de carro
 
 ## Identificação

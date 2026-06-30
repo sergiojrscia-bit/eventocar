@@ -1,3 +1,10 @@
+---
+title: Análise de mercado (2026-06-29)
+parent: Brainstorms
+grand_parent: Analista
+nav_order: 2
+---
+
 # 🧠 Brainstorm: Análise de Mercado — Concorrentes do EventoCar
 
 > **Papel:** Analista
