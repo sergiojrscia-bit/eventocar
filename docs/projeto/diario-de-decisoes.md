@@ -40,17 +40,38 @@ Faça upload dos seguintes arquivos no início de cada sessão:
 
 ---
 
-### Passo 2 — Compartilhar arquivos específicos da sessão *(se aplicável)*
+### Passo 2 — Compartilhar arquivos específicos do papel ativo
 
-Se for trabalhar em uma feature específica, compartilhe também:
+#### 🎩 Sessão de Analista
+| Arquivo | Por que é necessário |
+|---------|----------------------|
+| `docs/analista/template-historia-usuario.md` | Para criar histórias de usuário no formato correto |
+| `docs/analista/template-requisito.md` | Para criar requisitos no formato correto |
+| `docs/analista/template-brainstorm.md` | Para documentar discussões e decisões |
 
-| Situação | Arquivo a compartilhar |
-|----------|------------------------|
-| Vai planejar uma nova feature | `docs/analista/template-historia-usuario.md` + `docs/analista/template-requisito.md` |
-| Vai fazer um brainstorm | `docs/analista/template-brainstorm.md` |
-| Vai escrever ou revisar código | `docs/dev/template-decisao-tecnica.md` + `docs/dev/template-changelog.md` |
-| Vai testar uma feature | `docs/qa/template-caso-de-teste.md` + `docs/qa/template-checklist-entrega.md` |
-| Vai criar testes automatizados | `docs/qa/template-teste-automatizado.md` |
+#### 🛠️ Sessão de Dev
+| Arquivo | Por que é necessário |
+|---------|----------------------|
+| `docs/analista/HU-XXX-*.md` | História de usuário da feature a ser desenvolvida |
+| `docs/analista/REQ-XXX-*.md` | Requisitos da feature a ser desenvolvida |
+| `docs/analista/brainstorms/AAAA-MM-DD-*.md` | Brainstorm de análise relevante (se houver) |
+| `docs/dev/template-decisao-tecnica.md` | Para documentar decisões técnicas tomadas durante o desenvolvimento |
+| `docs/dev/template-changelog.md` | Para registrar o que foi entregue |
+
+#### 🧪 Sessão de QA
+| Arquivo | Por que é necessário |
+|---------|----------------------|
+| `docs/analista/HU-XXX-*.md` | Para entender o que deve ser testado |
+| `docs/analista/REQ-XXX-*.md` | Para validar os critérios de aceite |
+| `docs/qa/template-caso-de-teste.md` | Para documentar os casos de teste |
+| `docs/qa/template-checklist-entrega.md` | Para verificar a entrega antes de publicar |
+| `docs/qa/template-teste-automatizado.md` | Para documentar testes com Playwright |
+| `docs/qa/template-bug-report.md` | Para registrar bugs encontrados |
+
+---
+
+**Se a IA não pedir esses arquivos antes de começar:** diga "quais arquivos você precisa para essa sessão?" e ela deve listar conforme o papel ativo.
+
 
 ---
 
@@ -164,6 +185,7 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-06-29 | Analista | Análise de mercado realizada — 7 concorrentes mapeados | Entender o mercado antes de especificar a página inicial; oportunidade identificada: nenhum concorrente cobre todos os tipos de evento com filtros combinados |
 | 2026-06-29 | Analista | HU-001 criada — Visualizar e filtrar eventos de carro | Definir o que o usuário precisa fazer na página inicial do ponto de vista do entusiasta |
 | 2026-06-29 | Analista | REQ-001 criado — Página inicial com listagem e filtros de eventos | Detalhar tecnicamente o que a página inicial deve fazer, como deve se comportar e os critérios de aceite |
+| 2026-06-29 | Analista | Lista de arquivos por papel definida para início de sessão | A lista de arquivos necessários muda conforme o papel ativo (Analista, Dev ou QA); documentar evita iniciar uma sessão sem contexto suficiente |
 
 
 ### Detalhamento: Comandos do Makefile
