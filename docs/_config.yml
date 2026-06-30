@@ -1,6 +1,7 @@
 title: EventoCar — Documentação
 description: Documentação técnica do projeto EventoCar
-theme: just-the-docs
+
+remote_theme: just-the-docs/just-the-docs
 
 url: "https://sergiojrscia-bit.github.io"
 baseurl: "/eventocar"
@@ -19,6 +20,10 @@ search:
 
 # Rodapé
 footer_content: "EventoCar &copy; 2026"
+
+# Plugins necessários para remote_theme funcionar no GitHub Pages
+plugins:
+  - jekyll-remote-theme
 
 # Excluir arquivos que não são documentação
 exclude:
