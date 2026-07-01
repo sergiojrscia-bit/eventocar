@@ -2,7 +2,7 @@
 title: Melhorias de processo (2026-06-29)
 parent: Brainstorms
 grand_parent: Analista
-nav_order: 1
+nav_order: 2
 ---
 
 # 🧠 Brainstorm: Melhorias no processo de trabalho com a IA parceira

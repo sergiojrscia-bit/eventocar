@@ -192,6 +192,10 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-06-29 | Analista | HU-001 criada — Visualizar e filtrar eventos de carro | Definir o que o usuário precisa fazer na página inicial do ponto de vista do entusiasta |
 | 2026-06-29 | Analista | REQ-001 criado — Página inicial com listagem e filtros de eventos | Detalhar tecnicamente o que a página inicial deve fazer, como deve se comportar e os critérios de aceite |
 | 2026-06-29 | Analista | Lista de arquivos por papel definida para início de sessão | A lista de arquivos necessários muda conforme o papel ativo (Analista, Dev ou QA); documentar evita iniciar uma sessão sem contexto suficiente |
+| 2026-06-30 | Dev | Site de documentação publicado via GitHub Pages | A pasta `docs/` do repositório virou também o site público, usando o tema `just-the-docs` (via `remote_theme`) para gerar menu, busca e navegação a partir do front matter dos arquivos `.md` |
+| 2026-06-30 | Dev | GitHub Pages configurado com branch `main` e pasta `/docs` | Publicação automática a cada `git push` na `main`, sem passo manual — site no ar em `https://sergiojrscia-bit.github.io/eventocar/` |
+| 2026-06-30 | Dev | Guia `publicacao-github-pages.md` criado em `docs/projeto/` | Documentar o passo a passo de como o site é publicado e como adicionar novas páginas, evitando depender de memória |
+| 2026-06-30 | Dev | Bug corrigido no `ideias.md` — front matter sem `---` de abertura | Sem o `---` na primeira linha, o Jekyll não reconhece o front matter e a página não é processada corretamente pelo tema |
 
 
 ### Detalhamento: Comandos do Makefile
@@ -223,6 +227,7 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 - [x] Definição do procedimento de início de sessão
 - [x] Decisão sobre IAs separadas por papel (mantida IA única com troca de chapéu)
 - [x] Especificação da página inicial concluída (HU-001 + REQ-001)
+- [x] Site de documentação publicado no GitHub Pages (branch `main`, pasta `/docs`)
 - [ ] Desenvolvimento da página inicial (cards + filtros)
 - [ ] Criação do arquivo `data/eventos.json` com eventos de exemplo
 - [ ] Configuração do deploy na Vercel e atualização do `make deploy`
@@ -263,7 +268,8 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | `docs/analista/brainstorms/2026-06-29-analise-de-mercado.md` | Analista | Análise de 7 concorrentes com pontos positivos, negativos e oportunidade do EventoCar |
 | `docs/analista/HU-001-visualizar-filtrar-eventos.md` | Analista | História de usuário da página inicial |
 | `docs/analista/REQ-001-pagina-inicial.md` | Analista | Requisitos funcionais e não-funcionais da página inicial |
+| `docs/projeto/publicacao-github-pages.md` | Projeto | Guia de como o site de documentação é publicado no GitHub Pages e como adicionar novas páginas |
 
 ---
 
-*Última atualização: 2026-06-29*
+*Última atualização: 2026-06-30*

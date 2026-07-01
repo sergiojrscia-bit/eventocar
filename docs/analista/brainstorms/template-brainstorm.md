@@ -1,7 +1,8 @@
 ---
 title: Template — Brainstorm
-parent: Analista
-nav_order: 5
+parent: Brainstorms
+grand_parent: Analista
+nav_order: 1
 ---
 
 # 🧠 Brainstorm: [Título do Tema]

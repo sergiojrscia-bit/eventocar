@@ -1,3 +1,4 @@
+---
 title: Ideias
 parent: Projeto
 nav_order: 2
@@ -68,4 +69,4 @@ nav_order: 2
 
 ---
 
-*Última atualização: 2026-06-26*
+*Última atualização: 2026-06-30*
