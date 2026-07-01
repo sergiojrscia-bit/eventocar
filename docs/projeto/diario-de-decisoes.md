@@ -196,6 +196,7 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-06-30 | Dev | GitHub Pages configurado com branch `main` e pasta `/docs` | Publicação automática a cada `git push` na `main`, sem passo manual — site no ar em `https://sergiojrscia-bit.github.io/eventocar/` |
 | 2026-06-30 | Dev | Guia `publicacao-github-pages.md` criado em `docs/projeto/` | Documentar o passo a passo de como o site é publicado e como adicionar novas páginas, evitando depender de memória |
 | 2026-06-30 | Dev | Bug corrigido no `ideias.md` — front matter sem `---` de abertura | Sem o `---` na primeira linha, o Jekyll não reconhece o front matter e a página não é processada corretamente pelo tema |
+| 2026-06-30 | Dev | `kramdown: input: GFM` adicionado ao `_config.yml` | Tabelas na página `diario-de-decisoes.md` estavam sendo exibidas como texto corrido (com os `\|` visíveis) em vez de tabela; o kramdown precisa do modo GFM explícito para interpretar esse formato de tabela de forma confiável |
 
 
 ### Detalhamento: Comandos do Makefile
