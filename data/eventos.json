@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "nome": "Encontro Clássico de Floripa",
+    "data": "2026-07-12",
+    "cidade": "Florianópolis",
+    "estado": "SC",
+    "tipo": "Clássicos",
+    "valor": null
+  },
+  {
+    "id": 2,
+    "nome": "Track Day Interlagos",
+    "data": "2026-07-20",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "tipo": "Track Day",
+    "valor": 250
+  },
+  {
+    "id": 3,
+    "nome": "Feirão Tuning Sul",
+    "data": "2026-08-02",
+    "cidade": "Curitiba",
+    "estado": "PR",
+    "tipo": "Tuning",
+    "valor": 30
+  },
+  {
+    "id": 4,
+    "nome": "Exposição Retrô Automóveis",
+    "data": "2026-08-15",
+    "cidade": "Porto Alegre",
+    "estado": "RS",
+    "tipo": "Exposição",
+    "valor": null
+  },
+  {
+    "id": 5,
+    "nome": "Encontro de Clube 4x4 Serra Catarinense",
+    "data": "2026-08-22",
+    "cidade": "Lages",
+    "estado": "SC",
+    "tipo": "Encontro de Clube",
+    "valor": 0
+  },
+  {
+    "id": 6,
+    "nome": "Feira do Automóvel Antigo",
+    "data": "2026-09-05",
+    "cidade": "Rio de Janeiro",
+    "estado": "RJ",
+    "tipo": "Feira",
+    "valor": 15
+  }
+]
