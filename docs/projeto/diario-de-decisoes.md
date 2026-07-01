@@ -49,6 +49,7 @@ Faça upload dos seguintes arquivos no início de cada sessão:
 ### Passo 2 — Compartilhar arquivos específicos do papel ativo
 
 #### 🎩 Sessão de Analista
+
 | Arquivo | Por que é necessário |
 |---------|----------------------|
 | `docs/analista/template-historia-usuario.md` | Para criar histórias de usuário no formato correto |
@@ -56,6 +57,7 @@ Faça upload dos seguintes arquivos no início de cada sessão:
 | `docs/analista/template-brainstorm.md` | Para documentar discussões e decisões |
 
 #### 🛠️ Sessão de Dev
+
 | Arquivo | Por que é necessário |
 |---------|----------------------|
 | `docs/analista/HU-XXX-*.md` | História de usuário da feature a ser desenvolvida |
@@ -65,6 +67,7 @@ Faça upload dos seguintes arquivos no início de cada sessão:
 | `docs/dev/template-changelog.md` | Para registrar o que foi entregue |
 
 #### 🧪 Sessão de QA
+
 | Arquivo | Por que é necessário |
 |---------|----------------------|
 | `docs/analista/HU-XXX-*.md` | Para entender o que deve ser testado |
@@ -196,7 +199,8 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-06-30 | Dev | GitHub Pages configurado com branch `main` e pasta `/docs` | Publicação automática a cada `git push` na `main`, sem passo manual — site no ar em `https://sergiojrscia-bit.github.io/eventocar/` |
 | 2026-06-30 | Dev | Guia `publicacao-github-pages.md` criado em `docs/projeto/` | Documentar o passo a passo de como o site é publicado e como adicionar novas páginas, evitando depender de memória |
 | 2026-06-30 | Dev | Bug corrigido no `ideias.md` — front matter sem `---` de abertura | Sem o `---` na primeira linha, o Jekyll não reconhece o front matter e a página não é processada corretamente pelo tema |
-| 2026-06-30 | Dev | `kramdown: input: GFM` adicionado ao `_config.yml` | Tabelas na página `diario-de-decisoes.md` estavam sendo exibidas como texto corrido (com os `\|` visíveis) em vez de tabela; o kramdown precisa do modo GFM explícito para interpretar esse formato de tabela de forma confiável |
+| 2026-06-30 | Dev | `kramdown: input: GFM` adicionado e depois **revertido** do `_config.yml` | Tentativa inicial para corrigir o bug de tabelas; não era a causa raiz (ver decisão seguinte) e foi removido para não deixar configuração sem efeito real no arquivo |
+| 2026-06-30 | Dev | Linha em branco adicionada entre cabeçalhos e tabelas em `diario-de-decisoes.md` | Causa real do bug: o kramdown exige uma linha em branco antes de qualquer tabela; sem ela, a tabela vira texto corrido com os `\|` visíveis. Três tabelas na seção "Passo 2" estavam coladas direto no cabeçalho `####` acima delas |
 
 
 ### Detalhamento: Comandos do Makefile

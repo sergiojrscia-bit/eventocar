@@ -12,14 +12,6 @@ lang: pt-BR
 # Navegação
 nav_sort: case_insensitive
 
-# Processador de Markdown
-# input: GFM garante que tabelas, listas de tarefas e outros elementos no
-# formato usado pelo GitHub sejam interpretados corretamente. Sem isso, o
-# kramdown pode falhar em reconhecer tabelas e mostrá-las como texto corrido.
-markdown: kramdown
-kramdown:
-  input: GFM
-
 # Busca
 search_enabled: true
 search:
