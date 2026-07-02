@@ -145,6 +145,22 @@ Se os arquivos da seção "Como iniciar uma sessão" não foram compartilhados, 
 
 ---
 
+### Regra 4 — Comandos sempre em bloco de código
+
+Todo comando que você precisa rodar no terminal (make, git, npm, etc.) deve vir dentro de um bloco de código (```), nunca solto no meio do texto ou entre aspas simples — assim o botão de copiar aparece automaticamente e você não precisa selecionar manualmente.
+
+**Se a IA não fizer isso:** diga "coloca isso em bloco de código".
+
+---
+
+### Regra 5 — Editar arquivo existente em vez de descrever a mudança
+
+Sempre que uma alteração for em cima de um arquivo que já existe no projeto (não um arquivo novo), a IA deve pedir que você suba o arquivo atual, aplicar a edição diretamente nele e gerar a versão atualizada pronta pra download — em vez de só descrever em texto o que precisa mudar e deixar você aplicar manualmente.
+
+**Se a IA não fizer isso:** diga "pode gerar o arquivo pra eu baixar?"
+
+---
+
 ### Como cobrar a IA se ela esquecer uma regra
 
 Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento correto.
@@ -205,6 +221,8 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-07-01 | Dev | Data dos eventos no formato string `"AAAA-MM-DD"` | Os eventos são cadastrados manualmente por enquanto — legibilidade no JSON importa mais que performance. Formato compatível nativamente com `new Date()` do JavaScript |
 | 2026-07-01 | Dev | Identidade visual "Painel de pista" definida | Paleta inspirada em asfalto/concreto com acento laranja-corrida (`#FF4D23`); tipografia Oswald (títulos), Inter (corpo) e JetBrains Mono (datas/valores); linha tracejada de assinatura no cabeçalho, remetendo à faixa de largada/chegada de uma pista |
 | 2026-07-01 | Dev | Página inicial (HU-001/REQ-001) entregue e validada visualmente | Componentes `EventCard` e `Filtros` criados; filtros combinados (tipo + estado + mês) testados e funcionando conforme critérios de aceite; eventos passados corretamente ocultados |
+| 2026-07-01 | Dev | Regra 4 criada — comandos sempre em bloco de código | Comandos soltos no texto ou entre aspas não geram botão de copiar na interface de chat; blocos de código (```) geram, evitando que o usuário precise selecionar manualmente |
+| 2026-07-01 | Dev | Regra 5 criada — editar arquivo existente e gerar versão pra download | Descrever a mudança em texto obriga o usuário a aplicar manualmente; pedir o arquivo original e devolver a versão já editada e pronta pra baixar é mais rápido e evita erro de digitação |
 
 
 ### Detalhamento: Comandos do Makefile
@@ -292,4 +310,4 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 
 ---
 
-*Última atualização: 2026-07-01*
+*Última atualização: 2026-07-01 (Regras 4 e 5 adicionadas)*
