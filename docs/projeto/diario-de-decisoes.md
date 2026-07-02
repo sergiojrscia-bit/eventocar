@@ -201,6 +201,10 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-06-30 | Dev | Bug corrigido no `ideias.md` — front matter sem `---` de abertura | Sem o `---` na primeira linha, o Jekyll não reconhece o front matter e a página não é processada corretamente pelo tema |
 | 2026-06-30 | Dev | `kramdown: input: GFM` adicionado e depois **revertido** do `_config.yml` | Tentativa inicial para corrigir o bug de tabelas; não era a causa raiz (ver decisão seguinte) e foi removido para não deixar configuração sem efeito real no arquivo |
 | 2026-06-30 | Dev | Linha em branco adicionada entre cabeçalhos e tabelas em `diario-de-decisoes.md` | Causa real do bug: o kramdown exige uma linha em branco antes de qualquer tabela; sem ela, a tabela vira texto corrido com os `\|` visíveis. Três tabelas na seção "Passo 2" estavam coladas direto no cabeçalho `####` acima delas |
+| 2026-07-01 | Dev | Filtragem de eventos feita no cliente (client-side) | RNF03 já garante SEO pela renderização inicial (SSG/SSR) da listagem completa; os filtros são interatividade por cima dos dados já carregados. Mais simples de implementar e mais didático pra aprender o fluxo de dados com `useState` |
+| 2026-07-01 | Dev | Data dos eventos no formato string `"AAAA-MM-DD"` | Os eventos são cadastrados manualmente por enquanto — legibilidade no JSON importa mais que performance. Formato compatível nativamente com `new Date()` do JavaScript |
+| 2026-07-01 | Dev | Identidade visual "Painel de pista" definida | Paleta inspirada em asfalto/concreto com acento laranja-corrida (`#FF4D23`); tipografia Oswald (títulos), Inter (corpo) e JetBrains Mono (datas/valores); linha tracejada de assinatura no cabeçalho, remetendo à faixa de largada/chegada de uma pista |
+| 2026-07-01 | Dev | Página inicial (HU-001/REQ-001) entregue e validada visualmente | Componentes `EventCard` e `Filtros` criados; filtros combinados (tipo + estado + mês) testados e funcionando conforme critérios de aceite; eventos passados corretamente ocultados |
 
 
 ### Detalhamento: Comandos do Makefile
@@ -233,8 +237,9 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 - [x] Decisão sobre IAs separadas por papel (mantida IA única com troca de chapéu)
 - [x] Especificação da página inicial concluída (HU-001 + REQ-001)
 - [x] Site de documentação publicado no GitHub Pages (branch `main`, pasta `/docs`)
-- [ ] Desenvolvimento da página inicial (cards + filtros)
-- [ ] Criação do arquivo `data/eventos.json` com eventos de exemplo
+- [x] Desenvolvimento da página inicial (cards + filtros)
+- [x] Criação do arquivo `data/eventos.json` com eventos de exemplo
+- [ ] Casos de teste manuais, checklist de entrega e teste automatizado (Playwright) da página inicial — papel QA
 - [ ] Configuração do deploy na Vercel e atualização do `make deploy`
 - [ ] Definição do domínio do site
 
@@ -274,7 +279,17 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | `docs/analista/HU-001-visualizar-filtrar-eventos.md` | Analista | História de usuário da página inicial |
 | `docs/analista/REQ-001-pagina-inicial.md` | Analista | Requisitos funcionais e não-funcionais da página inicial |
 | `docs/projeto/publicacao-github-pages.md` | Projeto | Guia de como o site de documentação é publicado no GitHub Pages e como adicionar novas páginas |
+| `docs/dev/brainstorms/2026-07-01-filtragem-eventos.md` | Dev | Decisão técnica: filtragem de eventos no cliente (client-side) |
+| `docs/dev/brainstorms/2026-07-01-formato-data-eventos.md` | Dev | Decisão técnica: formato de data `"AAAA-MM-DD"` no `eventos.json` |
+| `docs/dev/brainstorms/index.md` | Dev | Índice da pasta de brainstorms do Dev, necessário para o menu do GitHub Pages |
+| `docs/dev/changelog.md` | Dev | Changelog com a entrega da página inicial (listagem, filtros e cards) |
+| `data/eventos.json` | Dev | Dados de exemplo dos eventos (6 eventos, campos definidos na decisão técnica de formato de data) |
+| `lib/tipos.js` | Dev | Cores associadas a cada tipo de evento e lista de estados brasileiros (UFs) |
+| `components/EventCard.js` | Dev | Componente que exibe um evento em formato de card |
+| `components/EventCard.module.css` | Dev | Estilos do card de evento |
+| `components/Filtros.js` | Dev | Componente da barra de filtros (tipo, estado, mês) |
+| `components/Filtros.module.css` | Dev | Estilos da barra de filtros |
 
 ---
 
-*Última atualização: 2026-06-30*
+*Última atualização: 2026-07-01*
