@@ -1,66 +1,59 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useMemo } from "react";
+import eventos from "@/data/eventos.json";
+import EventCard from "@/components/EventCard";
+import Filtros from "@/components/Filtros";
 import styles from "./page.module.css";
 
 export default function Home() {
+  // Estado central dos filtros ativos
+  const [filtros, setFiltros] = useState({ tipo: "", estado: "", mes: "" });
+
+  function aoMudarFiltro(campo, valor) {
+    setFiltros((atual) => ({ ...atual, [campo]: valor }));
+  }
+
+  // useMemo evita recalcular a lista a cada render — só recalcula
+  // quando os filtros mudam
+  const eventosFiltrados = useMemo(() => {
+    const hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+
+    return eventos
+      .filter((evento) => new Date(evento.data + "T00:00:00") >= hoje) // RF09
+      .filter((evento) => !filtros.tipo || evento.tipo === filtros.tipo)
+      .filter((evento) => !filtros.estado || evento.estado === filtros.estado)
+      .filter((evento) => !filtros.mes || evento.data.startsWith(filtros.mes))
+      .sort((a, b) => a.data.localeCompare(b.data)); // mais próximos primeiro
+  }, [filtros]);
+
   return (
-    <div className={styles.page}>
+    <div className={styles.pagina}>
+      <header className={styles.header}>
+        <h1>EventoCar</h1>
+        <p>Eventos de carro no Brasil, em um só lugar.</p>
+      </header>
+
+      <Filtros filtros={filtros} aoMudar={aoMudarFiltro} />
+
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+        {eventosFiltrados.length === 0 ? (
+          <p className={styles.vazio}>
+            Nenhum evento encontrado para os filtros selecionados.
           </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        ) : (
+          <div className={styles.grid}>
+            {eventosFiltrados.map((evento) => (
+              <EventCard key={evento.id} evento={evento} />
+            ))}
+          </div>
+        )}
       </main>
+
+      <footer className={styles.footer}>
+        <p>EventoCar — feito por entusiastas, para entusiastas.</p>
+      </footer>
     </div>
   );
 }
