@@ -69,4 +69,12 @@ nav_order: 2
 
 ---
 
-*Última atualização: 2026-06-30*
+## 🧭 Processo
+
+| # | Ideia | Status | Observações |
+|---|-------|--------|-------------|
+| 9 | Criar guia de referência de técnicas/critérios de decisão para o papel de Analista (nos moldes do `docs/qa/tipos-de-teste.md` e `docs/dev/boas-praticas.md`) | 💭 Em aberto | Só faz sentido se sentirmos a mesma dor que motivou os guias de QA e Dev — a de "ter que decidir um critério do zero toda vez que chega uma demanda nova". Não criar por simetria; criar quando a dor aparecer de fato no papel de Analista |
+
+---
+
+*Última atualização: 2026-07-02*
