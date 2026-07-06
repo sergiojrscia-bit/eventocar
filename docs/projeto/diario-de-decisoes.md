@@ -32,17 +32,18 @@ nav_order: 1
 
 ---
 
-### Passo 1 — Compartilhar os arquivos obrigatórios
+### Passo 1 — Compartilhar os arquivos e informações obrigatórias
 
-Faça upload dos seguintes arquivos no início de cada sessão:
+Faça upload dos seguintes arquivos, e cole a saída do comando indicado, no início de cada sessão:
 
-| Arquivo | Por que é necessário |
+| Arquivo / Informação | Por que é necessário |
 |---------|----------------------|
 | `docs/projeto/diario-de-decisoes.md` | Memória principal do projeto — decisões, stack, arquivos criados |
 | `docs/projeto/ideias.md` | Ideias registradas que podem ser aproveitadas ou já foram resolvidas |
 | `docs/analista/especificacao-pagina-inicial.md` | Especificação da feature em desenvolvimento |
+| Saída do comando `git ls-files` | Lista real dos arquivos versionados no repositório — evita que a IA sugira caminhos ou nomes de arquivo que não existem, ou esqueça de criar `index.md` em pastas novas |
 
-> ⚠️ Se algum desses arquivos não for compartilhado, a IA deve pedir antes de continuar.
+> ⚠️ Se algum item desta lista não for compartilhado, a IA deve pedir antes de continuar.
 
 ---
 
@@ -223,6 +224,8 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-07-01 | Dev | Página inicial (HU-001/REQ-001) entregue e validada visualmente | Componentes `EventCard` e `Filtros` criados; filtros combinados (tipo + estado + mês) testados e funcionando conforme critérios de aceite; eventos passados corretamente ocultados |
 | 2026-07-01 | Dev | Regra 4 criada — comandos sempre em bloco de código | Comandos soltos no texto ou entre aspas não geram botão de copiar na interface de chat; blocos de código (```) geram, evitando que o usuário precise selecionar manualmente |
 | 2026-07-01 | Dev | Regra 5 criada — editar arquivo existente e gerar versão pra download | Descrever a mudança em texto obriga o usuário a aplicar manualmente; pedir o arquivo original e devolver a versão já editada e pronta pra baixar é mais rápido e evita erro de digitação |
+| 2026-07-05 | QA | Pasta `docs/qa/casos-de-teste/` criada com `index.md` próprio | Seguir o mesmo padrão de `docs/dev/brainstorms/`, necessário pro tema `just-the-docs` reconhecer a subseção no menu do GitHub Pages |
+| 2026-07-05 | Dev | Saída de `git ls-files` adicionada como item obrigatório de início de sessão | A IA sugeriu um caminho de arquivo (`docs/qa/2026-07-05-...`) sem saber que a estrutura real já previa uma subpasta `casos-de-teste/`; ter a lista real de arquivos versionados evita esse tipo de erro por falta de contexto |
 
 
 ### Detalhamento: Comandos do Makefile
