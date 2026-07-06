@@ -1,7 +1,8 @@
 ---
 title: Decisão Técnica — Formato de data nos eventos
-parent: Dev
-nav_order: 1
+parent: Brainstorms
+grand_parent: Dev
+nav_order: 2
 ---
 
 # Decisão Técnica — Formato de data no eventos.json

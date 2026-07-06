@@ -72,14 +72,19 @@ A página inicial do EventoCar deve exibir uma listagem de eventos automotivos d
 
 ## Critérios de Aceite
 
-- [ ] A página inicial abre sem erros em `http://localhost:3000`
-- [ ] Pelo menos 5 eventos de exemplo aparecem na listagem
-- [ ] Os filtros de tipo, estado e data funcionam individualmente
-- [ ] Os filtros funcionam combinados (ex: tuning + SP)
-- [ ] Ao filtrar sem resultado, aparece mensagem: "Nenhum evento encontrado para os filtros selecionados."
-- [ ] A página é visualizável e utilizável em tela de celular (375px)
-- [ ] Eventos com data anterior a hoje não aparecem na lista
+- [x] A página inicial abre sem erros em `http://localhost:3000`
+- [x] Pelo menos 5 eventos de exemplo aparecem na listagem
+- [x] Os filtros de tipo, estado e data funcionam individualmente
+- [x] Os filtros funcionam combinados (ex: tuning + SP)
+- [x] Ao filtrar sem resultado, aparece mensagem: "Nenhum evento encontrado para os filtros selecionados."
+- [x] A página é visualizável e utilizável em tela de celular (375px)
+- [x] Eventos com data anterior a hoje não aparecem na lista
 - [ ] A página passa na verificação do Playwright sem erros
+
+> ✅ Sete critérios implementados e validados visualmente pelo Dev em 2026-07-01.
+> ⚠️ O critério de Playwright continua pendente — testes automatizados ainda não foram
+> criados (ver backlog no `diario-de-decisoes.md`). Caso de teste manual em
+> `docs/qa/casos-de-teste/2026-07-05-caso-de-teste-pagina-inicial.md`, ainda não executado.
 
 ---
 
@@ -97,3 +102,4 @@ A página inicial do EventoCar deve exibir uma listagem de eventos automotivos d
 | Data | Autor | O que mudou |
 |------|-------|-------------|
 | 2026-06-29 | Analista | Criação do documento |
+| 2026-07-05 | Analista | Critérios de aceite marcados como cumpridos (exceto Playwright, ainda pendente), conforme entrega registrada no diário em 2026-07-01 |

@@ -26,14 +26,17 @@ nav_order: 1
 
 ## Critérios de Aceite
 
-- [ ] A página exibe uma lista de eventos com nome, data, cidade/estado e tipo do evento
-- [ ] É possível filtrar eventos por tipo (clássicos, tuning, track day, exposição, feira, encontro)
-- [ ] É possível filtrar eventos por estado (UF)
-- [ ] É possível filtrar eventos por período (mês ou intervalo de datas)
-- [ ] Os filtros podem ser combinados (ex: "tuning" + "SC" + "julho")
-- [ ] Quando nenhum evento corresponde aos filtros, uma mensagem clara é exibida
-- [ ] A página funciona bem em celular e computador
-- [ ] Os eventos são ordenados por data (mais próximos primeiro)
+- [x] A página exibe uma lista de eventos com nome, data, cidade/estado e tipo do evento
+- [x] É possível filtrar eventos por tipo (clássicos, tuning, track day, exposição, feira, encontro)
+- [x] É possível filtrar eventos por estado (UF)
+- [x] É possível filtrar eventos por período (mês ou intervalo de datas)
+- [x] Os filtros podem ser combinados (ex: "tuning" + "SC" + "julho")
+- [x] Quando nenhum evento corresponde aos filtros, uma mensagem clara é exibida
+- [x] A página funciona bem em celular e computador
+- [x] Os eventos são ordenados por data (mais próximos primeiro)
+
+> ✅ Implementado e validado visualmente pelo Dev em 2026-07-01. Validação formal (QA)
+> em andamento — ver `docs/qa/casos-de-teste/2026-07-05-caso-de-teste-pagina-inicial.md`.
 
 ---
 
@@ -60,3 +63,4 @@ nav_order: 1
 | Data | Autor | O que mudou |
 |------|-------|-------------|
 | 2026-06-29 | Analista | Criação do documento |
+| 2026-07-05 | Analista | Critérios de aceite marcados como cumpridos, conforme entrega registrada no diário em 2026-07-01. Validação formal (QA) em andamento |

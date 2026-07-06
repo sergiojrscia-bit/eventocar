@@ -1,6 +1,7 @@
 ---
 title: Decisão Técnica — Filtragem de eventos
-parent: Dev
+parent: Brainstorms
+grand_parent: Dev
 nav_order: 1
 ---
 

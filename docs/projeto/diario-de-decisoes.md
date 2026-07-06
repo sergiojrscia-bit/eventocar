@@ -226,6 +226,9 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-07-01 | Dev | Regra 5 criada — editar arquivo existente e gerar versão pra download | Descrever a mudança em texto obriga o usuário a aplicar manualmente; pedir o arquivo original e devolver a versão já editada e pronta pra baixar é mais rápido e evita erro de digitação |
 | 2026-07-05 | QA | Pasta `docs/qa/casos-de-teste/` criada com `index.md` próprio | Seguir o mesmo padrão de `docs/dev/brainstorms/`, necessário pro tema `just-the-docs` reconhecer a subseção no menu do GitHub Pages |
 | 2026-07-05 | Dev | Saída de `git ls-files` adicionada como item obrigatório de início de sessão | A IA sugeriu um caminho de arquivo (`docs/qa/2026-07-05-...`) sem saber que a estrutura real já previa uma subpasta `casos-de-teste/`; ter a lista real de arquivos versionados evita esse tipo de erro por falta de contexto |
+| 2026-07-05 | Dev | Front matter das decisões técnicas de `docs/dev/brainstorms/` corrigido (`parent: Dev` → `parent: Brainstorms` + `grand_parent: Dev`) | Bug fazia essas duas decisões aparecerem soltas no menu "Dev" em vez de dentro do submenu "Brainstorms", diferente do padrão já correto do lado do Analista |
+| 2026-07-05 | Analista/Dev | Conflitos de `nav_order` resolvidos em `boas-praticas-analista.md` (4→5) e `changelog.md` (2→4) | Duas páginas com o mesmo `parent` e `nav_order` deixam a ordem do menu imprevisível |
+| 2026-07-05 | Analista | Critérios de aceite de HU-001 e REQ-001 atualizados de `[ ]` para `[x]`, refletindo a entrega já registrada em 2026-07-01 | Documentos ficavam com status "Aprovado" mas critérios todos vazios, gerando ambiguidade sobre o que foi de fato cumprido. Critério de Playwright do REQ-001 mantido pendente, por ainda não ter sido implementado |
 
 
 ### Detalhamento: Comandos do Makefile
