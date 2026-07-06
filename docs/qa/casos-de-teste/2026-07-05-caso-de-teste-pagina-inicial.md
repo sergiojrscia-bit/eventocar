@@ -1,6 +1,6 @@
 ---
 title: Caso de Teste — Página Inicial (Listagem e Filtros)
-parent: QA
+parent: Casos de Teste
 nav_order: 1
 ---
 

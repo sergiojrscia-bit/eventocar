@@ -1,7 +1,7 @@
 ---
 title: Boas Práticas de Analista
 parent: Analista
-nav_order: 4
+nav_order: 5
 ---
 
 # 🎩 Boas Práticas de Analista — EventoCar
