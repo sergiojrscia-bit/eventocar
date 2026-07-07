@@ -61,7 +61,7 @@ Validar manualmente, um a um, todos os critérios de aceite da HU-001 e do REQ-0
 
 ## Resultado Final
 
-- [ ] ✅ Aprovado
+- [✅] ✅ Aprovado
 - [ ] ❌ Reprovado — abrir bug report
 
 **Observações:**

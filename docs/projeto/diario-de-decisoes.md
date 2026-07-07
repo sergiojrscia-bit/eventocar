@@ -229,6 +229,7 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-07-05 | Dev | Front matter das decisões técnicas de `docs/dev/brainstorms/` corrigido (`parent: Dev` → `parent: Brainstorms` + `grand_parent: Dev`) | Bug fazia essas duas decisões aparecerem soltas no menu "Dev" em vez de dentro do submenu "Brainstorms", diferente do padrão já correto do lado do Analista |
 | 2026-07-05 | Analista/Dev | Conflitos de `nav_order` resolvidos em `boas-praticas-analista.md` (4→5) e `changelog.md` (2→4) | Duas páginas com o mesmo `parent` e `nav_order` deixam a ordem do menu imprevisível |
 | 2026-07-05 | Analista | Critérios de aceite de HU-001 e REQ-001 atualizados de `[ ]` para `[x]`, refletindo a entrega já registrada em 2026-07-01 | Documentos ficavam com status "Aprovado" mas critérios todos vazios, gerando ambiguidade sobre o que foi de fato cumprido. Critério de Playwright do REQ-001 mantido pendente, por ainda não ter sido implementado |
+| 2026-07-07 | Dev | Bug de tabela sem linha em branco antes reincidiu em `docs/dev/changelog.md` e `docs/dev/template-changelog.md` | Mesma causa raiz já registrada em 2026-06-30 (kramdown exige linha em branco antes de tabela). Como o diário não tinha sido compartilhado na sessão, a IA percorreu um caminho de investigação errado (suspeitou de CRLF) antes de achar a causa real. Lição: ao investigar bug de renderização de tabela no projeto, checar primeiro se há linha em branco antes dela — é a causa mais comum |
 
 
 ### Detalhamento: Comandos do Makefile
