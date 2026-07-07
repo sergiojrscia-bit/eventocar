@@ -21,6 +21,7 @@ nav_order: 2
 > [Explicação técnica resumida, como se fosse pra você mesmo ler daqui 6 meses]
 
 **Arquivos criados ou modificados:**
+
 | Arquivo | O que mudou |
 |---------|-------------|
 | `...`   | ...         |

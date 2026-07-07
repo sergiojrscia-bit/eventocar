@@ -25,6 +25,7 @@ nav_order: 4
 > Filtragem no cliente porque o volume de eventos é pequeno e não há paginação prevista (REQ-001). Componentes separados (`EventCard`, `Filtros`) para facilitar manutenção e reuso futuro. Cores de tipo centralizadas em `lib/tipos.js` para fácil ajuste.
 
 **Arquivos criados ou modificados:**
+
 | Arquivo | O que mudou |
 |---------|-------------|
 | `app/layout.js` | Metadata atualizada (título/descrição), `lang="pt-BR"`, fontes Oswald e JetBrains Mono adicionadas |
