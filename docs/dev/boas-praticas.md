@@ -199,8 +199,53 @@ específica de Next.js — reforça o que já está registrado nas
 
 ---
 
+## Elementos testáveis (`data-testid`) para automação
+
+**A prática:** todo elemento interativo (input, select, botão, link) e todo
+elemento que se repete em lista (card, item de listagem, linha de tabela)
+deve ter um atributo `data-testid` — mesmo que hoje pareça "sem necessidade
+imediata".
+
+**Convenção de nomenclatura:**
+- `kebab-case`, em português, descrevendo o que o elemento **é** (não onde
+  fica na tela): `filtro-tipo`, não `select-1`
+- Elementos únicos na página: nome direto (`filtro-tipo`, `mensagem-vazio`,
+  `cabecalho-site`)
+- Elementos repetidos em lista (ex: cards de evento): o **mesmo** `data-testid`
+  em todos os itens da lista (ex: `evento-card` em todo card) — para
+  localizar um item específico dentro da lista, o teste usa
+  `.filter({ hasText: "..." })` do Playwright em cima do texto já visível,
+  em vez de inventar um id só pro teste
+- Nunca reaproveitar classe CSS (`styles.card`) como seletor de teste — CSS
+  Modules gera nomes de classe com hash no build (`EventCard_card__a1b2c`),
+  então o nome muda a cada build e quebra o teste
+
+**Por que importa:** sem um identificador estável, um teste automatizado
+precisa "adivinhar" o elemento pela posição (`select:nth-child(1)`) ou pela
+classe CSS gerada — os dois quebram fácil com qualquer mudança visual ou de
+ordem, mesmo quando o comportamento continua correto. `data-testid` separa
+"o que o teste precisa achar" de "como a tela é organizada visualmente":
+você pode redesenhar a tela inteira sem quebrar o teste, desde que o
+`data-testid` continue no lugar certo.
+
+**No EventoCar:** aplicado pela primeira vez em `Filtros.js` e `EventCard.js`
+em 2026-07-07, junto com a criação do primeiro teste automatizado da página
+inicial. Ver decisão técnica completa em
+`docs/dev/brainstorms/2026-07-07-estrategia-data-testid-automacao.md`.
+**Gatilho de revisão:** todo componente novo que seja interativo ou apareça
+em lista já deve nascer com `data-testid`, sem esperar o teste ser escrito
+depois.
+
+**Baseado em:** [Playwright — Locators: data-testid](https://playwright.dev/docs/locators#locate-by-test-id)
+(documentação oficial) — recomenda `data-testid` como o seletor mais
+resiliente a mudanças de layout/estilo, por ser independente de estrutura
+visual ou de classes CSS.
+
+---
+
 ## Histórico de Alterações
 
 | Data | Autor | O que mudou |
 |------|-------|-------------|
 | 2026-07-02 | Dev | Criação do guia — 7 práticas mapeadas, com foco em segurança e fonte documentada para cada uma |
+| 2026-07-07 | Dev | Prática de `data-testid` adicionada, com convenção de nomenclatura, após decisão técnica para viabilizar o primeiro teste automatizado |

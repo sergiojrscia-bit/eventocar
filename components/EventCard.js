@@ -15,7 +15,11 @@ export default function EventCard({ evento }) {
   });
 
   return (
-    <article className={styles.card} style={{ borderLeftColor: corTipo }}>
+    <article
+      data-testid="evento-card"
+      className={styles.card}
+      style={{ borderLeftColor: corTipo }}
+    >
       <span className={styles.tipo} style={{ color: corTipo }}>
         {evento.tipo}
       </span>
@@ -31,4 +35,4 @@ export default function EventCard({ evento }) {
       )}
     </article>
   );
-}
+}

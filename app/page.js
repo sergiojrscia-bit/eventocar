@@ -39,7 +39,7 @@ export default function Home() {
 
       <main className={styles.main}>
         {eventosFiltrados.length === 0 ? (
-          <p className={styles.vazio}>
+          <p data-testid="mensagem-vazio" className={styles.vazio}>
             Nenhum evento encontrado para os filtros selecionados.
           </p>
         ) : (
@@ -56,4 +56,4 @@ export default function Home() {
       </footer>
     </div>
   );
-}
+}

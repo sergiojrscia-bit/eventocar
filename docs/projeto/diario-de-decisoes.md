@@ -230,6 +230,9 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-07-05 | Analista/Dev | Conflitos de `nav_order` resolvidos em `boas-praticas-analista.md` (4→5) e `changelog.md` (2→4) | Duas páginas com o mesmo `parent` e `nav_order` deixam a ordem do menu imprevisível |
 | 2026-07-05 | Analista | Critérios de aceite de HU-001 e REQ-001 atualizados de `[ ]` para `[x]`, refletindo a entrega já registrada em 2026-07-01 | Documentos ficavam com status "Aprovado" mas critérios todos vazios, gerando ambiguidade sobre o que foi de fato cumprido. Critério de Playwright do REQ-001 mantido pendente, por ainda não ter sido implementado |
 | 2026-07-07 | Dev | Bug de tabela sem linha em branco antes reincidiu em `docs/dev/changelog.md` e `docs/dev/template-changelog.md` | Mesma causa raiz já registrada em 2026-06-30 (kramdown exige linha em branco antes de tabela). Como o diário não tinha sido compartilhado na sessão, a IA percorreu um caminho de investigação errado (suspeitou de CRLF) antes de achar a causa real. Lição: ao investigar bug de renderização de tabela no projeto, checar primeiro se há linha em branco antes dela — é a causa mais comum |
+| 2026-07-07 | Dev | `@playwright/test` adicionado como devDependency em `package.json` | `make setup-qa` rodava `npx playwright install`, que baixava o Playwright temporariamente sem salvar no projeto, porque o pacote nunca tinha sido listado no `package.json` |
+| 2026-07-07 | Dev | Erro de `msvcp140_1.dll` (Playwright no Windows) documentado em `setup-windows.md` | Navegadores do Playwright (Firefox/WebKit) exigem o Visual C++ Redistributable, ausente por padrão no Windows; próxima pessoa a configurar o ambiente já encontra a solução na tabela de erros comuns |
+| 2026-07-07 | Dev | Convenção de `data-testid` adotada para todo componente interativo ou de lista | Sem identificador estável, o primeiro teste automatizado ficaria dependente de posição (`nth-child`) ou de classes CSS com hash, frágeis a qualquer mudança visual. Convenção registrada em `docs/dev/boas-praticas.md` e decisão completa em `docs/dev/brainstorms/2026-07-07-estrategia-data-testid-automacao.md`. `Filtros.js`, `EventCard.js` e `app/page.js` refatorados |
 
 
 ### Detalhamento: Comandos do Makefile
@@ -317,4 +320,4 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 
 ---
 
-*Última atualização: 2026-07-01 (Regras 4 e 5 adicionadas)*
+*Última atualização: 2026-07-07 (data-testid, setup-qa e checklist de entrega registrados)*

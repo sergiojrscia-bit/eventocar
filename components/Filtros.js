@@ -9,6 +9,7 @@ export default function Filtros({ filtros, aoMudar }) {
   return (
     <div className={styles.barra}>
       <select
+        data-testid="filtro-tipo"
         value={filtros.tipo}
         onChange={(e) => aoMudar("tipo", e.target.value)}
       >
@@ -21,6 +22,7 @@ export default function Filtros({ filtros, aoMudar }) {
       </select>
 
       <select
+        data-testid="filtro-estado"
         value={filtros.estado}
         onChange={(e) => aoMudar("estado", e.target.value)}
       >
@@ -33,10 +35,11 @@ export default function Filtros({ filtros, aoMudar }) {
       </select>
 
       <input
+        data-testid="filtro-mes"
         type="month"
         value={filtros.mes}
         onChange={(e) => aoMudar("mes", e.target.value)}
       />
     </div>
   );
-}
+}
