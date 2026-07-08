@@ -65,4 +65,4 @@ Validar manualmente, um a um, todos os critérios de aceite da HU-001 e do REQ-0
 - [ ] ❌ Reprovado — abrir bug report
 
 **Observações:**
-[Preencher após a execução real dos passos acima. Se algum passo falhar, abrir um `template-bug-report.md` referenciando o número do passo e o critério de aceite (RF/RNF) correspondente.]
+Teste manual feito, nenhum problema encontrado.
