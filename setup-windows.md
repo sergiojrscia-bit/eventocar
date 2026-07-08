@@ -199,7 +199,8 @@ Se todos os comandos funcionarem, o ambiente está pronto. 🎉
 | `npm: command not found` | Node.js não instalado ou terminal não foi reaberto | Instale via Chocolatey (Passo 2) e reabra o Git Bash |
 | `npm.ps1 não pode ser carregado` | Política de execução bloqueando scripts | Rode o item 2 do Passo 2 no PowerShell como Administrador |
 | `Could not read package.json` | Projeto Next.js ainda não inicializado | Normal na primeira vez — aguarde a inicialização do projeto |
+| `Host system is missing dependencies! ... msvcp140_1.dll` ao rodar `make setup-qa` | Os navegadores que o Playwright baixa (Firefox/WebKit) precisam do Microsoft Visual C++ Redistributable, que não vem instalado por padrão no Windows | Baixe e instale o **Visual C++ Redistributable x64**: https://aka.ms/vs/17/release/vc_redist.x64.exe — depois reabra o terminal e rode `make setup-qa` de novo |
 
 ---
 
-*Última atualização: 2026-06-28*
+*Última atualização: 2026-07-07 (erro de dependência do Playwright no Windows adicionado)*
