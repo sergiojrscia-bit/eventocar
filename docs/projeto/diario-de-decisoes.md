@@ -234,6 +234,7 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-07-07 | Dev | Erro de `msvcp140_1.dll` (Playwright no Windows) documentado em `setup-windows.md` | Navegadores do Playwright (Firefox/WebKit) exigem o Visual C++ Redistributable, ausente por padrão no Windows; próxima pessoa a configurar o ambiente já encontra a solução na tabela de erros comuns |
 | 2026-07-07 | Dev | Convenção de `data-testid` adotada para todo componente interativo ou de lista | Sem identificador estável, o primeiro teste automatizado ficaria dependente de posição (`nth-child`) ou de classes CSS com hash, frágeis a qualquer mudança visual. Convenção registrada em `docs/dev/boas-praticas.md` e decisão completa em `docs/dev/brainstorms/2026-07-07-estrategia-data-testid-automacao.md`. `Filtros.js`, `EventCard.js` e `app/page.js` refatorados |
 | 2026-07-08 | QA | Teste automatizado da página inicial validado — 12/12 cenários passaram | Execução via `make test-report` confirmou RF01–RF10 e RNF02 sem falhas (relatório do Playwright anexado à sessão). Resultado registrado em `docs/qa/2026-07-07-teste-automatizado-pagina-inicial.md` |
+| 2026-07-08 | Dev | `playwright-report/` e `test-results/` adicionados ao `.gitignore` e removidos do controle de versão | São saída gerada automaticamente a cada `make test`/`make test-report`, não código nem documentação; versionar inflaria o repositório a cada execução e geraria conflitos de merge desnecessários. `playwright.config.js` e `tests/pagina-inicial.spec.js` continuam versionados normalmente |
 
 
 ### Detalhamento: Comandos do Makefile
@@ -321,4 +322,4 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 
 ---
 
-*Última atualização: 2026-07-08 (resultado do teste automatizado da página inicial registrado — 12/12 passaram; referência de arquivo obrigatório corrigida para HU-001/REQ-001)*
+*Última atualização: 2026-07-08 (resultado do teste automatizado registrado — 12/12 passaram; referência de arquivo obrigatório corrigida para HU-001/REQ-001; `playwright-report/` e `test-results/` movidos para o `.gitignore`)*
