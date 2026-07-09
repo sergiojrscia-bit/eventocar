@@ -69,7 +69,25 @@ nav_order: 2
 
 ---
 
-## 🧭 Processo
+## ⚙️ Automação e Infraestrutura
+
+| # | Ideia | Status | Observações |
+|---|-------|--------|-------------|
+| 10 | Testes automatizados rodando via GitHub Actions a cada push, com relatório publicado no GitHub Pages | 💭 Em aberto | Opção B discutida em 2026-07-08: agenda o Playwright pra rodar sozinho e publica o relatório num endereço fixo (mesma infra do site de documentação), sem precisar baixar nada pra ver quais cenários passaram |
+| 11 | Gatilho do GitHub Actions filtrado por `paths` — só roda o teste se o push mexer em código/dados, não em documentação | 💭 Em aberto | Evita rodar (e gastar minutos do GitHub Actions) quando o commit é só em `docs/`. Discutir se `data/eventos.json` entra na lista de gatilhos, já que os testes dependem dele |
+
+---
+
+## 🏗️ Arquitetura e Código
+
+| # | Ideia | Status | Observações |
+|---|-------|--------|-------------|
+| 12 | Mover `app/`, `components/`, `lib/`, `data/` para dentro de uma pasta `src/` | 💭 Em aberto | Convenção oficial do Next.js (detecta sozinho, sem configuração extra); separa visualmente "código do sistema" de automação (`tests/`) e documentação (`docs/`) na raiz do projeto |
+| 13 | Extrair a função `eventosVisiveis()` de `app/page.js` para `src/lib/eventos.js`, como função JavaScript pura (sem depender de React/Next) | 💭 Em aberto | A regra de negócio (quais eventos aparecem) fica independente do framework — sobrevive a uma eventual troca de Next.js por outra tecnologia, e passa a poder ganhar teste unitário isolado, sem precisar de navegador |
+| 14 | Page Object Model na automação de teste (`tests/pages/PaginaInicial.js`) | 💭 Em aberto | Separa "o que" testar (cenários) de "como" fazer isso no Playwright especificamente; se um dia trocar de ferramenta (ex: Robot Framework), só essa camada intermediária precisa ser reescrita — o resto (lista de cenários, critérios de aceite) continua valendo |
+| 15 | BDD "de mentalidade" — comentários `// Dado / Quando / Então` dentro dos testes do Playwright, sem trocar de ferramenta | 💭 Em aberto | Pega o benefício de organizar o pensamento por comportamento do usuário sem o custo de manter arquivos `.feature` sincronizados. BDD com ferramenta completa (Gherkin + Cucumber/playwright-bdd) fica registrado aqui como ideia descartada por ora — só faria sentido se o time crescesse ou algum stakeholder não-técnico precisasse ler os cenários diretamente |
+
+---
 
 | # | Ideia | Status | Observações |
 |---|-------|--------|-------------|
@@ -77,4 +95,4 @@ nav_order: 2
 
 ---
 
-*Última atualização: 2026-07-02*
+*Última atualização: 2026-07-08*
