@@ -2,10 +2,10 @@
 // Cobre os mesmos passos ja validados manualmente em
 // docs/qa/casos-de-teste/2026-07-05-caso-de-teste-pagina-inicial.md
 //
-// IMPORTANTE sobre as datas: data/eventos.json tem datas fixas. Em vez de
+// IMPORTANTE sobre as datas: src/data/eventos.json tem datas fixas. Em vez de
 // "chutar" quantos eventos deveriam aparecer, este teste recalcula a lista
 // esperada em tempo de execucao (funcao eventosVisiveis), usando a mesma
-// logica de filtragem de app/page.js. Isso evita que o teste quebre sozinho
+// logica de filtragem de src/app/page.js. Isso evita que o teste quebre sozinho
 // conforme os eventos de exemplo forem ficando no passado com o tempo.
 // Ver observacoes no arquivo de documentacao deste teste (QA) para mais
 // detalhes sobre esse limite dos dados de exemplo.
@@ -15,10 +15,10 @@ import path from "node:path";
 import fs from "node:fs";
 
 const eventos = JSON.parse(
-  fs.readFileSync(path.join(process.cwd(), "data", "eventos.json"), "utf-8")
+  fs.readFileSync(path.join(process.cwd(), "src", "data", "eventos.json"), "utf-8")
 );
 
-// Reproduz a mesma logica de filtragem de app/page.js, para calcular
+// Reproduz a mesma logica de filtragem de src/app/page.js, para calcular
 // o resultado esperado sem depender de numeros fixos no teste
 function eventosVisiveis(lista, filtros = {}) {
   const hoje = new Date();
@@ -50,7 +50,7 @@ test.describe("Pagina inicial - listagem e filtros de eventos", () => {
   test("cada card mostra nome, data, cidade, estado e tipo (RF02)", async ({ page }) => {
     await page.goto("/");
     const esperados = eventosVisiveis(eventos);
-    test.skip(esperados.length === 0, "Nenhum evento futuro em data/eventos.json no momento");
+    test.skip(esperados.length === 0, "Nenhum evento futuro em src/data/eventos.json no momento");
 
     const primeiro = esperados[0];
     const primeiroCard = page.getByTestId("evento-card").first();
@@ -78,7 +78,7 @@ test.describe("Pagina inicial - listagem e filtros de eventos", () => {
     );
     test.skip(
       eventosPassados.length === 0,
-      "Nenhum evento com data passada em data/eventos.json no momento - RF09 nao pode ser validado hoje"
+      "Nenhum evento com data passada em src/data/eventos.json no momento - RF09 nao pode ser validado hoje"
     );
 
     await page.goto("/");
@@ -91,7 +91,7 @@ test.describe("Pagina inicial - listagem e filtros de eventos", () => {
 
   test("evento sem valor de ingresso nao quebra o card (RF08)", async ({ page }) => {
     const semValor = eventosVisiveis(eventos).find((evento) => evento.valor === null);
-    test.skip(!semValor, "Nenhum evento futuro sem valor em data/eventos.json no momento");
+    test.skip(!semValor, "Nenhum evento futuro sem valor em src/data/eventos.json no momento");
 
     await page.goto("/");
     const card = page.getByTestId("evento-card").filter({ hasText: semValor.nome });

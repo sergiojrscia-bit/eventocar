@@ -11,6 +11,29 @@ nav_order: 4
 
 ---
 
+## 2026-07-11 — Reorganização de pastas: código do sistema movido para src/
+
+**O que foi feito:**
+- Pastas `app/`, `components/`, `lib/` e `data/` movidas para dentro de `src/`, seguindo a convenção nativa do Next.js
+- Alias `@/*` no `jsconfig.json` atualizado de `./*` para `./src/*`
+- Caminho de leitura de `eventos.json` corrigido em `tests/pagina-inicial.spec.js` (de `data/eventos.json` para `src/data/eventos.json`)
+
+**Por que foi feito assim:**
+> O código do sistema estava solto na raiz do repositório, misturado visualmente com automação (`tests/`) e documentação (`docs/`). Mover para `src/` é o padrão que o próprio Next.js espera — detectado automaticamente, sem configuração extra — e deixa claro, só de olhar a raiz, o que é código, o que é automação e o que é documentação. Decisão completa em `docs/dev/brainstorms/2026-07-11-mover-para-src.md`.
+
+**Arquivos criados ou modificados:**
+
+| Arquivo | O que mudou |
+|---------|-------------|
+| `src/app/`, `src/components/`, `src/lib/`, `src/data/` | Pastas movidas de suas localizações originais na raiz |
+| `jsconfig.json` | Alias `@/*` atualizado para apontar para `./src/*` |
+| `tests/pagina-inicial.spec.js` | Caminho de `fs.readFileSync` corrigido para `src/data/eventos.json` |
+
+**Testado por:** [x] Dev  [ ] QA  
+**Deploy feito:** [ ] Sim  [x] Não  
+
+---
+
 ## 2026-07-01 — Página inicial: listagem, filtros e cards de eventos
 
 **O que foi feito:**
