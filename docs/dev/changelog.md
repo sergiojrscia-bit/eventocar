@@ -11,6 +11,26 @@ nav_order: 4
 
 ---
 
+## 2026-07-11 — make test e make test-report instalam dependencias automaticamente
+
+**O que foi feito:**
+- `make test` e `make test-report` agora checam se `node_modules/@playwright/test` existe antes de rodar; se nao existir, rodam `npm install` automaticamente
+- Ambos os comandos passam a rodar `npx playwright install` antes dos testes, garantindo que os navegadores do Playwright tambem estejam prontos
+
+**Por que foi feito assim:**
+> Quem clonava o projeto (ou apagava `node_modules`) e rodava `make test` direto via erro cru do Node (`Cannot find module '@playwright/test'`), sem saber que precisava rodar `make setup-qa` antes. Automatizar essa checagem remove esse atrito. `npx playwright install` e idempotente — se os navegadores ja estiverem instalados, ele confere rapido e segue sem baixar nada de novo, entao nao deixa o dia a dia mais lento depois da primeira vez.
+
+**Arquivos criados ou modificados:**
+
+| Arquivo | O que mudou |
+|---------|-------------|
+| `Makefile` | Alvos `test` e `test-report` agora instalam dependencias e navegadores automaticamente se necessario |
+
+**Testado por:** [x] Dev  [ ] QA  
+**Deploy feito:** [ ] Sim  [x] Não  
+
+---
+
 ## 2026-07-11 — Reorganização de pastas: código do sistema movido para src/
 
 **O que foi feito:**

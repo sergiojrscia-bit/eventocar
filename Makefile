@@ -43,11 +43,23 @@ dev:
 # -----------------------------------------------------------------------------
 
 ## [QA] Roda todos os testes automatizados com o Playwright
+## Instala pacotes e navegadores automaticamente se ainda nao estiverem presentes
 test:
+	@if [ ! -d "node_modules/@playwright/test" ]; then \
+		echo "Dependencias nao encontradas. Instalando..."; \
+		npm install; \
+	fi
+	@npx playwright install
 	npx playwright test
 
 ## [QA] Roda os testes e abre o relatorio visual no navegador
+## Instala pacotes e navegadores automaticamente se ainda nao estiverem presentes
 test-report:
+	@if [ ! -d "node_modules/@playwright/test" ]; then \
+		echo "Dependencias nao encontradas. Instalando..."; \
+		npm install; \
+	fi
+	@npx playwright install
 	npx playwright test --reporter=html && npx playwright show-report
 
 
