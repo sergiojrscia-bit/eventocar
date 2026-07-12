@@ -11,6 +11,21 @@ nav_order: 4
 
 ---
 
+## 2026-07-12 — Passos com nome de negócio no relatório de testes
+
+**O que mudou:** Métodos de ação e verificação de `tests/pages/PaginaInicial.js`
+agora envolvem suas chamadas com `test.step()`. O relatório HTML
+(`make test-report`) passa a mostrar passos como "Seleciona o filtro de tipo
+'Track Day'" e "Verifica que aparecem 1 card(s) de evento", em vez de ações
+cruas do Playwright ("Select option", "Expect toHaveCount").
+
+**Por quê:** Quem conferia o resultado dos testes não conseguia saber qual
+cenário estava sendo validado sem abrir o código-fonte. Decisão completa em
+`docs/dev/brainstorms/2026-07-12-teststep-page-object-relatorio.md`.
+
+**Resultado:** 12/12 testes continuam passando (`make test`), sem alteração
+de comportamento — só de legibilidade do relatório.
+
 ## 2026-07-11 — Automação de testes separada com Page Object Model e BDD de mentalidade
 
 **O que foi feito:**
