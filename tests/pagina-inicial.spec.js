@@ -13,8 +13,8 @@
 // o Page Object em tests/pages/PaginaInicial.js. Se um dia trocarmos o
 // Playwright por outra ferramenta, so o Page Object precisa mudar - os
 // cenarios abaixo continuam valendo. Decisao completa em
-// docs/dev/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md
-// docs/dev/brainstorms/2026-07-12-teststep-page-object-relatorio.md
+// docs/qa/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md
+// docs/qa/brainstorms/2026-07-12-teststep-page-object-relatorio.md
 //
 // IMPORTANTE sobre as datas: src/data/eventos.json tem datas fixas. Em vez de
 // "chutar" quantos eventos deveriam aparecer, este teste recalcula a lista

@@ -84,8 +84,8 @@ nav_order: 2
 |---|-------|--------|-------------|
 | 12 | Mover `app/`, `components/`, `lib/`, `data/` para dentro de uma pasta `src/` | 💭 Em aberto | Convenção oficial do Next.js (detecta sozinho, sem configuração extra); separa visualmente "código do sistema" de automação (`tests/`) e documentação (`docs/`) na raiz do projeto |
 | 13 | Extrair a função `eventosVisiveis()` de `app/page.js` para `src/lib/eventos.js`, como função JavaScript pura (sem depender de React/Next) | ✅ Aprovada | Feito em 2026-07-11 — ver `docs/dev/brainstorms/2026-07-11-separar-regras-negocio-eventos.md`. A regra de negócio (quais eventos aparecem) fica independente do framework e pode ganhar teste unitário isolado, sem precisar de navegador |
-| 14 | Page Object Model na automação de teste (`tests/pages/PaginaInicial.js`) | ✅ Aprovada | Feito em 2026-07-11 — ver `docs/dev/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md`. Separa "o que" testar (cenários) de "como" fazer isso no Playwright especificamente; se um dia trocar de ferramenta, só essa camada intermediária precisa ser reescrita |
-| 15 | BDD "de mentalidade" — comentários `// Dado / Quando / Então` dentro dos testes do Playwright, sem trocar de ferramenta | ✅ Aprovada | Feito em 2026-07-11 — ver `docs/dev/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md`. BDD com ferramenta completa (Gherkin + Cucumber/playwright-bdd) continua descartado por ora — só faria sentido se o time crescesse ou algum stakeholder não-técnico precisasse ler os cenários diretamente |
+| 14 | Page Object Model na automação de teste (`tests/pages/PaginaInicial.js`) | ✅ Aprovada | Feito em 2026-07-11 — ver `docs/qa/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md`. Separa "o que" testar (cenários) de "como" fazer isso no Playwright especificamente; se um dia trocar de ferramenta, só essa camada intermediária precisa ser reescrita |
+| 15 | BDD "de mentalidade" — comentários `// Dado / Quando / Então` dentro dos testes do Playwright, sem trocar de ferramenta | ✅ Aprovada | Feito em 2026-07-11 — ver `docs/qa/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md`. BDD com ferramenta completa (Gherkin + Cucumber/playwright-bdd) continua descartado por ora — só faria sentido se o time crescesse ou algum stakeholder não-técnico precisasse ler os cenários diretamente |
 
 ---
 
@@ -95,4 +95,4 @@ nav_order: 2
 
 ---
 
-*Última atualização: 2026-07-11 (ideias #14 e #15 aprovadas — Page Object Model e BDD de mentalidade)*
+*Última atualização: 2026-07-12 (caminhos das ideias #14 e #15 atualizados — decisões técnicas movidas de `docs/dev/brainstorms/` para `docs/qa/brainstorms/`)*

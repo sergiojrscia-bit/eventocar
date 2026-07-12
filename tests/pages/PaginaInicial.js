@@ -14,8 +14,8 @@
 // e os critérios de aceite continuam valendo do jeito que estão.
 //
 // Decisão técnica completa em:
-// docs/dev/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md
-// docs/dev/brainstorms/2026-07-12-teststep-page-object-relatorio.md
+// docs/qa/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md
+// docs/qa/brainstorms/2026-07-12-teststep-page-object-relatorio.md
 
 import { test, expect } from "@playwright/test";
 

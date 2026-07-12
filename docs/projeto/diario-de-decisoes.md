@@ -237,7 +237,9 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-07-08 | Dev | `playwright-report/` e `test-results/` adicionados ao `.gitignore` e removidos do controle de versão | São saída gerada automaticamente a cada `make test`/`make test-report`, não código nem documentação; versionar inflaria o repositório a cada execução e geraria conflitos de merge desnecessários. `playwright.config.js` e `tests/pagina-inicial.spec.js` continuam versionados normalmente |
 | 2026-07-11 | Dev | `make dev` instala dependências automaticamente se `node_modules` não existir | Quem clonava o projeto do zero e rodava `make dev` direto batia em `'next' não é reconhecido`, porque `node_modules` nunca é versionado. Mesmo padrão já usado em `make test`/`make test-report` |
 | 2026-07-11 | Dev | Regras de negócio de eventos extraídas de `src/app/page.js` para `src/lib/eventos.js`, como funções puras (Opção B — uma função por regra, compostas em `eventosVisiveis`) | Prepara o projeto para trocar de framework sem reescrever regra de negócio, e permite testar cada regra isolada, sem navegador. Resolve a ideia #13 do `ideias.md`. Decisão completa em `docs/dev/brainstorms/2026-07-11-separar-regras-negocio-eventos.md` |
-| 2026-07-11 | Dev | Automação de testes separada com Page Object Model (`tests/pages/PaginaInicial.js`) e comentários Dado/Quando/Então no `.spec.js` | Independência de ferramenta de teste (só o Page Object conhece Playwright) e leitura do teste como documentação, mesmo pra quem não programa. Resolve as ideias #14 e #15 do `ideias.md`. Teste também passou a importar `eventosVisiveis()` de `src/lib/eventos.js` em vez de duplicar a lógica. Decisão completa em `docs/dev/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md` |
+| 2026-07-11 | Dev | Automação de testes separada com Page Object Model (`tests/pages/PaginaInicial.js`) e comentários Dado/Quando/Então no `.spec.js` | Independência de ferramenta de teste (só o Page Object conhece Playwright) e leitura do teste como documentação, mesmo pra quem não programa. Resolve as ideias #14 e #15 do `ideias.md`. Teste também passou a importar `eventosVisiveis()` de `src/lib/eventos.js` em vez de duplicar a lógica. Decisão completa em `docs/qa/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md` |
+| 2026-07-12 | QA | Métodos de ação e verificação de `tests/pages/PaginaInicial.js` passam a usar `test.step()` | O relatório HTML (`make test-report`) mostrava só ações cruas do Playwright ("Select option", "Expect toHaveCount"), não a narrativa Dado/Quando/Então; quem conferia o resultado não sabia qual cenário estava sendo validado. Validado em 2026-07-12: 12/12 testes passaram e o relatório passou a mostrar os passos com nome de negócio. Decisão completa em `docs/qa/brainstorms/2026-07-12-teststep-page-object-relatorio.md` |
+| 2026-07-12 | QA | Decisões técnicas de automação de teste reorganizadas: nova pasta `docs/qa/brainstorms/`, migrando `2026-07-11-separar-automacao-page-object-bdd.md` e `2026-07-12-teststep-page-object-relatorio.md` de `docs/dev/brainstorms/` | Decisões sobre `tests/` são estratégia de QA, não de arquitetura do site (Dev). Critério fixado: decisão que só mexeu em arquivo dentro de `tests/` migra pro QA; decisão que mexeu em `src/` (ex: convenção de `data-testid`, aplicada em `Filtros.js`/`EventCard.js`) permanece no Dev, mesmo que motivada por automação |
 
 
 ### Detalhamento: Comandos do Makefile
@@ -320,8 +322,10 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | `src/data/eventos.json` | Dev | Dados de exemplo dos eventos (6 eventos, campos definidos na decisão técnica de formato de data) |
 | `src/lib/tipos.js` | Dev | Cores associadas a cada tipo de evento e lista de estados brasileiros (UFs) |
 | `src/lib/eventos.js` | Dev | Regras de negócio de eventos como funções puras: `ocultarPassados`, `filtrarPorTipo`, `filtrarPorEstado`, `filtrarPorMes`, `ordenarPorData` e a composição `eventosVisiveis` |
-| `docs/dev/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md` | Dev | Decisão técnica: automação separada com Page Object Model e comentários Dado/Quando/Então |
-| `tests/pages/PaginaInicial.js` | Dev | Page Object da página inicial — única camada que conhece seletores e ações do Playwright |
+| `docs/qa/brainstorms/index.md` | QA | Índice da pasta de brainstorms do QA, necessário para o menu do GitHub Pages |
+| `docs/qa/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md` | QA | Decisão técnica: automação separada com Page Object Model e comentários Dado/Quando/Então (movido de `docs/dev/brainstorms/` em 2026-07-12) |
+| `docs/qa/brainstorms/2026-07-12-teststep-page-object-relatorio.md` | QA | Decisão técnica: `test.step()` nos métodos do Page Object para relatório HTML legível |
+| `tests/pages/PaginaInicial.js` | Dev | Page Object da página inicial — única camada que conhece seletores, ações e passos (`test.step()`) do Playwright |
 | `components/EventCard.js` | Dev | Componente que exibe um evento em formato de card |
 | `components/EventCard.module.css` | Dev | Estilos do card de evento |
 | `components/Filtros.js` | Dev | Componente da barra de filtros (tipo, estado, mês) |
@@ -329,4 +333,4 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 
 ---
 
-*Última atualização: 2026-07-11 (`make dev` instala dependências automaticamente; regras de negócio de eventos extraídas para `src/lib/eventos.js`; automação de testes separada com Page Object Model e Dado/Quando/Então)*
+*Última atualização: 2026-07-12 (test.step() nos métodos do Page Object para relatório legível; decisões técnicas de automação reorganizadas de `docs/dev/brainstorms/` para `docs/qa/brainstorms/`)*
