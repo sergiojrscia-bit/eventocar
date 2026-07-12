@@ -11,6 +11,29 @@ nav_order: 4
 
 ---
 
+## 2026-07-11 — Automação de testes separada com Page Object Model e BDD de mentalidade
+
+**O que foi feito:**
+- Criado `tests/pages/PaginaInicial.js` — Page Object com todos os seletores e ações do Playwright (a única camada que conhece Playwright de verdade)
+- `tests/pagina-inicial.spec.js` reescrito: cada teste ganhou comentários `// Dado / Quando / Então` descrevendo o cenário em português antes do código, e nenhum seletor bruto (`data-testid`, `selectOption`, `fill`) aparece mais direto no arquivo — tudo passa pelo Page Object
+- Removida a reimplementação duplicada de `eventosVisiveis()` dentro do teste; agora ele importa a função de `src/lib/eventos.js`, a mesma usada pelo site
+- Resolvidas as ideias #14 e #15 do `ideias.md`
+
+**Por que foi feito assim:**
+> O teste misturava cenário, seletor do Playwright e lógica de negócio duplicada no mesmo arquivo. Com o Page Object, trocar de ferramenta de teste no futuro exige reescrever só `PaginaInicial.js`, não os cenários. Com Dado/Quando/Então, o `.spec.js` fica legível como documentação, mesmo pra quem não programa. Decisão completa em `docs/dev/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md`.
+
+**Arquivos criados ou modificados:**
+
+| Arquivo | O que mudou |
+|---------|-------------|
+| `tests/pages/PaginaInicial.js` | Arquivo novo — Page Object da página inicial |
+| `tests/pagina-inicial.spec.js` | Reescrito: cenários em Dado/Quando/Então via Page Object, sem seletor bruto; importa `eventosVisiveis()` de `src/lib/eventos.js` em vez de duplicá-la |
+
+**Testado por:** [x] Dev  [ ] QA  
+**Deploy feito:** [ ] Sim  [x] Não  
+
+---
+
 ## 2026-07-11 — Regras de negócio de eventos extraídas para src/lib/eventos.js
 
 **O que foi feito:**
