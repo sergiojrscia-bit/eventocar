@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import eventos from "@/data/eventos.json";
 import EventCard from "@/components/EventCard";
 import Filtros from "@/components/Filtros";
+import { eventosVisiveis } from "@/lib/eventos";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -15,18 +16,12 @@ export default function Home() {
   }
 
   // useMemo evita recalcular a lista a cada render — só recalcula
-  // quando os filtros mudam
-  const eventosFiltrados = useMemo(() => {
-    const hoje = new Date();
-    hoje.setHours(0, 0, 0, 0);
-
-    return eventos
-      .filter((evento) => new Date(evento.data + "T00:00:00") >= hoje) // RF09
-      .filter((evento) => !filtros.tipo || evento.tipo === filtros.tipo)
-      .filter((evento) => !filtros.estado || evento.estado === filtros.estado)
-      .filter((evento) => !filtros.mes || evento.data.startsWith(filtros.mes))
-      .sort((a, b) => a.data.localeCompare(b.data)); // mais próximos primeiro
-  }, [filtros]);
+  // quando os filtros mudam. A regra de negócio em si (o que filtra,
+  // o que ordena) mora em src/lib/eventos.js, não aqui.
+  const eventosFiltrados = useMemo(
+    () => eventosVisiveis(eventos, filtros),
+    [filtros]
+  );
 
   return (
     <div className={styles.pagina}>
@@ -56,4 +51,4 @@ export default function Home() {
       </footer>
     </div>
   );
-}
+}

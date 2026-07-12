@@ -235,6 +235,8 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-07-07 | Dev | Convenção de `data-testid` adotada para todo componente interativo ou de lista | Sem identificador estável, o primeiro teste automatizado ficaria dependente de posição (`nth-child`) ou de classes CSS com hash, frágeis a qualquer mudança visual. Convenção registrada em `docs/dev/boas-praticas.md` e decisão completa em `docs/dev/brainstorms/2026-07-07-estrategia-data-testid-automacao.md`. `Filtros.js`, `EventCard.js` e `app/page.js` refatorados |
 | 2026-07-08 | QA | Teste automatizado da página inicial validado — 12/12 cenários passaram | Execução via `make test-report` confirmou RF01–RF10 e RNF02 sem falhas (relatório do Playwright anexado à sessão). Resultado registrado em `docs/qa/2026-07-07-teste-automatizado-pagina-inicial.md` |
 | 2026-07-08 | Dev | `playwright-report/` e `test-results/` adicionados ao `.gitignore` e removidos do controle de versão | São saída gerada automaticamente a cada `make test`/`make test-report`, não código nem documentação; versionar inflaria o repositório a cada execução e geraria conflitos de merge desnecessários. `playwright.config.js` e `tests/pagina-inicial.spec.js` continuam versionados normalmente |
+| 2026-07-11 | Dev | `make dev` instala dependências automaticamente se `node_modules` não existir | Quem clonava o projeto do zero e rodava `make dev` direto batia em `'next' não é reconhecido`, porque `node_modules` nunca é versionado. Mesmo padrão já usado em `make test`/`make test-report` |
+| 2026-07-11 | Dev | Regras de negócio de eventos extraídas de `src/app/page.js` para `src/lib/eventos.js`, como funções puras (Opção B — uma função por regra, compostas em `eventosVisiveis`) | Prepara o projeto para trocar de framework sem reescrever regra de negócio, e permite testar cada regra isolada, sem navegador. Resolve a ideia #13 do `ideias.md`. Decisão completa em `docs/dev/brainstorms/2026-07-11-separar-regras-negocio-eventos.md` |
 
 
 ### Detalhamento: Comandos do Makefile
@@ -313,8 +315,10 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | `docs/dev/brainstorms/2026-07-01-formato-data-eventos.md` | Dev | Decisão técnica: formato de data `"AAAA-MM-DD"` no `eventos.json` |
 | `docs/dev/brainstorms/index.md` | Dev | Índice da pasta de brainstorms do Dev, necessário para o menu do GitHub Pages |
 | `docs/dev/changelog.md` | Dev | Changelog com a entrega da página inicial (listagem, filtros e cards) |
-| `data/eventos.json` | Dev | Dados de exemplo dos eventos (6 eventos, campos definidos na decisão técnica de formato de data) |
-| `lib/tipos.js` | Dev | Cores associadas a cada tipo de evento e lista de estados brasileiros (UFs) |
+| `docs/dev/brainstorms/2026-07-11-separar-regras-negocio-eventos.md` | Dev | Decisão técnica: regras de negócio de eventos extraídas para `src/lib/eventos.js` como funções puras |
+| `src/data/eventos.json` | Dev | Dados de exemplo dos eventos (6 eventos, campos definidos na decisão técnica de formato de data) |
+| `src/lib/tipos.js` | Dev | Cores associadas a cada tipo de evento e lista de estados brasileiros (UFs) |
+| `src/lib/eventos.js` | Dev | Regras de negócio de eventos como funções puras: `ocultarPassados`, `filtrarPorTipo`, `filtrarPorEstado`, `filtrarPorMes`, `ordenarPorData` e a composição `eventosVisiveis` |
 | `components/EventCard.js` | Dev | Componente que exibe um evento em formato de card |
 | `components/EventCard.module.css` | Dev | Estilos do card de evento |
 | `components/Filtros.js` | Dev | Componente da barra de filtros (tipo, estado, mês) |
@@ -322,4 +326,4 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 
 ---
 
-*Última atualização: 2026-07-08 (resultado do teste automatizado registrado — 12/12 passaram; referência de arquivo obrigatório corrigida para HU-001/REQ-001; `playwright-report/` e `test-results/` movidos para o `.gitignore`)*
+*Última atualização: 2026-07-11 (`make dev` instala dependências automaticamente; regras de negócio de eventos extraídas para `src/lib/eventos.js`)*

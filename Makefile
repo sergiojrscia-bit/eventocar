@@ -34,7 +34,12 @@ setup-qa:
 # -----------------------------------------------------------------------------
 
 ## [DEV] Sobe o servidor local do Next.js (acesse em http://localhost:3000)
+## Instala as dependencias automaticamente se ainda nao estiverem presentes
 dev:
+	@if [ ! -d "node_modules" ]; then \
+		echo "Dependencias nao encontradas. Instalando..."; \
+		npm install; \
+	fi
 	npm run dev
 
 

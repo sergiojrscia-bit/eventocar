@@ -11,6 +11,28 @@ nav_order: 4
 
 ---
 
+## 2026-07-11 — Regras de negócio de eventos extraídas para src/lib/eventos.js
+
+**O que foi feito:**
+- Criado `src/lib/eventos.js` com as regras de negócio de eventos como funções puras: `ocultarPassados`, `filtrarPorTipo`, `filtrarPorEstado`, `filtrarPorMes`, `ordenarPorData` e a composição `eventosVisiveis`
+- `src/app/page.js` simplificado: o `useMemo` agora só chama `eventosVisiveis(eventos, filtros)`, sem nenhuma regra de negócio misturada com o código de React
+- Resolvida a ideia #13 do `ideias.md`
+
+**Por que foi feito assim:**
+> A lógica de filtragem/ordenação estava toda dentro de um `useMemo` no componente da página, misturada com React. Isso dificultava trocar de framework no futuro e impedia testar cada regra isolada, sem navegador. Cada regra virou uma função pura e independente — uma regra de negócio nova entra como mais uma função em `eventos.js`, sem mexer nas existentes. Decisão completa em `docs/dev/brainstorms/2026-07-11-separar-regras-negocio-eventos.md`.
+
+**Arquivos criados ou modificados:**
+
+| Arquivo | O que mudou |
+|---------|-------------|
+| `src/lib/eventos.js` | Arquivo novo — regras de negócio de eventos como funções puras |
+| `src/app/page.js` | `useMemo` simplificado para chamar `eventosVisiveis()` em vez de conter a lógica de filtro/ordenação |
+
+**Testado por:** [x] Dev  [ ] QA  
+**Deploy feito:** [ ] Sim  [x] Não  
+
+---
+
 ## 2026-07-11 — make test e make test-report instalam dependencias automaticamente
 
 **O que foi feito:**
