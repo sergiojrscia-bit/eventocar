@@ -240,6 +240,12 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-07-11 | Dev | Automação de testes separada com Page Object Model (`tests/pages/PaginaInicial.js`) e comentários Dado/Quando/Então no `.spec.js` | Independência de ferramenta de teste (só o Page Object conhece Playwright) e leitura do teste como documentação, mesmo pra quem não programa. Resolve as ideias #14 e #15 do `ideias.md`. Teste também passou a importar `eventosVisiveis()` de `src/lib/eventos.js` em vez de duplicar a lógica. Decisão completa em `docs/qa/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md` |
 | 2026-07-12 | QA | Métodos de ação e verificação de `tests/pages/PaginaInicial.js` passam a usar `test.step()` | O relatório HTML (`make test-report`) mostrava só ações cruas do Playwright ("Select option", "Expect toHaveCount"), não a narrativa Dado/Quando/Então; quem conferia o resultado não sabia qual cenário estava sendo validado. Validado em 2026-07-12: 12/12 testes passaram e o relatório passou a mostrar os passos com nome de negócio. Decisão completa em `docs/qa/brainstorms/2026-07-12-teststep-page-object-relatorio.md` |
 | 2026-07-12 | QA | Decisões técnicas de automação de teste reorganizadas: nova pasta `docs/qa/brainstorms/`, migrando `2026-07-11-separar-automacao-page-object-bdd.md` e `2026-07-12-teststep-page-object-relatorio.md` de `docs/dev/brainstorms/` | Decisões sobre `tests/` são estratégia de QA, não de arquitetura do site (Dev). Critério fixado: decisão que só mexeu em arquivo dentro de `tests/` migra pro QA; decisão que mexeu em `src/` (ex: convenção de `data-testid`, aplicada em `Filtros.js`/`EventCard.js`) permanece no Dev, mesmo que motivada por automação |
+| 2026-07-14 | Analista | Propósito do projeto redefinido: laboratório de aprendizado de IA e automação com um projeto real; tráfego e monetização (AdSense) passam a ser objetivos secundários | Alinhar critério de sucesso ao objetivo real do dono do projeto. Evita decisões movidas por ansiedade de tráfego e valida o que já foi construído (código, testes, docs) como o próprio produto do aprendizado |
+| 2026-07-14 | Analista | Coleta automatizada de eventos do Instagram descartada em definitivo — em todas as variantes (scraping, serviços de terceiros e Playwright logado na conta própria) | Viola os Termos de Uso da Meta independente da ferramenta; arriscaria banimento da futura conta @eventocar; manutenção eterna contra HTML ofuscado; risco reputacional incompatível com AdSense e parcerias. API oficial da Meta fica como possível fase 3 (limites: aprovação de 2–8 semanas, 30 hashtags/7 dias, mídia recente só 24h, sem username no hashtag search). Ver `docs/analista/brainstorms/2026-07-14-proposito-fonte-de-dados-e-ci.md` |
+| 2026-07-14 | Analista | Curadoria assistida por IA aprovada como processo de alimentação do `eventos.json` | Curador encontra o post no Instagram como usuário comum, IA extrai os campos estruturados no formato do JSON, curador revisa e commita. Risco zero, funciona hoje, controla qualidade e constrói o formato/processo que qualquer automação futura reaproveita. Resolve a ideia #1 do `ideias.md` |
+| 2026-07-14 | Analista | Estratégia de conteúdo "resumos de sites estrangeiros gerados por IA" descartada | AdSense rejeita conteúdo raspado/reescrito sem valor próprio; política de spam da Busca penaliza conteúdo em massa por IA sem originalidade; risco jurídico de resumir sistematicamente produção alheia. Eventual fase de conteúdo deve nascer dos nossos próprios dados de eventos |
+| 2026-07-14 | Analista | CI aprovado: smoke test a cada push + rodada completa agendada + relatório publicado no GitHub Pages via Actions | Smoke test com 3–4 cenários `@smoke` e gatilho filtrado por `paths` (`src/` e `tests/`); rodada completa dos 12 cenários via `schedule` (cron); publicação do Pages migrada de "branch main + /docs" para deploy via GitHub Actions (Opção B), evitando commits automáticos de relatório. Plano de emergência assumido: commitar relatório em `docs/` (Opção A) se a migração travar. Resolve as ideias #10 e #11 do `ideias.md` |
+| 2026-07-14 | Analista | Comparação de frameworks de teste adiada e registrada como ideia #16 | Prioridade dada à infraestrutura de CI do que já existe. Dois experimentos desenhados e preservados no `ideias.md`: Playwright vs Cypress (motores) e Playwright puro vs CodeceptJS (camada de abstração) |
 
 
 ### Detalhamento: Comandos do Makefile
@@ -277,6 +283,8 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 - [x] Casos de teste manuais, checklist de entrega e teste automatizado (Playwright) da página inicial — papel QA
 - [ ] Configuração do deploy na Vercel e atualização do `make deploy`
 - [ ] Definição do domínio do site
+- [ ] Implementação dos workflows de CI (smoke test por push + rodada completa agendada + migração do Pages para publicação via Actions) — sessão de Dev
+- [ ] Primeira rodada de curadoria assistida: alimentar o `eventos.json` com 20–30 eventos reais
 
 
 
@@ -330,7 +338,8 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | `components/EventCard.module.css` | Dev | Estilos do card de evento |
 | `components/Filtros.js` | Dev | Componente da barra de filtros (tipo, estado, mês) |
 | `components/Filtros.module.css` | Dev | Estilos da barra de filtros |
+| `docs/analista/brainstorms/2026-07-14-proposito-fonte-de-dados-e-ci.md` | Analista | Brainstorm consolidado: propósito do projeto redefinido, fonte de dados (Instagram descartado, curadoria assistida aprovada), CI e comparação de frameworks adiada |
 
 ---
 
-*Última atualização: 2026-07-12 (test.step() nos métodos do Page Object para relatório legível; decisões técnicas de automação reorganizadas de `docs/dev/brainstorms/` para `docs/qa/brainstorms/`)*
+*Última atualização: 2026-07-14 (propósito do projeto redefinido; coleta automatizada do Instagram descartada e curadoria assistida aprovada; CI aprovado — smoke test, rodada agendada e relatório no Pages via Actions; comparação de frameworks adiada como ideia #16)*

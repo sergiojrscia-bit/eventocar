@@ -30,7 +30,7 @@ nav_order: 2
 
 | # | Ideia | Status | Observações |
 |---|-------|--------|-------------|
-| 1 | Buscar informações de eventos automaticamente no Instagram e outras redes sociais | 💭 Em aberto | Reduz trabalho manual de cadastro. Avaliar viabilidade técnica e limitações das APIs das plataformas |
+| 1 | Buscar informações de eventos automaticamente no Instagram e outras redes sociais | ❌ Descartada | Decidido em 2026-07-14: scraping (em qualquer variante, inclusive Playwright logado na conta própria) viola os Termos da Meta e arrisca a conta @eventocar; API oficial é limitada demais por ora (fica como fase 3 futura). Aprovada em seu lugar a **curadoria assistida por IA** — curador acha o post, IA extrai o JSON, curador revisa e commita. Ver `docs/analista/brainstorms/2026-07-14-proposito-fonte-de-dados-e-ci.md` |
 
 ---
 
@@ -73,8 +73,8 @@ nav_order: 2
 
 | # | Ideia | Status | Observações |
 |---|-------|--------|-------------|
-| 10 | Testes automatizados rodando via GitHub Actions a cada push, com relatório publicado no GitHub Pages | 💭 Em aberto | Opção B discutida em 2026-07-08: agenda o Playwright pra rodar sozinho e publica o relatório num endereço fixo (mesma infra do site de documentação), sem precisar baixar nada pra ver quais cenários passaram |
-| 11 | Gatilho do GitHub Actions filtrado por `paths` — só roda o teste se o push mexer em código/dados, não em documentação | 💭 Em aberto | Evita rodar (e gastar minutos do GitHub Actions) quando o commit é só em `docs/`. Discutir se `data/eventos.json` entra na lista de gatilhos, já que os testes dependem dele |
+| 10 | Testes automatizados rodando via GitHub Actions a cada push, com relatório publicado no GitHub Pages | ✅ Aprovada | Decidido em 2026-07-14: smoke test (cenários `@smoke`) a cada push + rodada completa agendada (cron); relatório publicado migrando o Pages para publicação via Actions (Opção B). Implementação na próxima sessão de Dev. Ver `docs/analista/brainstorms/2026-07-14-proposito-fonte-de-dados-e-ci.md` |
+| 11 | Gatilho do GitHub Actions filtrado por `paths` — só roda o teste se o push mexer em código/dados, não em documentação | ✅ Aprovada | Decidido em 2026-07-14 junto com a ideia #10: gatilho do smoke test filtrado para `src/` e `tests/` (o que inclui `src/data/eventos.json`, já que os testes dependem dele). Ver `docs/analista/brainstorms/2026-07-14-proposito-fonte-de-dados-e-ci.md` |
 
 ---
 
@@ -86,6 +86,7 @@ nav_order: 2
 | 13 | Extrair a função `eventosVisiveis()` de `app/page.js` para `src/lib/eventos.js`, como função JavaScript pura (sem depender de React/Next) | ✅ Aprovada | Feito em 2026-07-11 — ver `docs/dev/brainstorms/2026-07-11-separar-regras-negocio-eventos.md`. A regra de negócio (quais eventos aparecem) fica independente do framework e pode ganhar teste unitário isolado, sem precisar de navegador |
 | 14 | Page Object Model na automação de teste (`tests/pages/PaginaInicial.js`) | ✅ Aprovada | Feito em 2026-07-11 — ver `docs/qa/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md`. Separa "o que" testar (cenários) de "como" fazer isso no Playwright especificamente; se um dia trocar de ferramenta, só essa camada intermediária precisa ser reescrita |
 | 15 | BDD "de mentalidade" — comentários `// Dado / Quando / Então` dentro dos testes do Playwright, sem trocar de ferramenta | ✅ Aprovada | Feito em 2026-07-11 — ver `docs/qa/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md`. BDD com ferramenta completa (Gherkin + Cucumber/playwright-bdd) continua descartado por ora — só faria sentido se o time crescesse ou algum stakeholder não-técnico precisasse ler os cenários diretamente |
+| 16 | Comparar frameworks de teste rodando os mesmos 12 cenários em paralelo | 💭 Em aberto | Discutido em 2026-07-14 e adiado (prioridade: CI das ideias #10/#11). Dois experimentos desenhados: **motores** (Playwright vs Cypress — filosofias opostas de execução) e **abstração** (Playwright puro vs CodeceptJS com helper Playwright — escrita direta vs camada legível com troca de motor por configuração). Fazer UM de cada vez. O Page Object Model (ideia #14) já deixa o projeto pronto pra isso. Ver `docs/analista/brainstorms/2026-07-14-proposito-fonte-de-dados-e-ci.md` |
 
 ---
 
@@ -95,4 +96,4 @@ nav_order: 2
 
 ---
 
-*Última atualização: 2026-07-12 (caminhos das ideias #14 e #15 atualizados — decisões técnicas movidas de `docs/dev/brainstorms/` para `docs/qa/brainstorms/`)*
+*Última atualização: 2026-07-14 (ideia #1 descartada — curadoria assistida aprovada no lugar; ideias #10 e #11 aprovadas — CI com smoke test e relatório no Pages; ideia #16 criada — comparação de frameworks de teste)*
