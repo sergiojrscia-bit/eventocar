@@ -49,6 +49,7 @@ nav_order: 2
 |---|-------|--------|-------------|
 | 4 | Layout simples, objetivo e acessível | 💭 Em aberto | Priorizar clareza e facilidade de uso para qualquer perfil de visitante |
 | 5 | Espaço para o usuário enviar sugestões e ideias diretamente pelo site | 💭 Em aberto | Canal de feedback da comunidade |
+| 17 | Novas seções ("abas") com mais informações além da agenda — ex: notícias, guias, informações | 💭 Em aberto | Brainstorm inicial em 2026-10-03. Cada seção deve ser uma página com endereço próprio (`/guias`, `/eventos/nome-do-evento`) e menu no cabeçalho — não abas dentro da mesma página —, para aparecer no Google. Ordem sugerida: (1) menu + páginas Sobre/Contato/Privacidade, que já são a opção B da decisão de confiança nos anúncios; (2) página de cada evento, gerada dos nossos dados (já no backlog); (3) guias permanentes escritos com voz própria ("O que é um track day", "Como funciona uma arrancada", glossário); (4) notícias só depois, e apenas como notas curtas nossas com link para a fonte. Cuidado: notícias copiadas ou resumidas por IA esbarram na decisão de 2026-07-14 (AdSense e Google penalizam; risco jurídico) |
 
 ---
 
@@ -96,4 +97,4 @@ nav_order: 2
 
 ---
 
-*Última atualização: 2026-10-03 (ideia #2 aprovada — espaços de anúncio sem sobreposição; ideia #3 descartada — selo de segurança trocado por transparência e controle)*
+*Última atualização: 2026-10-03 (ideia #2 aprovada — espaços de anúncio sem sobreposição; ideia #3 descartada — selo de segurança trocado por transparência e controle; ideia #17 criada — novas seções além da agenda)*
