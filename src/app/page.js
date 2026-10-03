@@ -56,6 +56,12 @@ function salvarPreferencia(id) {
 
 // Avisa o React quando a preferência muda — nesta aba (EVENTO_TROCA) ou
 // em outra aba do site aberta ao mesmo tempo ("storage").
+// Sinal de "página pronta": false no HTML do servidor, true depois que o
+// React assume a página no navegador (hidratação). Usado pelos testes
+// automatizados para não interagir antes da hora — um clique ou campo
+// preenchido antes da hidratação é desfeito pelo React.
+const nenhumaAssinatura = () => () => {};
+
 function assinarPreferencia(avisar) {
   window.addEventListener(EVENTO_TROCA, avisar);
   window.addEventListener("storage", avisar);
@@ -73,6 +79,7 @@ export default function Home() {
   // (aqui, o localStorage). No servidor não existe localStorage, então lá
   // vale sempre o modo padrão; no navegador, a preferência salva.
   const modoAtual = useSyncExternalStore(assinarPreferencia, lerPreferencia, () => MODO_PADRAO);
+  const hidratado = useSyncExternalStore(nenhumaAssinatura, () => true, () => false);
 
   function aoMudarFiltro(campo, valor) {
     setFiltros((atual) => ({ ...atual, [campo]: valor }));
@@ -89,12 +96,15 @@ export default function Home() {
   const { Componente } = MODOS.find((m) => m.id === modoAtual);
 
   return (
-    <Componente
-      eventos={eventosFiltrados}
-      filtros={filtros}
-      aoMudar={aoMudarFiltro}
-      visualizacao={{ modos: MODOS, atual: modoAtual, aoMudar: salvarPreferencia }}
-    />
+    // display: contents — o div não interfere no layout, só carrega o sinal
+    <div data-hidratado={hidratado} style={{ display: "contents" }}>
+      <Componente
+        eventos={eventosFiltrados}
+        filtros={filtros}
+        aoMudar={aoMudarFiltro}
+        visualizacao={{ modos: MODOS, atual: modoAtual, aoMudar: salvarPreferencia }}
+      />
+    </div>
   );
 }
 

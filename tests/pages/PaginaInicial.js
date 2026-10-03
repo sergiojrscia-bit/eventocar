@@ -24,11 +24,20 @@ export class PaginaInicial {
     this.page = page;
   }
 
-  /** Abre a página inicial. */
+  /**
+   * Abre a página inicial e espera o React assumir a página (hidratação).
+   * Sem essa espera, um filtro preenchido logo após abrir podia ser desfeito
+   * pelo React — causa de falha intermitente no RF05 em 2026-10-03.
+   */
   async abrir() {
     await test.step("Abre a página inicial", async () => {
       await this.page.goto("/");
+      await this.esperarPaginaPronta();
     });
+  }
+
+  async esperarPaginaPronta() {
+    await this.page.locator('[data-hidratado="true"]').waitFor({ state: "attached" });
   }
 
   /** Muda o tamanho da tela para simular um celular (RNF02). */
@@ -56,6 +65,7 @@ export class PaginaInicial {
   async recarregar() {
     await test.step("Recarrega a página", async () => {
       await this.page.reload();
+      await this.esperarPaginaPronta();
     });
   }
 

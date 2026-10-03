@@ -25,6 +25,8 @@ nav_order: 4
 
 **Resultado:** 16 testes passando e 1 pulado (RF09: o JSON atual não tem evento que já terminou). Lint sem problemas. Conferido no computador (1366px) e no celular (375px), sem erros no console e sem rolagem horizontal.
 
+**Correção no mesmo dia — teste intermitente do RF05:** com vários testes em paralelo, o filtro de mês às vezes era preenchido antes de o React assumir a página no navegador (hidratação), e o React desfazia o valor. A página agora expõe um sinal `data-hidratado` e o `abrir()`/`recarregar()` do Page Object esperam por ele antes de interagir. Validado com 5 rodadas seguidas da suíte completa: 16/16 em todas.
+
 ## 2026-07-12 — Passos com nome de negócio no relatório de testes
 
 **O que mudou:** Métodos de ação e verificação de `tests/pages/PaginaInicial.js`
