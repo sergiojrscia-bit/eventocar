@@ -15,7 +15,7 @@ import styles from "./LayoutLinhaDoTempo.module.css";
 // Uma coluna central estreita, com os eventos pendurados numa linha vertical
 // e marcos de mês. Anúncios: um bloco "fora da linha" entre os meses e uma
 // faixa horizontal no fim, antes do rodapé — sempre em área própria.
-export default function LayoutLinhaDoTempo({ eventos, filtros, aoMudar, preferencias }) {
+export default function LayoutLinhaDoTempo({ eventos, filtros, aoMudar, opcoes, preferencias }) {
   const grupos = agruparPorMes(eventos);
 
   return (
@@ -24,7 +24,7 @@ export default function LayoutLinhaDoTempo({ eventos, filtros, aoMudar, preferen
         <MenuPrincipal atual="eventos" className={styles.menu} />
         <h1>EventoCar</h1>
         <p>O que vem por aí no mundo automotivo</p>
-        <Filtros filtros={filtros} aoMudar={aoMudar} className={styles.filtros} />
+        <Filtros filtros={filtros} aoMudar={aoMudar} opcoes={opcoes} className={styles.filtros} />
         <div className={styles.seletor}>
           <Preferencias {...preferencias} escuro className={styles.preferencias} />
         </div>

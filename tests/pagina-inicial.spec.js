@@ -28,7 +28,7 @@ import { PaginaInicial } from "./pages/PaginaInicial.js";
 import { eventosVisiveis } from "../src/lib/eventos.js";
 import { converterEventosInstagram } from "../src/lib/fonteInstagram.js";
 import { TEMAS } from "../src/lib/temas.js";
-import { CORES_TIPO } from "../src/lib/tipos.js";
+import { CORES_TIPO, TIPOS_EVENTO } from "../src/lib/tipos.js";
 
 const eventos = converterEventosInstagram(JSON.parse(
   fs.readFileSync(path.join(process.cwd(), "..", "instagram", "eventos.json"), "utf-8")
@@ -149,7 +149,6 @@ test.describe("Pagina inicial - listagem e filtros de eventos", () => {
     const paginaInicial = new PaginaInicial(page);
     await paginaInicial.abrir();
 
-    await paginaInicial.selecionarFiltroTipo("Clássicos");
     await paginaInicial.preencherFiltroMes("2099-01");
 
     await paginaInicial.verificarMensagemDeNenhumEventoVisivel();
@@ -297,4 +296,29 @@ test.describe("Pagina inicial - modo salvo sem piscar (RF11)", () => {
       await paginaInicial.verificarModoNoHtmlDoServidor(modo);
     });
   }
+});
+
+test.describe("Pagina inicial - filtros listam so o que existe nos eventos (RF03/RF04)", () => {
+  // Esperado calculado aqui mesmo, a partir dos eventos que podem aparecer
+  // na lista (os que ainda não terminaram): tipos na ordem padrão do site,
+  // estados em ordem alfabética, sem repetição.
+  const futuros = eventosVisiveis(eventos, {});
+  const tiposEsperados = TIPOS_EVENTO.filter((tipo) => futuros.some((e) => e.tipo === tipo));
+  const estadosEsperados = [...new Set(futuros.map((e) => e.estado).filter(Boolean))].sort();
+
+  test("o filtro de tipo lista so os tipos dos eventos da agenda", async ({ page }) => {
+    const paginaInicial = new PaginaInicial(page);
+
+    await paginaInicial.abrir();
+
+    await paginaInicial.verificarOpcoesDoFiltroTipo(tiposEsperados);
+  });
+
+  test("o filtro de estado lista so os estados dos eventos da agenda", async ({ page }) => {
+    const paginaInicial = new PaginaInicial(page);
+
+    await paginaInicial.abrir();
+
+    await paginaInicial.verificarOpcoesDoFiltroEstado(estadosEsperados);
+  });
 });

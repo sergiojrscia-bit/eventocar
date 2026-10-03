@@ -154,6 +154,27 @@ export class PaginaInicial {
     });
   }
 
+  /**
+   * Opções de um filtro (sem a opção "Todos..."), na ordem em que aparecem.
+   * Getter — sem step.
+   */
+  async opcoesDoFiltro(campo) {
+    const textos = await campo.locator("option").allTextContents();
+    return textos.slice(1); // a primeira é "Todos os tipos" / "Todos os estados"
+  }
+
+  async verificarOpcoesDoFiltroTipo(esperadas) {
+    await test.step(`Verifica que o filtro de tipo lista só: ${esperadas.join(", ") || "(nenhum)"}`, async () => {
+      expect(await this.opcoesDoFiltro(this.campoFiltroTipo())).toEqual(esperadas);
+    });
+  }
+
+  async verificarOpcoesDoFiltroEstado(esperadas) {
+    await test.step(`Verifica que o filtro de estado lista só: ${esperadas.join(", ") || "(nenhum)"}`, async () => {
+      expect(await this.opcoesDoFiltro(this.campoFiltroEstado())).toEqual(esperadas);
+    });
+  }
+
   // --- Cards de evento (getters — sem step, não são ações) --------------
 
   cards() {

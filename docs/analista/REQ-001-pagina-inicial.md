@@ -31,8 +31,8 @@ A página inicial do EventoCar deve exibir uma listagem de eventos automotivos d
 
 - RF01 — Exibir lista de eventos em formato de cards, ordenados por data (mais próximos primeiro)
 - RF02 — Cada card deve mostrar: nome do evento, data, cidade, estado e tipo do evento
-- RF03 — Exibir filtro por tipo de evento (Clássicos, Tuning, Track Day, Exposição, Feira, Encontro de Clube, Outros)
-- RF04 — Exibir filtro por estado (lista de UFs brasileiras)
+- RF03 — Exibir filtro por tipo de evento, listando só os tipos que existem entre os eventos da agenda que ainda não terminaram (dentre Clássicos, Tuning, Track Day, Exposição, Feira, Encontro de Clube e Outros, nessa ordem)
+- RF04 — Exibir filtro por estado, listando só as UFs que existem entre os eventos da agenda que ainda não terminaram, em ordem alfabética
 - RF05 — Exibir filtro por mês ou intervalo de datas
 - RF06 — Permitir a combinação de múltiplos filtros simultaneamente
 - RF07 — Exibir mensagem amigável quando nenhum evento corresponder aos filtros aplicados
@@ -114,3 +114,4 @@ A página inicial do EventoCar deve exibir uma listagem de eventos automotivos d
 | 2026-10-03 | Analista | RF11 (modos de visualização escolhidos pelo visitante) e RF12 (espaços de anúncio sem sobreposição) adicionados, com critérios de aceite. Critério do Playwright marcado como cumprido — validado em 2026-07-08 (ver diário) e confirmado em 2026-10-03 com 16 cenários passando |
 | 2026-10-03 | Analista | RF13 (links externos mostram o site de destino) adicionado, com critério de aceite. Ver `docs/analista/brainstorms/2026-10-03-confianca-nos-anuncios.md` |
 | 2026-10-03 | Analista | RF14 (tema de cores escolhido pelo visitante) adicionado, com critério de aceite. Ver `docs/analista/brainstorms/2026-10-03-paletas-de-cores.md` |
+| 2026-10-03 | Analista | RF03 e RF04 alterados: os filtros de tipo e estado deixam de listar todas as opções fixas e passam a listar só o que existe nos eventos da agenda, para nenhuma opção levar a "nenhum evento encontrado" |

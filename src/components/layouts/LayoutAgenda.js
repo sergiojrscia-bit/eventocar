@@ -15,7 +15,7 @@ import styles from "./LayoutAgenda.module.css";
 // Lista lida como uma agenda: blocos por mês, cada evento em uma linha com a
 // data grande à esquerda. Anúncios: coluna lateral fixa no computador
 // (300×600) e um bloco entre os meses no celular.
-export default function LayoutAgenda({ eventos, filtros, aoMudar, preferencias }) {
+export default function LayoutAgenda({ eventos, filtros, aoMudar, opcoes, preferencias }) {
   const grupos = agruparPorMes(eventos);
 
   return (
@@ -30,7 +30,7 @@ export default function LayoutAgenda({ eventos, filtros, aoMudar, preferencias }
 
       <div className={styles.barraFiltros}>
         <div className={styles.barraConteudo}>
-          <Filtros filtros={filtros} aoMudar={aoMudar} />
+          <Filtros filtros={filtros} aoMudar={aoMudar} opcoes={opcoes} />
           <Preferencias {...preferencias} />
         </div>
       </div>

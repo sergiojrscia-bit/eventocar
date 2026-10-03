@@ -11,6 +11,14 @@ nav_order: 4
 
 ---
 
+## 2026-10-03 — Filtros de tipo e estado listam só o que existe na agenda (RF03/RF04)
+
+**O que mudou:** O filtro de tipo listava sempre os 7 tipos e o de estado, as 27 UFs — quase todas as opções levavam a "nenhum evento encontrado". Agora eles listam só os tipos e estados dos eventos que ainda não terminaram (com os dados de hoje: Track Day e SC). Quando o JSON ganhar eventos de outros tipos ou estados, as opções aparecem sozinhas.
+
+**Como funciona:** nova regra `opcoesDosFiltros()` em `src/lib/eventos.js` (tipos na ordem padrão do site, estados em ordem alfabética), calculada uma vez em `PaginaEventos.js` e repassada pelos três layouts ao `Filtros.js`, que deixou de usar as listas fixas de `src/lib/tipos.js`.
+
+**Testes:** 2 cenários novos conferem as opções de cada filtro contra os eventos do JSON. O cenário do RF07 ("nenhum evento encontrado") usava o tipo "Clássicos", que deixou de existir no filtro; agora usa só um mês sem eventos (2099-01). Resultado: 56 passando e 1 pulado, em 3 rodadas.
+
 ## 2026-10-03 — Modo de visualização salvo sem "piscar" (RF11)
 
 **O que mudou:** Quem salvou Grade ou Linha do tempo via a Agenda por um instante ao abrir a página. Agora a página já chega do servidor no modo salvo.

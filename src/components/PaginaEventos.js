@@ -5,7 +5,7 @@ import dadosInstagram from "@instagram/eventos.json";
 import LayoutAgenda from "@/components/layouts/LayoutAgenda";
 import LayoutGrade from "@/components/layouts/LayoutGrade";
 import LayoutLinhaDoTempo from "@/components/layouts/LayoutLinhaDoTempo";
-import { eventosVisiveis } from "@/lib/eventos";
+import { eventosVisiveis, opcoesDosFiltros } from "@/lib/eventos";
 import { converterEventosInstagram } from "@/lib/fonteInstagram";
 import { salvarModoNoCookie } from "@/lib/modos";
 import { criarPreferencia } from "@/lib/preferencias";
@@ -18,6 +18,9 @@ import { TEMAS, TEMA_PADRAO, CHAVE_TEMA } from "@/lib/temas";
 // Fonte: JSON gerado pelo agente do Instagram (../instagram/eventos.json),
 // convertido para o formato que o site usa em src/lib/fonteInstagram.js.
 const eventos = converterEventosInstagram(dadosInstagram);
+
+// Os filtros de tipo e estado só listam o que existe na agenda
+const opcoes = opcoesDosFiltros(eventos);
 
 // Modos de visualização que o visitante pode escolher (RF11).
 // Todos recebem os mesmos dados e filtros — só muda a apresentação.
@@ -104,6 +107,7 @@ export default function PaginaEventos({ modoInicial }) {
         eventos={eventosFiltrados}
         filtros={filtros}
         aoMudar={aoMudarFiltro}
+        opcoes={opcoes}
         preferencias={{
           visualizacao: { modos: MODOS, atual: modoAtual, aoMudar: aoMudarModo },
           cores: { temas: TEMAS, atual: temaAtual, aoMudar: prefTema.salvar },

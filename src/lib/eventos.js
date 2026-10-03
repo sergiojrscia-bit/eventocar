@@ -1,3 +1,5 @@
+import { TIPOS_EVENTO } from "./tipos.js";
+
 // Regras de negócio relacionadas a eventos — funções puras, sem depender de
 // React/Next.js. Cada função cuida de UMA regra, e pode ser testada isolada,
 // sem precisar de navegador (ver ideia #14 em docs/projeto/ideias.md).
@@ -79,4 +81,18 @@ export function agruparPorMes(eventos) {
     grupo.eventos.push(evento);
   }
   return grupos;
+}
+
+/**
+ * Regra: os filtros de tipo e estado só oferecem o que existe na agenda —
+ * nada de opção que leva a "nenhum evento encontrado". Considera só os
+ * eventos que ainda não terminaram (os que podem aparecer na lista).
+ * Tipos na ordem padrão do site (TIPOS_EVENTO); estados em ordem alfabética.
+ */
+export function opcoesDosFiltros(eventos, hoje = new Date()) {
+  const futuros = ocultarPassados(eventos, hoje);
+  return {
+    tipos: TIPOS_EVENTO.filter((tipo) => futuros.some((evento) => evento.tipo === tipo)),
+    estados: [...new Set(futuros.map((evento) => evento.estado).filter(Boolean))].sort(),
+  };
 }

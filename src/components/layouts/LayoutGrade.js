@@ -17,7 +17,7 @@ const CARDS_POR_BLOCO = 6;
 // Cabeçalho grande (tipo "capa") com os filtros dentro dele e grade de cards
 // com selo de data. Anúncios: faixa horizontal (728×90) ocupando a largura
 // toda ENTRE blocos de cards, e uma no fim da lista.
-export default function LayoutGrade({ eventos, filtros, aoMudar, preferencias }) {
+export default function LayoutGrade({ eventos, filtros, aoMudar, opcoes, preferencias }) {
   const blocos = [];
   for (let i = 0; i < eventos.length; i += CARDS_POR_BLOCO) {
     blocos.push(eventos.slice(i, i + CARDS_POR_BLOCO));
@@ -32,7 +32,7 @@ export default function LayoutGrade({ eventos, filtros, aoMudar, preferencias })
           <h1>EventoCar</h1>
           <p>Os próximos eventos de carro, com data, local e valor.</p>
           <div className={styles.controles}>
-            <Filtros filtros={filtros} aoMudar={aoMudar} className={styles.filtros} />
+            <Filtros filtros={filtros} aoMudar={aoMudar} opcoes={opcoes} className={styles.filtros} />
             <Preferencias {...preferencias} escuro />
           </div>
         </div>
