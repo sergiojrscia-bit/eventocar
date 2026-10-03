@@ -16,7 +16,7 @@
 // docs/qa/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md
 // docs/qa/brainstorms/2026-07-12-teststep-page-object-relatorio.md
 //
-// IMPORTANTE sobre as datas: src/data/eventos.json tem datas fixas. Em vez de
+// IMPORTANTE sobre as datas: ../instagram/eventos.json (fonte do site) muda a cada execucao do agente. Em vez de
 // "chutar" quantos eventos deveriam aparecer, este teste recalcula a lista
 // esperada em tempo de execucao com a MESMA funcao eventosVisiveis() usada
 // pelo site de verdade (src/lib/eventos.js).
@@ -26,10 +26,11 @@ import path from "node:path";
 import fs from "node:fs";
 import { PaginaInicial } from "./pages/PaginaInicial.js";
 import { eventosVisiveis } from "../src/lib/eventos.js";
+import { converterEventosInstagram } from "../src/lib/fonteInstagram.js";
 
-const eventos = JSON.parse(
-  fs.readFileSync(path.join(process.cwd(), "src", "data", "eventos.json"), "utf-8")
-);
+const eventos = converterEventosInstagram(JSON.parse(
+  fs.readFileSync(path.join(process.cwd(), "..", "instagram", "eventos.json"), "utf-8")
+));
 
 test.describe("Pagina inicial - listagem e filtros de eventos", () => {
   test("carrega sem erros no console e exibe a listagem (RF01)", async ({ page }) => {
@@ -46,7 +47,7 @@ test.describe("Pagina inicial - listagem e filtros de eventos", () => {
   test("cada card mostra nome, data, cidade, estado e tipo (RF02)", async ({ page }) => {
     const paginaInicial = new PaginaInicial(page);
     const esperados = eventosVisiveis(eventos, {});
-    test.skip(esperados.length === 0, "Nenhum evento futuro em src/data/eventos.json no momento");
+    test.skip(esperados.length === 0, "Nenhum evento futuro em ../instagram/eventos.json no momento");
 
     await paginaInicial.abrir();
 
@@ -71,7 +72,7 @@ test.describe("Pagina inicial - listagem e filtros de eventos", () => {
     );
     test.skip(
       eventosPassados.length === 0,
-      "Nenhum evento com data passada em src/data/eventos.json no momento - RF09 nao pode ser validado hoje"
+      "Nenhum evento com data passada em ../instagram/eventos.json no momento - RF09 nao pode ser validado hoje"
     );
 
     await paginaInicial.abrir();
@@ -84,7 +85,7 @@ test.describe("Pagina inicial - listagem e filtros de eventos", () => {
   test("evento sem valor de ingresso nao quebra o card (RF08)", async ({ page }) => {
     const paginaInicial = new PaginaInicial(page);
     const semValor = eventosVisiveis(eventos, {}).find((evento) => evento.valor === null);
-    test.skip(!semValor, "Nenhum evento futuro sem valor em src/data/eventos.json no momento");
+    test.skip(!semValor, "Nenhum evento futuro sem valor em ../instagram/eventos.json no momento");
 
     await paginaInicial.abrir();
 

@@ -1,11 +1,16 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import eventos from "@/data/eventos.json";
+import dadosInstagram from "@instagram/eventos.json";
 import EventCard from "@/components/EventCard";
 import Filtros from "@/components/Filtros";
 import { eventosVisiveis } from "@/lib/eventos";
+import { converterEventosInstagram } from "@/lib/fonteInstagram";
 import styles from "./page.module.css";
+
+// Fonte: JSON gerado pelo agente do Instagram (../instagram/eventos.json),
+// convertido para o formato que o site usa em src/lib/fonteInstagram.js.
+const eventos = converterEventosInstagram(dadosInstagram);
 
 export default function Home() {
   // Estado central dos filtros ativos

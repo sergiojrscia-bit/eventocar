@@ -6,7 +6,9 @@
 // docs/dev/brainstorms/2026-07-11-separar-regras-negocio-eventos.md
 
 /**
- * Regra: eventos com data anterior a hoje não aparecem na listagem (RF09).
+ * Regra: eventos que já terminaram não aparecem na listagem (RF09).
+ * Usa a data de término (`dataFim`), para um evento de vários dias continuar
+ * visível até o último dia; sem `dataFim`, vale a data de início.
  * `hoje` é parâmetro (não `new Date()` fixo dentro da função) para a função
  * continuar pura e fácil de testar com datas fixas.
  */
@@ -15,7 +17,7 @@ export function ocultarPassados(eventos, hoje = new Date()) {
   dataZerada.setHours(0, 0, 0, 0);
 
   return eventos.filter(
-    (evento) => new Date(evento.data + "T00:00:00") >= dataZerada
+    (evento) => new Date((evento.dataFim ?? evento.data) + "T00:00:00") >= dataZerada
   );
 }
 
