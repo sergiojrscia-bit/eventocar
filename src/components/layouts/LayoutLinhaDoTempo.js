@@ -3,7 +3,9 @@ import Filtros from "@/components/Filtros";
 import EspacoAnuncio from "@/components/EspacoAnuncio";
 import Preferencias from "@/components/Preferencias";
 import LinkPreview from "@/components/LinkPreview";
-import { Contador, MensagemVazia, TextoRodape } from "@/components/Resumo";
+import { Contador, MensagemVazia } from "@/components/Resumo";
+import MenuPrincipal from "@/components/MenuPrincipal";
+import ConteudoRodape from "@/components/Rodape";
 import { agruparPorMes } from "@/lib/eventos";
 import { partesData, textoPeriodo, textoValor } from "@/lib/formatacao";
 import { estiloDoTipo } from "@/lib/tipos";
@@ -19,6 +21,7 @@ export default function LayoutLinhaDoTempo({ eventos, filtros, aoMudar, preferen
   return (
     <div className={styles.pagina}>
       <header className={styles.header}>
+        <MenuPrincipal atual="eventos" className={styles.menu} />
         <h1>EventoCar</h1>
         <p>O que vem por aí no mundo automotivo</p>
         <Filtros filtros={filtros} aoMudar={aoMudar} className={styles.filtros} />
@@ -59,7 +62,7 @@ export default function LayoutLinhaDoTempo({ eventos, filtros, aoMudar, preferen
       </main>
 
       <footer className={styles.footer}>
-        <TextoRodape />
+        <ConteudoRodape />
       </footer>
     </div>
   );

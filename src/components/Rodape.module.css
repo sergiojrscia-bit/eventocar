@@ -1,0 +1,18 @@
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 1.25rem;
+  margin-top: 0.5rem;
+}
+
+/* Herda a cor do rodapé de cada layout, sublinhado para parecer link */
+.link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.link:hover {
+  text-decoration-thickness: 2px;
+}

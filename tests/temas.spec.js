@@ -6,7 +6,9 @@
 // Se alguém criar ou mudar um tema com cor ilegível, este teste falha.
 
 import { test, expect } from "@playwright/test";
-import { TEMAS } from "../src/lib/temas.js";
+import fs from "node:fs";
+import path from "node:path";
+import { TEMAS, cssDosTemas } from "../src/lib/temas.js";
 
 const CONTRASTE_MINIMO = 4.5;
 
@@ -57,4 +59,35 @@ test.describe("Temas de cores - contraste de leitura WCAG AA (RF14)", () => {
       expect(reprovados, `pares abaixo de ${CONTRASTE_MINIMO}:1`).toEqual([]);
     });
   }
+});
+
+// Todo arquivo .css dentro de src/ (procura em subpastas também)
+function arquivosCss(pasta) {
+  return fs.readdirSync(pasta, { withFileTypes: true }).flatMap((item) => {
+    const caminho = path.join(pasta, item.name);
+    if (item.isDirectory()) return arquivosCss(caminho);
+    return item.name.endsWith(".css") ? [caminho] : [];
+  });
+}
+
+// --cor-tipo não vem do tema: cada card define a sua (estiloDoTipo, em src/lib/tipos.js)
+const DEFINIDAS_FORA_DOS_TEMAS = ["--cor-tipo"];
+
+test.describe("Temas de cores - variaveis usadas nos estilos existem (RF14)", () => {
+  test("toda variavel --cor-* usada nos arquivos CSS e definida pelos temas", () => {
+    const definidas = new Set(cssDosTemas().match(/--cor-[a-z0-9-]+(?=:)/g));
+    const usadas = new Set(
+      arquivosCss(path.join(process.cwd(), "src")).flatMap(
+        (arquivo) => fs.readFileSync(arquivo, "utf-8").match(/(?<=var\()--cor-[a-z0-9-]+/g) ?? []
+      )
+    );
+
+    const semDefinicao = [...usadas].filter(
+      (nome) => !definidas.has(nome) && !DEFINIDAS_FORA_DOS_TEMAS.includes(nome)
+    );
+
+    // Uma variável sem definição faz o navegador herdar a cor do elemento de
+    // cima — foi assim que o menu sumiu nas páginas institucionais em 2026-10-03.
+    expect(semDefinicao, "variáveis usadas no CSS mas não definidas em src/lib/temas.js").toEqual([]);
+  });
 });

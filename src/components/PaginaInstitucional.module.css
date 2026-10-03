@@ -1,0 +1,117 @@
+.pagina {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: var(--cor-header);
+  border-bottom: 3px solid var(--cor-acento);
+  padding: 0.9rem 1rem;
+}
+
+.headerConteudo {
+  max-width: 1180px;
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.marca {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cor-texto-header);
+  text-decoration: none;
+}
+
+.marca:focus-visible {
+  outline: 2px solid var(--cor-acento-claro);
+  outline-offset: 3px;
+}
+
+.main {
+  flex: 1;
+  padding: 2.5rem 1rem 3.5rem;
+}
+
+/* Coluna de leitura: ~70 caracteres por linha é o mais confortável */
+.texto {
+  max-width: 44rem;
+  margin-inline: auto;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  padding: 2.25rem 2.5rem;
+  line-height: 1.7;
+}
+
+.texto h1 {
+  font-size: 2.25rem;
+  line-height: 1.15;
+}
+
+.intro {
+  font-size: 1.1rem;
+  color: var(--cor-texto-secundario);
+  margin-top: 0.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px dashed var(--cor-acento);
+}
+
+.texto h2 {
+  font-size: 1.3rem;
+  margin: 2rem 0 0.5rem;
+}
+
+.texto p,
+.texto ul {
+  margin-top: 0.75rem;
+}
+
+.texto ul {
+  padding-left: 1.25rem;
+}
+
+.texto li + li {
+  margin-top: 0.35rem;
+}
+
+.texto a {
+  color: var(--cor-acento-texto);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.texto code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85em;
+  background: var(--cor-superficie2);
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+}
+
+.footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  color: var(--cor-texto-secundario);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--cor-borda);
+}
+
+@media (max-width: 600px) {
+  .main {
+    padding-top: 1.25rem;
+  }
+
+  .texto {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .texto h1 {
+    font-size: 1.75rem;
+  }
+}

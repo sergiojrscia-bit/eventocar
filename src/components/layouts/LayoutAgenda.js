@@ -3,7 +3,9 @@ import Filtros from "@/components/Filtros";
 import EspacoAnuncio from "@/components/EspacoAnuncio";
 import Preferencias from "@/components/Preferencias";
 import LinkPreview from "@/components/LinkPreview";
-import { Contador, MensagemVazia, TextoRodape } from "@/components/Resumo";
+import { Contador, MensagemVazia } from "@/components/Resumo";
+import MenuPrincipal from "@/components/MenuPrincipal";
+import ConteudoRodape from "@/components/Rodape";
 import { agruparPorMes } from "@/lib/eventos";
 import { partesData, textoPeriodo, textoValor } from "@/lib/formatacao";
 import { estiloDoTipo } from "@/lib/tipos";
@@ -20,6 +22,7 @@ export default function LayoutAgenda({ eventos, filtros, aoMudar, preferencias }
     <div className={styles.pagina}>
       <header className={styles.header}>
         <div className={styles.headerConteudo}>
+          <MenuPrincipal atual="eventos" className={styles.menu} />
           <h1>EventoCar</h1>
           <p>Agenda de eventos de carro no Brasil. Encontros, track days, arrancadas e exposições.</p>
         </div>
@@ -59,7 +62,7 @@ export default function LayoutAgenda({ eventos, filtros, aoMudar, preferencias }
       </div>
 
       <footer className={styles.footer}>
-        <TextoRodape />
+        <ConteudoRodape />
       </footer>
     </div>
   );

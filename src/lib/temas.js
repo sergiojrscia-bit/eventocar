@@ -163,9 +163,12 @@ export const TEMA_PADRAO = TEMAS[0].id;
 // em testes, com outro padrão) deixam de valer e todos voltam ao Original.
 export const CHAVE_TEMA = "eventocar:tema";
 
-// Nome da variável CSS de cada cor (ex: textoSecundario -> --cor-texto-secundario)
+// Nome da variável CSS de cada cor. Hífen só antes de letra maiúscula, nunca
+// antes de número: textoSecundario -> --cor-texto-secundario,
+// textoHeader2 -> --cor-texto-header2 (é esse o nome usado nos estilos;
+// tests/temas.spec.js confere que todo nome usado no CSS existe aqui).
 function nomeDaVariavel(chave) {
-  return "--cor-" + chave.replace(/[A-Z0-9]/g, (letra) => "-" + letra.toLowerCase());
+  return "--cor-" + chave.replace(/[A-Z]/g, (letra) => "-" + letra.toLowerCase());
 }
 
 /**

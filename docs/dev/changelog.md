@@ -11,6 +11,23 @@ nav_order: 4
 
 ---
 
+## 2026-10-03 — Menu e páginas Sobre, Contato e Privacidade (REQ-002)
+
+**O que mudou:** Todas as páginas ganharam um menu no cabeçalho (Eventos, Sobre e Contato), com o item da página atual destacado, e links no rodapé (Sobre, Contato e Privacidade). Três páginas novas, cada uma com endereço e título próprios: `/sobre`, `/contato` e `/privacidade`.
+
+**Por quê:** Passa confiança sobre o site e os anúncios (opção B da decisão de confiança nos anúncios), é o passo 1 da ideia #17 e a política de privacidade é exigida para aprovar o AdSense. Ver `docs/analista/HU-002-menu-paginas-institucionais.md` e `docs/analista/REQ-002-menu-paginas-institucionais.md`.
+
+**Decisões do dono do projeto:** contato por e-mail dedicado ao site (ainda não criado — a página avisa que será divulgado em breve; para ativar, preencher `emailContato` em `src/lib/site.js`); página Sobre em nome do "EventoCar", sem nome de pessoa; menu no topo e links no rodapé.
+
+**Arquivos criados ou modificados:**
+- Criados: `src/app/sobre/page.js`, `src/app/contato/page.js`, `src/app/privacidade/page.js`, `src/lib/site.js` (nome, e-mail e links do menu/rodapé), `MenuPrincipal`, `Rodape` (`ConteudoRodape`), `PaginaInstitucional` e `CanalContato`
+- Modificados: os três layouts da página inicial (menu no cabeçalho e links no rodapé) e `Resumo.js` (o texto do rodapé saiu para `Rodape.js`)
+- Testes: `tests/navegacao.spec.js` com o Page Object `tests/pages/Navegacao.js` — 15 cenários (menu nos três modos, navegação pelo menu e pelo rodapé, título de cada página, seções da política de privacidade, canal de contato, tema escolhido mantido nas páginas novas, celular sem rolagem horizontal e nenhum erro no console)
+
+**Defeito encontrado e corrigido no caminho:** a função que gera os nomes das variáveis de cor punha hífen antes de número (`--cor-texto-header-2`), mas os estilos usavam `--cor-texto-header2`. As variáveis `--cor-texto-header2` e `--cor-superficie2` nunca existiram desde a entrega dos temas, e o navegador herdava a cor do elemento de cima: nas páginas novas, os itens do menu ficaram invisíveis (texto escuro sobre o cabeçalho escuro); na página inicial, o subtítulo da Grade, o selo de tipo e o hover dos botões "Ver como" não estavam na cor planejada. Corrigido em `src/lib/temas.js`, e `tests/temas.spec.js` ganhou um teste que confere se toda variável `--cor-*` usada nos arquivos CSS é definida pelos temas — ele falhou apontando as duas variáveis antes da correção.
+
+**Resultado:** 51 passando e 1 pulado, em 3 rodadas seguidas. Páginas conferidas no computador e no celular, em tema claro e escuro.
+
 ## 2026-10-03 — Visitante escolhe o tema de cores do site (RF14)
 
 **O que mudou:** Ao lado do "Ver como", a barra de filtros ganhou "Cores": cinco bolinhas para escolher o tema — Original (padrão), Laranja pista, Azul oceano, Verde inglês, Amarelo largada (escuro) e Rosa neon (escuro). O Original recupera o visual de antes dos temas: links azuis e faixa lateral colorida pelo tipo do evento nos cards. Cada tema troca a página inteira: fundo, cards, textos, bordas, cabeçalho e destaques. A escolha vale para os três modos, fica salva no navegador e é aplicada antes de a página aparecer.

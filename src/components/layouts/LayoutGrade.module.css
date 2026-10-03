@@ -26,6 +26,12 @@
   margin-inline: auto;
 }
 
+/* menu no canto direito, acima do selo e do título */
+.menu {
+  justify-content: flex-end;
+  margin: -1.5rem 0 1rem;
+}
+
 .selo {
   display: inline-block;
   font-family: var(--font-mono), monospace;

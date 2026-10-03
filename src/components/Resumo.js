@@ -15,7 +15,3 @@ export function MensagemVazia({ className }) {
     </p>
   );
 }
-
-export function TextoRodape() {
-  return <p>EventoCar — feito por entusiastas, para entusiastas.</p>;
-}

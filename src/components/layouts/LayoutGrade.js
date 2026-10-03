@@ -3,7 +3,9 @@ import Filtros from "@/components/Filtros";
 import EspacoAnuncio from "@/components/EspacoAnuncio";
 import Preferencias from "@/components/Preferencias";
 import LinkPreview from "@/components/LinkPreview";
-import { Contador, MensagemVazia, TextoRodape } from "@/components/Resumo";
+import { Contador, MensagemVazia } from "@/components/Resumo";
+import MenuPrincipal from "@/components/MenuPrincipal";
+import ConteudoRodape from "@/components/Rodape";
 import { partesData, textoPeriodo, textoValor } from "@/lib/formatacao";
 import { estiloDoTipo } from "@/lib/tipos";
 import styles from "./LayoutGrade.module.css";
@@ -25,6 +27,7 @@ export default function LayoutGrade({ eventos, filtros, aoMudar, preferencias })
     <div className={styles.pagina}>
       <header className={styles.hero}>
         <div className={styles.heroConteudo}>
+          <MenuPrincipal atual="eventos" className={styles.menu} />
           <span className={styles.selo}>Agenda automotiva</span>
           <h1>EventoCar</h1>
           <p>Os próximos eventos de carro, com data, local e valor.</p>
@@ -55,7 +58,7 @@ export default function LayoutGrade({ eventos, filtros, aoMudar, preferencias })
       </main>
 
       <footer className={styles.footer}>
-        <TextoRodape />
+        <ConteudoRodape />
       </footer>
     </div>
   );

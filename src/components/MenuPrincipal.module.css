@@ -1,0 +1,37 @@
+.menu {
+  display: flex;
+}
+
+.lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  list-style: none;
+}
+
+.link {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--cor-texto-header2);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+}
+
+.link:hover {
+  color: var(--cor-texto-header);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Página atual: pílula na cor de destaque do tema */
+.link[aria-current="page"] {
+  color: var(--cor-sobre-acento);
+  background: var(--cor-acento);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--cor-acento-claro);
+  outline-offset: 2px;
+}
