@@ -120,9 +120,10 @@ Passa confiança sem prometer o que não controlamos e sem violar as regras do A
 
 ## Próximo passo
 
-- Opção B: criar a HU e os requisitos das páginas Sobre, Contato e Política de privacidade.
+- Opção B: criar a HU e os requisitos das páginas Sobre, Contato e Política de privacidade —
+  **entregue em 2026-10-03** (HU-002/REQ-002).
 - Opção C: transformar a lista de controles do painel num checklist para o dia da ativação do
-  AdSense.
+  AdSense — **entregue em 2026-10-03** (`docs/projeto/checklist-ativacao-adsense.md`).
 
 ---
 
