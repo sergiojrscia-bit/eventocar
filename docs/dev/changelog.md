@@ -11,6 +11,18 @@ nav_order: 4
 
 ---
 
+## 2026-10-03 — Modo de visualização salvo sem "piscar" (RF11)
+
+**O que mudou:** Quem salvou Grade ou Linha do tempo via a Agenda por um instante ao abrir a página. Agora a página já chega do servidor no modo salvo.
+
+**Como funciona:** o modo saiu do `localStorage` e foi para um cookie (`eventocar-visualizacao`, válido por 1 ano). `src/app/page.js` virou a parte "servidor": lê o cookie com `await cookies()` e entrega o modo inicial para `src/components/PaginaEventos.js`, a parte "navegador" (filtros, troca de modo e de tema). Nomes, padrão e gravação do cookie ficam em `src/lib/modos.js`. O valor antigo do `localStorage` é apagado na primeira visita.
+
+**Consequência:** ler cookies torna a página inicial dinâmica — montada a cada visita, em vez de uma vez só no build (`next build` mostra `ƒ /`). Sobre, Contato e Privacidade continuam estáticas. Decisão do dono do projeto, entre esta opção e a de esconder a lista até o React assumir (que só trocaria o piscar por um instante em branco).
+
+**Política de privacidade:** a seção "O que guardamos no seu navegador" agora descreve o cookie do modo (o que guarda, que é enviado ao site a cada visita e que não identifica ninguém).
+
+**Testes:** 3 cenários novos conferem o HTML que o servidor devolve — Agenda na primeira visita, e Grade ou Linha do tempo depois de escolhidos. Resultado: 54 passando e 1 pulado, em 3 rodadas. Conferido também com o JavaScript desligado: a página já chega no modo salvo.
+
 ## 2026-10-03 — Menu e páginas Sobre, Contato e Privacidade (REQ-002)
 
 **O que mudou:** Todas as páginas ganharam um menu no cabeçalho (Eventos, Sobre e Contato), com o item da página atual destacado, e links no rodapé (Sobre, Contato e Privacidade). Três páginas novas, cada uma com endereço e título próprios: `/sobre`, `/contato` e `/privacidade`.

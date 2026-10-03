@@ -252,6 +252,7 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-10-03 | Analista | HU-002 e REQ-002 criadas e entregues: menu no cabeçalho (Eventos, Sobre, Contato), links no rodapé (Sobre, Contato, Privacidade) e páginas `/sobre`, `/contato` e `/privacidade` | Passo 1 da ideia #17 e opção B da decisão de confiança nos anúncios; a política de privacidade também é pré-requisito do AdSense. Decisões do dono do projeto: contato por e-mail dedicado ao site (não o pessoal; ainda a criar), página Sobre em nome do "EventoCar" sem nome de pessoa, menu no topo + rodapé. A política descreve só o que o site faz hoje e precisa de revisão jurídica antes de publicar com anúncios. Ver `docs/analista/HU-002-menu-paginas-institucionais.md` e `docs/analista/REQ-002-menu-paginas-institucionais.md` |
 | 2026-10-03 | Dev | Corrigido defeito nos nomes das variáveis de cor e criado teste que confere se toda variável `--cor-*` usada no CSS existe nos temas | `--cor-texto-header2` e `--cor-superficie2` nunca existiram desde a entrega dos temas (a geração punha hífen antes do número); o menu ficou invisível nas páginas institucionais. O teste de contraste não pegava porque confere as cores, não se o CSS as encontra |
 | 2026-10-03 | Projeto | Checklist de ativação do AdSense criado (`docs/projeto/checklist-ativacao-adsense.md`) | Opção C da decisão de confiança nos anúncios: reúne pré-requisitos, configuração do painel (só anúncios posicionados por nós; vinheta, âncora e faixas laterais desligadas; blocos com os tamanhos já reservados; bloqueio de apostas, álcool e outras categorias sensíveis; mensagem de consentimento para EEE/Reino Unido/Suíça), mudanças no código, verificação pós-ativação, rotina mensal e o que nunca fazer. Caminhos do painel conferidos na ajuda do Google em 2026-10-03 |
+| 2026-10-03 | Dev | Modo de visualização salvo passa do `localStorage` para um cookie (`eventocar-visualizacao`), lido pelo servidor; a página inicial vira renderização dinâmica | Elimina o "piscar" da Agenda para quem salvou outro modo: o servidor já entrega a página no modo certo. Alternativa descartada: esconder a lista até o React assumir (trocaria o piscar por um instante em branco). Custo aceito: página inicial montada a cada visita (irrelevante no volume atual) e política de privacidade atualizada para descrever o cookie |
 | 2026-07-14 | Analista | Comparação de frameworks de teste adiada e registrada como ideia #16 | Prioridade dada à infraestrutura de CI do que já existe. Dois experimentos desenhados e preservados no `ideias.md`: Playwright vs Cypress (motores) e Playwright puro vs CodeceptJS (camada de abstração) |
 
 
@@ -361,6 +362,8 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | `docs/analista/REQ-002-menu-paginas-institucionais.md` | Analista | Requisitos do menu e das páginas institucionais |
 | `src/app/sobre/page.js`, `src/app/contato/page.js`, `src/app/privacidade/page.js` | Dev | Páginas institucionais |
 | `src/lib/site.js` | Dev | Nome do site, e-mail de contato e links do menu e do rodapé |
+| `src/lib/modos.js` | Dev | Modos de visualização, cookie onde o modo fica salvo e validação do valor |
+| `src/components/PaginaEventos.js` | Dev | Parte "navegador" da página inicial (filtros, troca de modo e de tema); `src/app/page.js` virou a parte "servidor", que lê o cookie |
 | `src/components/MenuPrincipal.js`, `Rodape.js`, `PaginaInstitucional.js`, `CanalContato.js` (+ estilos) | Dev | Menu do cabeçalho, rodapé com links, moldura das páginas institucionais e canal de contato |
 | `tests/navegacao.spec.js` + `tests/pages/Navegacao.js` | QA | Testes do menu e das páginas institucionais, com Page Object próprio |
 | `docs/projeto/checklist-ativacao-adsense.md` | Projeto | Checklist para o dia da ativação do Google AdSense |
@@ -371,4 +374,4 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 
 ---
 
-*Última atualização: 2026-10-03 (3 modos de visualização; espaços de anúncio; links mostrando o site de destino — RF13; 6 temas de cores — RF14; menu e páginas Sobre, Contato e Privacidade — HU-002/REQ-002; checklist de ativação do AdSense)*
+*Última atualização: 2026-10-03 (3 modos de visualização, com o modo salvo em cookie e sem "piscar"; espaços de anúncio; links mostrando o site de destino — RF13; 6 temas de cores — RF14; menu e páginas Sobre, Contato e Privacidade — HU-002/REQ-002; checklist de ativação do AdSense)*

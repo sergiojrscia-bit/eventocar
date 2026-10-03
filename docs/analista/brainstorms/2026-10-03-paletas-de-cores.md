@@ -111,8 +111,11 @@ garantir a leitura de cada paleta por cálculo, e não no olho.
 7. O modo **Linha do tempo continua sempre escuro** (é a identidade dele), tingido pelo tom de
    cada tema. Agenda e Grade trocam por completo.
 
-**Limitação conhecida:** o *modo de visualização* salvo ainda aparece como Agenda por um instante
-ao abrir a página, até o React assumir — a correção do "piscar" foi feita só para as cores.
+**Limitação resolvida no mesmo dia:** o *modo de visualização* salvo aparecia como Agenda por um
+instante ao abrir a página. O modo passou do `localStorage` para um cookie
+(`eventocar-visualizacao`): o servidor lê o cookie e já entrega a página montada no modo salvo. A
+página inicial passou a ser renderizada a cada visita (dinâmica); as páginas institucionais
+continuam estáticas.
 
 **Revisões no mesmo dia:**
 

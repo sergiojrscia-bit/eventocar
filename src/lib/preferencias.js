@@ -1,5 +1,6 @@
-// Preferências do visitante salvas no navegador dele (localStorage):
-// modo de visualização (RF11) e paleta de cores (RF14).
+// Preferências do visitante salvas no navegador dele (localStorage) —
+// hoje, o tema de cores (RF14). O modo de visualização (RF11) fica num
+// cookie, para o servidor já montar a página no modo certo (src/lib/modos.js).
 //
 // Fica só no aparelho da pessoa, sem cadastro. O acesso fica dentro de
 // try/catch porque o navegador pode bloquear o localStorage (aba anônima,

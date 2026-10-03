@@ -87,6 +87,21 @@ export class PaginaInicial {
     });
   }
 
+  /**
+   * Confere o HTML que o SERVIDOR devolve (antes de qualquer JavaScript
+   * rodar no navegador): ele já precisa vir no modo de visualização salvo,
+   * para a página não "piscar" mostrando outro modo primeiro.
+   * O pedido usa os mesmos cookies do navegador do teste.
+   */
+  async verificarModoNoHtmlDoServidor(nome) {
+    const ids = { Agenda: "agenda", Grade: "grade", "Linha do tempo": "linha" };
+    await test.step(`Verifica que o HTML do servidor já vem no modo "${nome}"`, async () => {
+      const resposta = await this.page.request.get("/");
+      expect(resposta.ok()).toBe(true);
+      expect(await resposta.text()).toContain(`data-modo="${ids[nome]}"`);
+    });
+  }
+
   // --- Cores (paletas) — RF14 -------------------------------------------
 
   botaoCor(nome) {

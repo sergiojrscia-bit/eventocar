@@ -279,3 +279,22 @@ test.describe("Pagina inicial - tema Original com faixa colorida do tipo (RF14)"
     await paginaInicial.verificarFaixaDoTipoNoPrimeiroCard(null);
   });
 });
+
+test.describe("Pagina inicial - modo salvo sem piscar (RF11)", () => {
+  test("na primeira visita, o servidor entrega a pagina no modo Agenda", async ({ page }) => {
+    const paginaInicial = new PaginaInicial(page);
+
+    await paginaInicial.verificarModoNoHtmlDoServidor("Agenda");
+  });
+
+  for (const modo of ["Grade", "Linha do tempo"]) {
+    test(`depois de escolher "${modo}", o servidor ja entrega a pagina nesse modo`, async ({ page }) => {
+      const paginaInicial = new PaginaInicial(page);
+      await paginaInicial.abrir();
+
+      await paginaInicial.selecionarVisualizacao(modo);
+
+      await paginaInicial.verificarModoNoHtmlDoServidor(modo);
+    });
+  }
+});

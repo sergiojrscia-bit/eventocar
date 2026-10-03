@@ -28,26 +28,30 @@ export default function Privacidade() {
       <ul>
         <li>O EventoCar não tem cadastro e não pede seu nome, e-mail ou telefone.</li>
         <li>Não usamos ferramentas de análise de visitas.</li>
-        <li>Suas preferências de visualização ficam só no seu navegador.</li>
+        <li>Suas preferências de visualização ficam no seu navegador e não identificam você.</li>
       </ul>
 
       <h2>O que guardamos no seu navegador</h2>
       <p>
-        Guardamos duas preferências no armazenamento local do seu navegador
-        (o <code>localStorage</code>), para o site abrir do jeito que você escolheu:
+        Guardamos duas preferências, para o site abrir do jeito que você escolheu. Nenhuma delas
+        identifica você:
       </p>
       <ul>
         <li>
-          a forma de ver a lista de eventos (Agenda, Grade ou Linha do tempo), com o nome{" "}
-          <code>eventocar:visualizacao</code>;
+          <strong>Forma de ver a lista de eventos</strong> (Agenda, Grade ou Linha do tempo): fica
+          num cookie chamado <code>eventocar-visualizacao</code>, que dura um ano. O cookie é
+          enviado ao EventoCar a cada visita, para a página já chegar montada do jeito que você
+          escolheu. Ele guarda só o nome da forma escolhida.
         </li>
         <li>
-          o tema de cores escolhido, com o nome <code>eventocar:tema</code>.
+          <strong>Tema de cores:</strong> fica no armazenamento local do navegador (o{" "}
+          <code>localStorage</code>), com o nome <code>eventocar:tema</code>, e não é enviado para
+          nós.
         </li>
       </ul>
       <p>
-        Essas informações ficam só no seu aparelho e não são enviadas para nós. Para apagá-las,
-        limpe os dados deste site nas configurações do seu navegador.
+        Para apagar essas preferências, limpe os cookies e os dados deste site nas configurações do
+        seu navegador. O site volta a abrir no jeito padrão.
       </p>
 
       <h2>Conteúdo de terceiros</h2>
