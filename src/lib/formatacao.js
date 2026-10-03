@@ -33,3 +33,15 @@ export function textoValor(valor) {
   if (valor === null || valor === undefined) return null;
   return valor === 0 ? "Gratuito" : `A partir de R$ ${valor}`;
 }
+
+/**
+ * Site de destino de um link, para mostrar ao visitante antes do clique (RF13).
+ * "https://www.instagram.com/p/abc/" -> "instagram.com". Link inválido -> null.
+ */
+export function dominioDoLink(href) {
+  try {
+    return new URL(href).hostname.replace(/^www\./, "");
+  } catch {
+    return null;
+  }
+}

@@ -204,3 +204,18 @@ test.describe("Pagina inicial - visualizacao escolhida pelo visitante (RF11)", (
     await paginaInicial.verificarVisualizacaoAtiva("Grade");
   });
 });
+
+test.describe("Pagina inicial - links mostram o site de destino (RF13)", () => {
+  for (const modo of ["Agenda", "Grade", "Linha do tempo"]) {
+    test(`na visualizacao "${modo}", todo link de post mostra que leva ao instagram.com`, async ({ page }) => {
+      const paginaInicial = new PaginaInicial(page);
+      const comLink = eventosVisiveis(eventos, {}).filter((evento) => evento.link);
+      test.skip(comLink.length === 0, "Nenhum evento futuro com link no momento");
+      await paginaInicial.abrir();
+
+      await paginaInicial.selecionarVisualizacao(modo);
+
+      await paginaInicial.verificarLinksMostramDestino(comLink.length, "instagram.com");
+    });
+  }
+});

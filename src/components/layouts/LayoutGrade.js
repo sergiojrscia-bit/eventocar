@@ -80,7 +80,7 @@ function CardGrade({ evento }) {
       </p>
       <div className={styles.rodapeCard}>
         <span className={styles.valor}>{valor ?? "Valor a confirmar"}</span>
-        {evento.link && <LinkPreview href={evento.link}>Ver post →</LinkPreview>}
+        {evento.link && <LinkPreview href={evento.link}>Ver post</LinkPreview>}
       </div>
     </article>
   );

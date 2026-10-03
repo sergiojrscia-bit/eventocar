@@ -2,13 +2,19 @@
 
 import { useState, useEffect } from "react";
 import styles from "./LinkPreview.module.css";
+import { dominioDoLink } from "@/lib/formatacao";
 
 // Mostra um popover com o embed oficial do Instagram ao passar o mouse
 // sobre o link. Só funciona para links do Instagram — para outros
 // domínios, o link se comporta normalmente, sem prévia.
+//
+// O link sempre mostra o site de destino (ex: "instagram.com ↗") — quem vê
+// sabe para onde vai antes de clicar, e não confunde nosso link com anúncio
+// (RF13, decisão de 2026-10-03 sobre confiança nos anúncios).
 export default function LinkPreview({ href, children }) {
   const [aberto, setAberto] = useState(false);
-  const ehInstagram = href.includes("instagram.com");
+  const dominio = dominioDoLink(href);
+  const ehInstagram = dominio === "instagram.com";
 
   useEffect(() => {
     if (!aberto || !ehInstagram) return;
@@ -41,7 +47,14 @@ export default function LinkPreview({ href, children }) {
         rel="noopener noreferrer"
         className={styles.link}
       >
-        {children}
+        <span className={styles.texto}>{children}</span>
+        {dominio && (
+          <span className={styles.destino}>
+            {dominio}
+            <span aria-hidden="true"> ↗</span>
+          </span>
+        )}
+        <span className={styles.somenteLeitor}> (abre em nova aba)</span>
       </a>
 
       {aberto && ehInstagram && (

@@ -5,10 +5,38 @@
   margin-top: 0.25rem;
 }
 
+/* Duas linhas: "Ver post" (sublinhado) e, embaixo, o site de destino */
 .link {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.1rem;
   font-size: 0.85rem;
   color: var(--cor-acento-texto);
   font-weight: 600;
+  text-decoration: none;
+}
+
+.texto {
+  text-decoration: underline;
+}
+
+/* Site de destino: mais discreto que o texto do link, sempre inteiro */
+.destino {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  font-weight: 400;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+/* Texto lido só por leitores de tela (pessoas com deficiência visual) */
+.somenteLeitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .popover {

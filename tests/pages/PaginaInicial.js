@@ -210,6 +210,23 @@ export class PaginaInicial {
     });
   }
 
+  /**
+   * RF13: todo link de post nos cards mostra o site de destino no texto
+   * (ex: "instagram.com") e aponta de fato para esse site.
+   */
+  async verificarLinksMostramDestino(quantidadeEsperada, dominio) {
+    await test.step(`Verifica que ${quantidadeEsperada} link(s) de post mostram "${dominio}" e levam até lá`, async () => {
+      const links = this.cards().getByRole("link");
+      await expect(links).toHaveCount(quantidadeEsperada);
+      for (const link of await links.all()) {
+        await expect(link).toContainText(dominio);
+        const destino = new URL(await link.getAttribute("href"));
+        expect(destino.protocol).toBe("https:");
+        expect(destino.hostname.replace(/^www\./, "")).toBe(dominio);
+      }
+    });
+  }
+
   async verificarCabecalhoERodapeVisiveis() {
     await test.step("Verifica que o cabeçalho e o rodapé aparecem na página", async () => {
       await expect(this.cabecalho()).toBeVisible();

@@ -89,7 +89,7 @@ function CardAgenda({ evento }) {
       </div>
       <div className={styles.acoes}>
         {valor && <span className={styles.valor}>{valor}</span>}
-        {evento.link && <LinkPreview href={evento.link}>Ver post →</LinkPreview>}
+        {evento.link && <LinkPreview href={evento.link}>Ver post</LinkPreview>}
       </div>
     </article>
   );

@@ -168,6 +168,7 @@
   padding-top: 0.75rem;
   border-top: 1px dashed var(--cor-borda);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
@@ -182,6 +183,7 @@
   font-family: var(--font-mono), monospace;
   font-size: 0.8rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .vazio {

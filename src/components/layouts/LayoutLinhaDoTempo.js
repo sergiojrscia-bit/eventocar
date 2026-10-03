@@ -83,7 +83,7 @@ function CardLinha({ evento }) {
       </p>
       <div className={styles.rodapeCard}>
         {valor && <span className={styles.valor}>{valor}</span>}
-        {evento.link && <LinkPreview href={evento.link}>Ver post →</LinkPreview>}
+        {evento.link && <LinkPreview href={evento.link}>Ver post</LinkPreview>}
       </div>
     </article>
   );

@@ -39,7 +39,7 @@ nav_order: 2
 | # | Ideia | Status | Observações |
 |---|-------|--------|-------------|
 | 2 | Integrar Google AdSense de forma não invasiva — sem poluir a tela ou prejudicar a navegação | ✅ Aprovada | Decidido em 2026-10-03: cada anúncio em área própria, nunca sobreposto ao conteúdo, com altura reservada e rótulo "Publicidade"; posições definidas para cada modo de visualização (RF12). Ver `docs/analista/brainstorms/2026-10-03-layout-visualizacoes-e-espacos-adsense.md` |
-| 3 | Adicionar algum indicador visual de que os anúncios do AdSense são seguros e confiáveis | 💭 Em aberto | Reduzir desconfiança do usuário em clicar nos anúncios |
+| 3 | Adicionar algum indicador visual de que os anúncios do AdSense são seguros e confiáveis | ❌ Descartada | Decidido em 2026-10-03: selo de "anúncio seguro" vai contra as regras do AdSense (incentivo a clique) e promete o que não controlamos. Substituído por transparência (links mostram o destino — RF13), páginas Sobre/Contato/Privacidade e controle no painel do AdSense. Ver `docs/analista/brainstorms/2026-10-03-confianca-nos-anuncios.md` |
 
 ---
 
@@ -96,4 +96,4 @@ nav_order: 2
 
 ---
 
-*Última atualização: 2026-10-03 (ideia #2 aprovada — espaços de anúncio em área própria, sem sobreposição, em cada modo de visualização)*
+*Última atualização: 2026-10-03 (ideia #2 aprovada — espaços de anúncio sem sobreposição; ideia #3 descartada — selo de segurança trocado por transparência e controle)*

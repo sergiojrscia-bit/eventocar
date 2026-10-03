@@ -11,6 +11,14 @@ nav_order: 4
 
 ---
 
+## 2026-10-03 — Links mostram o site de destino (RF13)
+
+**O que mudou:** O link de cada card passou a ter duas linhas: "Ver post" e, embaixo, o site de destino ("instagram.com ↗"). Leitores de tela também ouvem "(abre em nova aba)". O domínio vem da nova função `dominioDoLink()` em `src/lib/formatacao.js`, usada pelo `LinkPreview`.
+
+**Por quê:** Parte da decisão sobre confiança nos anúncios: quem sabe para onde o link leva não confunde nosso link com anúncio. Decisão completa em `docs/analista/brainstorms/2026-10-03-confianca-nos-anuncios.md`.
+
+**Testes:** 3 cenários novos (um por modo de visualização) verificam que todo link de post mostra "instagram.com" e aponta de fato para `https://instagram.com`. Resultado: 19 passando e 1 pulado, em 3 rodadas seguidas. Conferido também que nenhum link passa da borda do card em telas de 1366px, 375px e 320px.
+
 ## 2026-10-03 — Novo layout com 3 modos de visualização e espaços para anúncios
 
 **O que mudou:** A página inicial ganhou três modos de visualização que o visitante escolhe pelos botões "Ver como" na barra de filtros: **Agenda** (padrão, eventos agrupados por mês), **Grade** (cards) e **Linha do tempo** (tema escuro). A escolha fica salva no navegador do visitante. Cada modo tem espaços reservados para anúncios do AdSense em área própria, sem sobreposição. Os cards passaram a destacar a data e a mostrar horário, local, período (eventos de vários dias) e "A partir de R$ X".
