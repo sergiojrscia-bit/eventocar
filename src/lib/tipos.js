@@ -11,6 +11,14 @@ export const CORES_TIPO = {
 
 export const TIPOS_EVENTO = Object.keys(CORES_TIPO);
 
+/**
+ * Cor do tipo do evento como variável CSS (--cor-tipo), para a faixa lateral
+ * dos cards. A faixa só aparece nos temas que pedem (tema "Original").
+ */
+export function estiloDoTipo(evento) {
+  return { "--cor-tipo": CORES_TIPO[evento.tipo] || CORES_TIPO["Outros"] };
+}
+
 export const ESTADOS_BRASIL = [
   "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA",
   "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN",

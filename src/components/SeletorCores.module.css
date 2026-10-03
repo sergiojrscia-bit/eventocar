@@ -1,0 +1,71 @@
+.seletor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rotulo {
+  font-size: 0.8rem;
+  color: var(--cor-texto-secundario);
+}
+
+.bolinhas {
+  display: inline-flex;
+  gap: 0.4rem;
+}
+
+.nomeAtivo {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--cor-texto);
+  white-space: nowrap;
+}
+
+/* 28px de bolinha + anel = área de toque confortável no celular */
+.bolinha {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--cor-superficie);
+  box-shadow: 0 0 0 1px var(--cor-borda);
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.bolinha:hover {
+  transform: scale(1.1);
+}
+
+/* Paleta ativa: anel grosso na cor do texto */
+.bolinha[aria-pressed="true"] {
+  box-shadow: 0 0 0 2px var(--cor-texto);
+}
+
+.bolinha:focus-visible {
+  outline: 2px solid var(--cor-acento-texto);
+  outline-offset: 3px;
+}
+
+/* Variante para barras sobre fundo escuro */
+.escuro .rotulo {
+  color: var(--cor-texto-header2);
+}
+
+.escuro .nomeAtivo {
+  color: var(--cor-texto-header);
+}
+
+.escuro .bolinha {
+  border-color: var(--cor-header);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.escuro .bolinha[aria-pressed="true"] {
+  box-shadow: 0 0 0 2px var(--cor-texto-header);
+}
+
+.escuro .bolinha:focus-visible {
+  outline-color: var(--cor-acento-claro);
+}

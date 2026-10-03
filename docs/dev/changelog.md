@@ -11,6 +11,28 @@ nav_order: 4
 
 ---
 
+## 2026-10-03 — Visitante escolhe o tema de cores do site (RF14)
+
+**O que mudou:** Ao lado do "Ver como", a barra de filtros ganhou "Cores": cinco bolinhas para escolher o tema — Original (padrão), Laranja pista, Azul oceano, Verde inglês, Amarelo largada (escuro) e Rosa neon (escuro). O Original recupera o visual de antes dos temas: links azuis e faixa lateral colorida pelo tipo do evento nos cards. Cada tema troca a página inteira: fundo, cards, textos, bordas, cabeçalho e destaques. A escolha vale para os três modos, fica salva no navegador e é aplicada antes de a página aparecer.
+
+**Por quê:** Pedido do dono do projeto. A primeira versão trocava só a cor de destaque e ficou sutil demais; virou tema completo no mesmo dia, e o Original entrou para manter o visual de antes. Decisão completa em `docs/analista/brainstorms/2026-10-03-paletas-de-cores.md`.
+
+**Como funciona:**
+- `src/lib/temas.js` é a única fonte das cores. `cssDosTemas()` gera o CSS de cada tema (variáveis `--cor-fundo`, `--cor-superficie`, `--cor-texto`, `--cor-acento`...), entregue no `<head>` por `src/app/layout.js`, e o tema ativo fica no atributo `data-tema` do `<html>`
+- `scriptTemaInicial()` roda no `<head>` antes de a página aparecer e aplica o tema salvo (padrão "preventing flash before hydration" do Next.js 16), evitando o flash do tema claro para quem usa tema escuro
+- Os layouts e componentes não têm mais nenhuma cor de tema fixa; a Linha do tempo continua escura, tingida pelo tema
+- Faixa do tipo: cada card recebe a cor do seu tipo em `--cor-tipo` (`estiloDoTipo()` em `src/lib/tipos.js`), e o tema define a largura da faixa em `--faixa-tipo` (4px no Original, 0 nos demais)
+- A lógica de salvar preferências saiu do `page.js` para `src/lib/preferencias.js`, reaproveitada pelo modo e pelo tema
+- O nome do tema ativo aparece ao lado das bolinhas, e o tema fica salvo na chave `eventocar:tema`
+  (antes `eventocar:cores`): escolhas salvas em testes, quando o padrão era outro, deixam de valer
+
+**Arquivos criados ou modificados:**
+- Criados: `src/lib/temas.js`, `src/lib/preferencias.js`, `SeletorCores`, `Preferencias` e `tests/temas.spec.js`
+- Modificados: `src/app/layout.js` (CSS dos temas e script no `<head>`), `src/app/page.js`, `globals.css`, `Filtros`, `EspacoAnuncio`, `SeletorVisualizacao` e os três layouts
+- Testes: 10 cenários de navegador do RF14 (tema padrão, cada tema aplicado aos cards, tema + modo lembrados juntos, faixa do tipo só no Original) e 6 de contraste WCAG AA (um por tema, 12 pares cada)
+
+**Resultado:** 35 passando e 1 pulado, em 3 rodadas seguidas. O teste de contraste pegou um par abaixo do limite no Azul oceano (4.48), corrigido. Conferido que, com tema escuro salvo, o `<html>` já está escuro antes de o React assumir a página, sem erro de hidratação. As combinações de temas × modos conferidas no computador e no celular, sem erros no console e sem rolagem horizontal.
+
 ## 2026-10-03 — Links mostram o site de destino (RF13)
 
 **O que mudou:** O link de cada card passou a ter duas linhas: "Ver post" e, embaixo, o site de destino ("instagram.com ↗"). Leitores de tela também ouvem "(abre em nova aba)". O domínio vem da nova função `dominioDoLink()` em `src/lib/formatacao.js`, usada pelo `LinkPreview`.

@@ -1,10 +1,11 @@
 import { Fragment } from "react";
 import Filtros from "@/components/Filtros";
 import EspacoAnuncio from "@/components/EspacoAnuncio";
-import SeletorVisualizacao from "@/components/SeletorVisualizacao";
+import Preferencias from "@/components/Preferencias";
 import LinkPreview from "@/components/LinkPreview";
 import { Contador, MensagemVazia, TextoRodape } from "@/components/Resumo";
 import { partesData, textoPeriodo, textoValor } from "@/lib/formatacao";
+import { estiloDoTipo } from "@/lib/tipos";
 import styles from "./LayoutGrade.module.css";
 
 // A cada quantos cards entra uma faixa de anúncio
@@ -14,7 +15,7 @@ const CARDS_POR_BLOCO = 6;
 // Cabeçalho grande (tipo "capa") com os filtros dentro dele e grade de cards
 // com selo de data. Anúncios: faixa horizontal (728×90) ocupando a largura
 // toda ENTRE blocos de cards, e uma no fim da lista.
-export default function LayoutGrade({ eventos, filtros, aoMudar, visualizacao }) {
+export default function LayoutGrade({ eventos, filtros, aoMudar, preferencias }) {
   const blocos = [];
   for (let i = 0; i < eventos.length; i += CARDS_POR_BLOCO) {
     blocos.push(eventos.slice(i, i + CARDS_POR_BLOCO));
@@ -29,7 +30,7 @@ export default function LayoutGrade({ eventos, filtros, aoMudar, visualizacao })
           <p>Os próximos eventos de carro, com data, local e valor.</p>
           <div className={styles.controles}>
             <Filtros filtros={filtros} aoMudar={aoMudar} className={styles.filtros} />
-            <SeletorVisualizacao {...visualizacao} escuro />
+            <Preferencias {...preferencias} escuro />
           </div>
         </div>
       </header>
@@ -65,7 +66,7 @@ function CardGrade({ evento }) {
   const valor = textoValor(evento.valor);
 
   return (
-    <article data-testid="evento-card" className={styles.card}>
+    <article data-testid="evento-card" className={styles.card} style={estiloDoTipo(evento)}>
       <div className={styles.topo}>
         <div className={styles.data}>
           <span className={styles.dia}>{data.dia}</span>

@@ -6,12 +6,12 @@
   gap: 0.25rem;
   margin-inline: auto;
   max-width: 100%;
-  border: 2px dashed #b8bcc2;
+  border: 2px dashed color-mix(in srgb, var(--cor-texto-secundario) 55%, transparent);
   border-radius: 6px;
   background: repeating-linear-gradient(
     -45deg,
-    rgba(0, 0, 0, 0.02) 0 10px,
-    rgba(0, 0, 0, 0.05) 10px 20px
+    color-mix(in srgb, var(--cor-texto) 3%, transparent) 0 10px,
+    color-mix(in srgb, var(--cor-texto) 7%, transparent) 10px 20px
   );
   color: var(--cor-texto-secundario);
   font-family: var(--font-mono), monospace;

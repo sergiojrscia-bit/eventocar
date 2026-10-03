@@ -6,7 +6,7 @@
 
 .header {
   background: var(--cor-header);
-  color: #fff;
+  color: var(--cor-texto-header);
   padding: 2.5rem 1rem 2rem;
   border-bottom: 3px solid var(--cor-acento);
 }
@@ -25,13 +25,13 @@
 }
 
 .header p {
-  color: #c7c9cc;
+  color: var(--cor-texto-header2);
   margin-top: 0.4rem;
   max-width: 36rem;
 }
 
 .barraFiltros {
-  background: #fff;
+  background: var(--cor-superficie);
   border-bottom: 1px solid var(--cor-borda);
   padding: 0.9rem 1rem;
 }
@@ -98,16 +98,18 @@
   grid-template-columns: 76px minmax(0, 1fr) auto;
   gap: 1.25rem;
   align-items: center;
-  background: #fff;
+  background: var(--cor-superficie);
   border: 1px solid var(--cor-borda);
   border-radius: 8px;
   padding: 1rem 1.25rem 1rem 1rem;
+  /* faixa lateral na cor do tipo — largura 0 nos temas sem faixa */
+  box-shadow: inset var(--faixa-tipo) 0 0 var(--cor-tipo);
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .card:hover {
   border-color: var(--cor-acento);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  box-shadow: inset var(--faixa-tipo) 0 0 var(--cor-tipo), 0 4px 14px rgba(0, 0, 0, 0.06);
 }
 
 .data {
@@ -117,7 +119,7 @@
   padding: 0.5rem 0;
   border-radius: 6px;
   background: var(--cor-header);
-  color: #fff;
+  color: var(--cor-texto-header);
   font-family: var(--font-mono), monospace;
   line-height: 1.1;
 }
@@ -131,12 +133,12 @@
 .mesCurto {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--cor-acento);
+  color: var(--cor-acento-claro);
 }
 
 .semana {
   font-size: 0.65rem;
-  color: #aeb2b8;
+  color: var(--cor-texto-header2);
   margin-top: 0.15rem;
 }
 

@@ -16,7 +16,7 @@
   border: 1px solid var(--cor-borda);
   border-radius: 6px;
   overflow: hidden;
-  background: #fff;
+  background: var(--cor-superficie);
 }
 
 .botao {
@@ -39,22 +39,23 @@
 }
 
 .botao:hover {
-  background: var(--cor-fundo);
+  background: var(--cor-superficie2);
 }
 
+/* Ativo: cores invertidas (texto vira fundo) — funciona em tema claro e escuro */
 .botao[aria-pressed="true"] {
-  background: var(--cor-header);
-  color: #fff;
+  background: var(--cor-texto);
+  color: var(--cor-superficie);
 }
 
 .botao:focus-visible {
-  outline: 2px solid var(--cor-acento);
+  outline: 2px solid var(--cor-acento-texto);
   outline-offset: -2px;
 }
 
 /* Variante para barras sobre fundo escuro (Grade e Linha do tempo) */
 .escuro .rotulo {
-  color: #aeb2b8;
+  color: var(--cor-texto-header2);
 }
 
 .escuro .botoes {
@@ -63,7 +64,7 @@
 }
 
 .escuro .botao {
-  color: #e8e9eb;
+  color: var(--cor-texto-header);
   border-right-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -73,7 +74,7 @@
 
 .escuro .botao[aria-pressed="true"] {
   background: var(--cor-acento);
-  color: #121417;
+  color: var(--cor-sobre-acento);
 }
 
 @media (max-width: 420px) {

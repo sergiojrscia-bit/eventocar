@@ -87,6 +87,58 @@ export class PaginaInicial {
     });
   }
 
+  // --- Cores (paletas) — RF14 -------------------------------------------
+
+  botaoCor(nome) {
+    return this.page.getByTestId("seletor-cores").getByRole("button", { name: nome });
+  }
+
+  async selecionarCor(nome) {
+    await test.step(`Escolhe a paleta de cores "${nome}"`, async () => {
+      await this.botaoCor(nome).click();
+    });
+  }
+
+  async verificarCorAtiva(nome) {
+    await test.step(`Verifica que o tema "${nome}" está ativo e o nome dele aparece na tela`, async () => {
+      await expect(this.botaoCor(nome)).toHaveAttribute("aria-pressed", "true");
+      await expect(this.page.getByTestId("nome-tema-ativo")).toHaveText(nome);
+    });
+  }
+
+  /** Confere a cor de destaque que de fato chegou aos cards. */
+  async verificarCorDeDestaqueAplicada(hex) {
+    await test.step(`Verifica que a cor de destaque aplicada é ${hex}`, async () => {
+      await expect
+        .poll(() =>
+          this.primeiroCard().evaluate((card) =>
+            getComputedStyle(card).getPropertyValue("--cor-acento").trim().toUpperCase()
+          )
+        )
+        .toBe(hex.toUpperCase());
+    });
+  }
+
+  /**
+   * Tema "Original": o primeiro card tem a faixa lateral na cor do tipo do
+   * evento (como o card antigo). Nos outros temas, a faixa não aparece.
+   */
+  async verificarFaixaDoTipoNoPrimeiroCard(corEsperada) {
+    const descricao = corEsperada
+      ? `Verifica que o primeiro card tem a faixa lateral na cor do tipo (${corEsperada})`
+      : "Verifica que o primeiro card não tem faixa lateral do tipo";
+    await test.step(descricao, async () => {
+      const ler = (nome) =>
+        this.primeiroCard().evaluate((card, n) => getComputedStyle(card).getPropertyValue(n).trim(), nome);
+      if (corEsperada) {
+        await expect.poll(() => ler("--faixa-tipo")).toBe("4px");
+        expect((await ler("--cor-tipo")).toUpperCase()).toBe(corEsperada.toUpperCase());
+      } else {
+        await expect.poll(() => ler("--faixa-tipo")).toBe("0px");
+      }
+    });
+  }
+
   // --- Cards de evento (getters — sem step, não são ações) --------------
 
   cards() {

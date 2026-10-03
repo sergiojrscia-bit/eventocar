@@ -42,6 +42,7 @@ A página inicial do EventoCar deve exibir uma listagem de eventos automotivos d
 - RF11 — Permitir que o visitante escolha como ver a lista de eventos, entre três modos (Agenda, Grade e Linha do tempo), com Agenda como padrão. A escolha fica salva no navegador do visitante para as próximas visitas
 - RF12 — Reservar espaços para anúncios do Google AdSense em cada modo de visualização, cada um em área própria (nunca sobreposto ao conteúdo, e nada sobreposto a ele), com altura fixa reservada e o rótulo "Publicidade". Enquanto o AdSense não estiver ativo, os espaços só aparecem em desenvolvimento
 - RF13 — Todo link externo nos cards deve mostrar o site de destino antes do clique (ex: "instagram.com ↗"), para o visitante saber para onde vai e não confundir o link com anúncio
+- RF14 — Permitir que o visitante escolha o tema de cores do site entre seis opções (Original, Laranja pista, Azul oceano, Verde inglês, Amarelo largada e Rosa neon), com Original como padrão — o visual de antes dos temas, com links azuis e faixa lateral colorida pelo tipo do evento. Cada tema troca fundo, cards, textos, bordas, cabeçalho e destaques; dois deles são escuros. A escolha vale para os três modos de visualização, fica salva no navegador e é aplicada antes de a página aparecer (sem "piscar"). Todo tema deve passar no contraste WCAG AA (mínimo 4.5:1), verificado por teste automatizado
 
 ---
 
@@ -86,6 +87,7 @@ A página inicial do EventoCar deve exibir uma listagem de eventos automotivos d
 - [x] O visitante troca entre Agenda, Grade e Linha do tempo, e a escolha continua ao recarregar a página (RF11)
 - [x] Os espaços de anúncio aparecem em área própria em cada modo, sem cobrir nenhum evento (RF12)
 - [x] Em todos os modos, todo link de post mostra o site de destino e leva de fato até ele (RF13)
+- [x] Cada um dos seis temas pode ser escolhido e é aplicado aos cards; tema e modo continuam ao recarregar a página; os seis passam no teste de contraste WCAG AA; só o tema Original mostra a faixa colorida do tipo (RF14)
 
 > ✅ Sete critérios implementados e validados visualmente pelo Dev em 2026-07-01.
 > ⚠️ O critério de Playwright continua pendente — testes automatizados ainda não foram
@@ -111,3 +113,4 @@ A página inicial do EventoCar deve exibir uma listagem de eventos automotivos d
 | 2026-07-05 | Analista | Critérios de aceite marcados como cumpridos (exceto Playwright, ainda pendente), conforme entrega registrada no diário em 2026-07-01 |
 | 2026-10-03 | Analista | RF11 (modos de visualização escolhidos pelo visitante) e RF12 (espaços de anúncio sem sobreposição) adicionados, com critérios de aceite. Critério do Playwright marcado como cumprido — validado em 2026-07-08 (ver diário) e confirmado em 2026-10-03 com 16 cenários passando |
 | 2026-10-03 | Analista | RF13 (links externos mostram o site de destino) adicionado, com critério de aceite. Ver `docs/analista/brainstorms/2026-10-03-confianca-nos-anuncios.md` |
+| 2026-10-03 | Analista | RF14 (tema de cores escolhido pelo visitante) adicionado, com critério de aceite. Ver `docs/analista/brainstorms/2026-10-03-paletas-de-cores.md` |

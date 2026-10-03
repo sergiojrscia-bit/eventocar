@@ -1,18 +1,19 @@
 import { Fragment } from "react";
 import Filtros from "@/components/Filtros";
 import EspacoAnuncio from "@/components/EspacoAnuncio";
-import SeletorVisualizacao from "@/components/SeletorVisualizacao";
+import Preferencias from "@/components/Preferencias";
 import LinkPreview from "@/components/LinkPreview";
 import { Contador, MensagemVazia, TextoRodape } from "@/components/Resumo";
 import { agruparPorMes } from "@/lib/eventos";
 import { partesData, textoPeriodo, textoValor } from "@/lib/formatacao";
+import { estiloDoTipo } from "@/lib/tipos";
 import styles from "./LayoutAgenda.module.css";
 
 // Modo de visualização "Agenda" (padrão).
 // Lista lida como uma agenda: blocos por mês, cada evento em uma linha com a
 // data grande à esquerda. Anúncios: coluna lateral fixa no computador
 // (300×600) e um bloco entre os meses no celular.
-export default function LayoutAgenda({ eventos, filtros, aoMudar, visualizacao }) {
+export default function LayoutAgenda({ eventos, filtros, aoMudar, preferencias }) {
   const grupos = agruparPorMes(eventos);
 
   return (
@@ -27,7 +28,7 @@ export default function LayoutAgenda({ eventos, filtros, aoMudar, visualizacao }
       <div className={styles.barraFiltros}>
         <div className={styles.barraConteudo}>
           <Filtros filtros={filtros} aoMudar={aoMudar} />
-          <SeletorVisualizacao {...visualizacao} />
+          <Preferencias {...preferencias} />
         </div>
       </div>
 
@@ -69,7 +70,7 @@ function CardAgenda({ evento }) {
   const valor = textoValor(evento.valor);
 
   return (
-    <article data-testid="evento-card" className={styles.card}>
+    <article data-testid="evento-card" className={styles.card} style={estiloDoTipo(evento)}>
       <div className={styles.data}>
         <span className={styles.dia}>{data.dia}</span>
         <span className={styles.mesCurto}>{data.mes}</span>

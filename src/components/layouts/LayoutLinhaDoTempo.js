@@ -1,18 +1,19 @@
 import { Fragment } from "react";
 import Filtros from "@/components/Filtros";
 import EspacoAnuncio from "@/components/EspacoAnuncio";
-import SeletorVisualizacao from "@/components/SeletorVisualizacao";
+import Preferencias from "@/components/Preferencias";
 import LinkPreview from "@/components/LinkPreview";
 import { Contador, MensagemVazia, TextoRodape } from "@/components/Resumo";
 import { agruparPorMes } from "@/lib/eventos";
 import { partesData, textoPeriodo, textoValor } from "@/lib/formatacao";
+import { estiloDoTipo } from "@/lib/tipos";
 import styles from "./LayoutLinhaDoTempo.module.css";
 
 // Modo de visualização "Linha do tempo" (tema escuro).
 // Uma coluna central estreita, com os eventos pendurados numa linha vertical
 // e marcos de mês. Anúncios: um bloco "fora da linha" entre os meses e uma
 // faixa horizontal no fim, antes do rodapé — sempre em área própria.
-export default function LayoutLinhaDoTempo({ eventos, filtros, aoMudar, visualizacao }) {
+export default function LayoutLinhaDoTempo({ eventos, filtros, aoMudar, preferencias }) {
   const grupos = agruparPorMes(eventos);
 
   return (
@@ -22,7 +23,7 @@ export default function LayoutLinhaDoTempo({ eventos, filtros, aoMudar, visualiz
         <p>O que vem por aí no mundo automotivo</p>
         <Filtros filtros={filtros} aoMudar={aoMudar} className={styles.filtros} />
         <div className={styles.seletor}>
-          <SeletorVisualizacao {...visualizacao} escuro />
+          <Preferencias {...preferencias} escuro className={styles.preferencias} />
         </div>
         <Contador total={eventos.length} className={styles.contador} />
       </header>
@@ -69,7 +70,7 @@ function CardLinha({ evento }) {
   const valor = textoValor(evento.valor);
 
   return (
-    <article data-testid="evento-card" className={styles.card}>
+    <article data-testid="evento-card" className={styles.card} style={estiloDoTipo(evento)}>
       <span className={styles.quando}>
         {data.semana} · {data.dia} {data.mes}
       </span>

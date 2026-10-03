@@ -27,6 +27,8 @@ import fs from "node:fs";
 import { PaginaInicial } from "./pages/PaginaInicial.js";
 import { eventosVisiveis } from "../src/lib/eventos.js";
 import { converterEventosInstagram } from "../src/lib/fonteInstagram.js";
+import { TEMAS } from "../src/lib/temas.js";
+import { CORES_TIPO } from "../src/lib/tipos.js";
 
 const eventos = converterEventosInstagram(JSON.parse(
   fs.readFileSync(path.join(process.cwd(), "..", "instagram", "eventos.json"), "utf-8")
@@ -218,4 +220,62 @@ test.describe("Pagina inicial - links mostram o site de destino (RF13)", () => {
       await paginaInicial.verificarLinksMostramDestino(comLink.length, "instagram.com");
     });
   }
+});
+
+test.describe("Pagina inicial - paleta de cores escolhida pelo visitante (RF14)", () => {
+  test("Original e o tema padrao na primeira visita", async ({ page }) => {
+    const paginaInicial = new PaginaInicial(page);
+    await paginaInicial.abrir();
+
+    await paginaInicial.verificarCorAtiva(TEMAS[0].nome);
+    await paginaInicial.verificarCorDeDestaqueAplicada(TEMAS[0].cores.acento);
+  });
+
+  for (const tema of TEMAS) {
+    test(`paleta "${tema.nome}" pode ser escolhida e e aplicada aos cards`, async ({ page }) => {
+      const paginaInicial = new PaginaInicial(page);
+      await paginaInicial.abrir();
+
+      await paginaInicial.selecionarCor(tema.nome);
+
+      await paginaInicial.verificarCorAtiva(tema.nome);
+      await paginaInicial.verificarCorDeDestaqueAplicada(tema.cores.acento);
+    });
+  }
+
+  test("paleta e visualizacao escolhidas sao lembradas juntas ao voltar na pagina", async ({ page }) => {
+    const paginaInicial = new PaginaInicial(page);
+    const tema = TEMAS[4];
+    await paginaInicial.abrir();
+
+    await paginaInicial.selecionarVisualizacao("Linha do tempo");
+    await paginaInicial.selecionarCor(tema.nome);
+    await paginaInicial.recarregar();
+
+    await paginaInicial.verificarVisualizacaoAtiva("Linha do tempo");
+    await paginaInicial.verificarCorAtiva(tema.nome);
+    await paginaInicial.verificarCorDeDestaqueAplicada(tema.cores.acento);
+  });
+});
+
+test.describe("Pagina inicial - tema Original com faixa colorida do tipo (RF14)", () => {
+  test("no tema Original, o card tem a faixa lateral na cor do tipo do evento", async ({ page }) => {
+    const paginaInicial = new PaginaInicial(page);
+    const primeiro = eventosVisiveis(eventos, {})[0];
+    test.skip(!primeiro, "Nenhum evento futuro no momento");
+    await paginaInicial.abrir();
+
+    await paginaInicial.verificarCorAtiva("Original");
+
+    await paginaInicial.verificarFaixaDoTipoNoPrimeiroCard(CORES_TIPO[primeiro.tipo] ?? CORES_TIPO.Outros);
+  });
+
+  test("nos outros temas, a faixa lateral do tipo nao aparece", async ({ page }) => {
+    const paginaInicial = new PaginaInicial(page);
+    await paginaInicial.abrir();
+
+    await paginaInicial.selecionarCor("Laranja pista");
+
+    await paginaInicial.verificarFaixaDoTipoNoPrimeiroCard(null);
+  });
 });
