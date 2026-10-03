@@ -1,23 +1,5 @@
 [
   {
-    "id": 1,
-    "nome": "Encontro Clássico de Floripa",
-    "data": "2026-07-01",
-    "cidade": "Florianópolis",
-    "estado": "SC",
-    "tipo": "Clássicos",
-    "valor": null
-  },
-  {
-    "id": 2,
-    "nome": "Track Day Interlagos",
-    "data": "2026-07-20",
-    "cidade": "São Paulo",
-    "estado": "SP",
-    "tipo": "Track Day",
-    "valor": 250
-  },
-  {
     "id": 3,
     "nome": "Feirão Tuning Sul",
     "data": "2026-08-02",
@@ -52,5 +34,324 @@
     "estado": "RJ",
     "tipo": "Feira",
     "valor": 15
+  },
+  {
+    "id": 8,
+    "nome": "Thursday Race (Track Day / Hot Lap)",
+    "data": "2026-08-02",
+    "cidade": "Balneário Camboriú",
+    "estado": "SC",
+    "tipo": "Track Day",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbXFrknltq1/",
+    "detalhes": "Domingo, das 17h às 21h. Ingresso pelo link da bio de @thursdayracesc. Apoio: Kadoto Plus, Grip Force Pneus, Imperiumm Performance, Postos Bela Jóia."
+  },
+  {
+    "id": 9,
+    "nome": "Área 47 - Treino de Arrancada",
+    "data": "2026-08-08",
+    "cidade": "Balneário Camboriú",
+    "estado": "SC",
+    "tipo": "Arrancada",
+    "valor": 35,
+    "link": "https://www.instagram.com/p/DbeLuutpTN_/",
+    "detalhes": "Sábado, 09h às 22h. 3º lote: arquibancada geral R$35, acesso aos boxes R$45, arquibancada Box VIP R$80. Estacionamento R$30 (VIP R$60). Crianças até 12 anos não pagam."
+  },
+  {
+    "id": 10,
+    "nome": "Mulheres na Arrancada - 4ª Edição",
+    "data": "2026-08-23",
+    "cidade": "Balneário Camboriú",
+    "estado": "SC",
+    "tipo": "Arrancada Feminina",
+    "valor": 35,
+    "link": "https://www.instagram.com/mulheresnaarrancada/p/DbLJIhUlg4D/",
+    "detalhes": "Inscrições via agendaesportiva.com.br. 10 categorias (11s a 6s, Força Livre, Double Racing). Inscrição por categoria R$400. Ingresso público antecipado R$35 (R$50 no dia). Crianças até 12 anos não pagam."
+  },
+  {
+    "id": 11,
+    "nome": "Race War - Arrancada de Esportivos",
+    "data": "2026-08-29",
+    "cidade": "Balneário Camboriú",
+    "estado": "SC",
+    "tipo": "Arrancada",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbY6lJVJm7q/",
+    "detalhes": "Maior evento de arrancada de esportivos de Santa Catarina. Ingressos vendidos pelo site oficial racing.place. Carros já confirmados incluem BMW M140 (postagem: https://www.instagram.com/p/Dbgfc1WEW-j/)."
+  },
+  {
+    "id": 12,
+    "nome": "DriftSC Matsuri Edition",
+    "data": "2026-09-26",
+    "cidade": "Balneário Camboriú",
+    "estado": "SC",
+    "tipo": "Drift",
+    "valor": 40,
+    "link": "https://www.instagram.com/p/Da5ZiDLuk-T/",
+    "detalhes": "Data original era 01/08, transferida oficialmente para 26/09/2026. Ingressos já comprados continuam válidos. Lotes: arquibancada+box R$40/50/70, camarote VIP R$100/130/160, fullbox R$160/210/250, open bar R$300/330/360. Post original do evento: https://www.instagram.com/p/DbgklA0pJZ6/"
+  },
+  {
+    "id": 13,
+    "nome": "Encontro de Baixos",
+    "data": "2026-08-01",
+    "cidade": "Balneário Camboriú",
+    "estado": "SC",
+    "tipo": "Encontro",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbbwGHPJD4H/",
+    "detalhes": "Item da Agenda de Agosto da Speedway Music Park, organizado por parceiro (@quintadosbaixos)."
+  },
+  {
+    "id": 14,
+    "nome": "Giro Racing",
+    "data": "2026-08-03",
+    "cidade": "Balneário Camboriú",
+    "estado": "SC",
+    "tipo": "Arrancada/Encontro",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbbwGHPJD4H/",
+    "detalhes": "Item da Agenda de Agosto, organizado por @giroracing."
+  },
+  {
+    "id": 15,
+    "nome": "Speedway Outlaws",
+    "data": "2026-08-07",
+    "cidade": "Balneário Camboriú",
+    "estado": "SC",
+    "tipo": "Treino de Arrancada",
+    "valor": 30,
+    "link": "https://www.instagram.com/p/DbbwGHPJD4H/",
+    "detalhes": "Evento recorrente (também em 21/08 e 28/08). Especial de Sábado, das 16h às 22h. Entrada antecipada R$20 (R$30 no dia), estacionamento R$20."
+  },
+  {
+    "id": 16,
+    "nome": "Dia de Pista",
+    "data": "2026-08-12",
+    "cidade": "Balneário Camboriú",
+    "estado": "SC",
+    "tipo": "Track Day",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbbwGHPJD4H/",
+    "detalhes": "Item da Agenda de Agosto, organizado por @diadepista.br."
+  },
+  {
+    "id": 17,
+    "nome": "Raceteam",
+    "data": "2026-08-15",
+    "cidade": "Balneário Camboriú",
+    "estado": "SC",
+    "tipo": "Encontro",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbbwGHPJD4H/",
+    "detalhes": "Item da Agenda de Agosto, organizado por @raceteamsc."
+  },
+  {
+    "id": 18,
+    "nome": "Área 48",
+    "data": "2026-08-22",
+    "cidade": "Balneário Camboriú",
+    "estado": "SC",
+    "tipo": "Arrancada",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbbwGHPJD4H/",
+    "detalhes": "Item da Agenda de Agosto, organizado por @alistaarea48."
+  },
+  {
+    "id": 19,
+    "nome": "Nightrun",
+    "data": "2026-08-30",
+    "cidade": "Balneário Camboriú",
+    "estado": "SC",
+    "tipo": "Encontro Noturno",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbbwGHPJD4H/",
+    "detalhes": "Item da Agenda de Agosto, organizado por @nightrun.br."
+  },
+  {
+    "id": 20,
+    "nome": "Trackday Time Attack - Bateria dos Importados",
+    "data": "2026-08-18",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "tipo": "Track Day",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbeHXUevEuz/",
+    "detalhes": "Organizado por @crazyforauto (Autódromo de Interlagos). Carros de rua e competição. Inscrições e informações via WhatsApp (11) 99348-5729."
+  },
+  {
+    "id": 21,
+    "nome": "MTM Brasil - Etapa Quitandinha",
+    "data": "2026-08-02",
+    "cidade": "Quitandinha",
+    "estado": "PR",
+    "tipo": "Som Automotivo / Rebaixados",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbdWcWRxGQT/",
+    "detalhes": "Etapa do circuito MTM Brasil PR-SC (medição de som automotivo e carros rebaixados), organizado por @mtmbrasil_pr_sc."
+  },
+  {
+    "id": 22,
+    "nome": "MTM Brasil - Etapa Curitiba (Ceasa, só rebaixados)",
+    "data": "2026-08-16",
+    "cidade": "Curitiba",
+    "estado": "PR",
+    "tipo": "Rebaixados",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbdWcWRxGQT/",
+    "detalhes": "Etapa exclusiva para carros rebaixados, no Ceasa de Curitiba. Circuito MTM Brasil PR-SC."
+  },
+  {
+    "id": 23,
+    "nome": "Eletrofunk Brasil Som Automotivo - Etapa Mandirituba",
+    "data": "2026-08-23",
+    "cidade": "Mandirituba",
+    "estado": "PR",
+    "tipo": "Som Automotivo",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbW9oN_Pswv/",
+    "detalhes": "Parque Municipal Angelo Zeglin Palu, das 9h às 18h. Entrada: 1kg de alimento (arroz ou feijão) por pessoa. Estacionamento R$10. Line-up com DJs e MCs de eletrofunk/megafunk. Proibida entrada com bebidas."
+  },
+  {
+    "id": 24,
+    "nome": "MTM Brasil - Etapa Castro",
+    "data": "2026-09-13",
+    "cidade": "Castro",
+    "estado": "PR",
+    "tipo": "Som Automotivo / Rebaixados",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbdWcWRxGQT/",
+    "detalhes": "Etapa do circuito MTM Brasil PR-SC."
+  },
+  {
+    "id": 25,
+    "nome": "MTM Brasil - Etapa Clevelândia",
+    "data": "2026-09-20",
+    "cidade": "Clevelândia",
+    "estado": "PR",
+    "tipo": "Som Automotivo / Rebaixados",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbdWcWRxGQT/",
+    "detalhes": "Etapa do circuito MTM Brasil PR-SC."
+  },
+  {
+    "id": 26,
+    "nome": "MTM Brasil - Etapa Itaperuçu",
+    "data": "2026-09-27",
+    "cidade": "Itaperuçu",
+    "estado": "PR",
+    "tipo": "Som Automotivo / Rebaixados",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbdWcWRxGQT/",
+    "detalhes": "Etapa do circuito MTM Brasil PR-SC."
+  },
+  {
+    "id": 27,
+    "nome": "MTM Brasil - Etapa São Mateus do Sul",
+    "data": "2026-10-18",
+    "cidade": "São Mateus do Sul",
+    "estado": "PR",
+    "tipo": "Som Automotivo / Rebaixados",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbdWcWRxGQT/",
+    "detalhes": "Etapa do circuito MTM Brasil PR-SC."
+  },
+  {
+    "id": 28,
+    "nome": "MTM Brasil - Final Mundial",
+    "data": "2026-11-08",
+    "cidade": "Matinhos",
+    "estado": "PR",
+    "tipo": "Som Automotivo / Rebaixados",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbdWcWRxGQT/",
+    "detalhes": "Maior encontro de som automotivo, tuning e rebaixados do Sul do Brasil. Encerramento da temporada 2026 do circuito MTM Brasil PR-SC."
+  },
+  {
+    "id": 31,
+    "nome": "KM de Arrancada - Autódromo de Brasília",
+    "data": "2026-08-22",
+    "cidade": "Brasília",
+    "estado": "DF",
+    "tipo": "Arrancada",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbGwRK2lHGr/",
+    "detalhes": "Evento de 22 a 23/08/2026. Pré-venda de ingressos a partir de 1º de agosto. Organizado por @kmdearrancada (42,7 mil seguidores)"
+  },
+  {
+    "id": 32,
+    "nome": "Copa Norte e Nordeste de Arrancada",
+    "data": "2026-09-25",
+    "cidade": "Belém",
+    "estado": "PA",
+    "tipo": "Arrancada",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DbdlqXbtljA/",
+    "detalhes": "Evento de 25 a 27/09/2026 no Complexo Veloway, pista com VHT e emborrachamento, Drift Time e locução ao vivo. Vendas abrem 07/08. Crianças até 12 anos e idosos 65+ não pagam. Organizado por @complexoveloway (33,5 mil seguidores, conta verificada)"
+  },
+  {
+    "id": 33,
+    "nome": "2ª Etapa Campeonato Paraense de Arrancada",
+    "data": "2026-11-07",
+    "cidade": "Belém",
+    "estado": "PA",
+    "tipo": "Arrancada",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DWCqJ1hjnZI/",
+    "detalhes": "Evento de 07 a 08/11/2026 no Complexo Veloway, parte do calendário oficial 2026"
+  },
+  {
+    "id": 34,
+    "nome": "3ª Etapa Campeonato Paraense de Arrancada",
+    "data": "2026-12-12",
+    "cidade": "Belém",
+    "estado": "PA",
+    "tipo": "Arrancada",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DWCqJ1hjnZI/",
+    "detalhes": "Evento de 12 a 13/12/2026 no Complexo Veloway, parte do calendário oficial 2026"
+  },
+  {
+    "id": 36,
+    "nome": "Copa FT BR Sport de Arrancada - 4ª Etapa 2026",
+    "data": "2026-09-11",
+    "cidade": "Nova Santa Rita",
+    "estado": "RS",
+    "tipo": "Arrancada",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DXM9BZhivwQ/",
+    "detalhes": "Evento de 11 a 13/09/2026 no Autódromo FuelTech Velopark, parte do Calendário de Arrancada 2026"
+  },
+  {
+    "id": 37,
+    "nome": "Copa FT BR Sport de Arrancada - 5ª Etapa 2026",
+    "data": "2026-12-03",
+    "cidade": "Nova Santa Rita",
+    "estado": "RS",
+    "tipo": "Arrancada",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DXM9BZhivwQ/",
+    "detalhes": "Evento de 03 a 06/12/2026 no Autódromo FuelTech Velopark, mesma data do Festival FT de Arrancada 2026"
+  },
+  {
+    "id": 38,
+    "nome": "Festival FT de Arrancada 2026",
+    "data": "2026-12-03",
+    "cidade": "Nova Santa Rita",
+    "estado": "RS",
+    "tipo": "Arrancada",
+    "valor": null,
+    "link": "https://www.instagram.com/p/DXM9BZhivwQ/",
+    "detalhes": "Evento de 03 a 06/12/2026 no Autódromo FuelTech Velopark, encerramento da temporada, junto com a 5ª etapa da Copa BR Sport"
+  },
+  {
+    "id": 39,
+    "nome": "Armageddon VP - 16ª Edição (Desafio Entre Listas)",
+    "data": "2026-10-30",
+    "cidade": "Nova Santa Rita",
+    "estado": "RS",
+    "tipo": "Arrancada",
+    "valor": null,
+    "link": "https://www.instagram.com/reels/DawNMAxOjzt/",
+    "detalhes": "Evento de 30 a 31/10/2026 no Autódromo FuelTech Velopark. Premiação de R$200.000, descrito como 'o maior no prep da América Latina'. Organizado por @listasbrasiloficial em parceria com @autodromofueltech e @area43alista"
   }
 ]

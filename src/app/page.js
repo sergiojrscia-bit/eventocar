@@ -33,6 +33,11 @@ export default function Home() {
       <Filtros filtros={filtros} aoMudar={aoMudarFiltro} />
 
       <main className={styles.main}>
+        <p data-testid="contador-eventos" className={styles.contador}>
+          {eventosFiltrados.length}{" "}
+          {eventosFiltrados.length === 1 ? "evento encontrado" : "eventos encontrados"}
+        </p>
+
         {eventosFiltrados.length === 0 ? (
           <p data-testid="mensagem-vazio" className={styles.vazio}>
             Nenhum evento encontrado para os filtros selecionados.

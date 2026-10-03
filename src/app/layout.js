@@ -1,4 +1,5 @@
 import { Inter, Oswald, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 // Fonte do corpo do texto — limpa e legível
@@ -31,7 +32,10 @@ export default function RootLayout({ children }) {
       lang="pt-BR"
       className={`${inter.variable} ${oswald.variable} ${jetbrainsMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script src="https://www.instagram.com/embed.js" strategy="lazyOnload" />
+      </body>
     </html>
   );
 }

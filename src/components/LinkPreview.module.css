@@ -1,0 +1,28 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+
+.link {
+  font-size: 0.85rem;
+  color: #0066cc;
+}
+
+.popover {
+  position: absolute;
+  z-index: 20;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  width: 326px;
+  max-width: 85vw;
+  max-height: 60vh;
+  overflow: hidden auto;
+  background: #fff;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  padding: 0.5rem;
+}

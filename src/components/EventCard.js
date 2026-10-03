@@ -1,5 +1,6 @@
 import styles from "./EventCard.module.css";
 import { CORES_TIPO } from "@/lib/tipos";
+import LinkPreview from "./LinkPreview";
 
 // Recebe um evento e mostra ele como um card
 export default function EventCard({ evento }) {
@@ -33,6 +34,7 @@ export default function EventCard({ evento }) {
           {evento.valor === 0 ? "Gratuito" : `R$ ${evento.valor}`}
         </p>
       )}
+      {evento.link && <LinkPreview href={evento.link}>Ver mais</LinkPreview>}
     </article>
   );
 }
