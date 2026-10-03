@@ -39,6 +39,8 @@ A página inicial do EventoCar deve exibir uma listagem de eventos automotivos d
 - RF08 — Exibir o campo "valor do ingresso" no card quando a informação estiver disponível
 - RF09 — Não exibir eventos com data passada na listagem principal
 - RF10 — Exibir cabeçalho com nome do site e rodapé com informações básicas
+- RF11 — Permitir que o visitante escolha como ver a lista de eventos, entre três modos (Agenda, Grade e Linha do tempo), com Agenda como padrão. A escolha fica salva no navegador do visitante para as próximas visitas
+- RF12 — Reservar espaços para anúncios do Google AdSense em cada modo de visualização, cada um em área própria (nunca sobreposto ao conteúdo, e nada sobreposto a ele), com altura fixa reservada e o rótulo "Publicidade". Enquanto o AdSense não estiver ativo, os espaços só aparecem em desenvolvimento
 
 ---
 
@@ -79,7 +81,9 @@ A página inicial do EventoCar deve exibir uma listagem de eventos automotivos d
 - [x] Ao filtrar sem resultado, aparece mensagem: "Nenhum evento encontrado para os filtros selecionados."
 - [x] A página é visualizável e utilizável em tela de celular (375px)
 - [x] Eventos com data anterior a hoje não aparecem na lista
-- [ ] A página passa na verificação do Playwright sem erros
+- [x] A página passa na verificação do Playwright sem erros
+- [x] O visitante troca entre Agenda, Grade e Linha do tempo, e a escolha continua ao recarregar a página (RF11)
+- [x] Os espaços de anúncio aparecem em área própria em cada modo, sem cobrir nenhum evento (RF12)
 
 > ✅ Sete critérios implementados e validados visualmente pelo Dev em 2026-07-01.
 > ⚠️ O critério de Playwright continua pendente — testes automatizados ainda não foram
@@ -93,7 +97,7 @@ A página inicial do EventoCar deve exibir uma listagem de eventos automotivos d
 - Diferencial identificado na análise de mercado: nenhum concorrente oferece filtros combinados para todos os tipos de evento automotivo
 - O arquivo de dados inicial pode ser `data/eventos.json` — uma lista de objetos com os campos definidos nos RFs
 - Referência visual de simplicidade: evitar menus laterais pesados, preferir filtros no topo ou em linha
-- Compatível com Google AdSense: layout deve ter espaço reservado para anúncios sem quebrar a experiência
+- Compatível com Google AdSense: layout deve ter espaço reservado para anúncios sem quebrar a experiência — resolvido pelo RF12 (ver `docs/analista/brainstorms/2026-10-03-layout-visualizacoes-e-espacos-adsense.md`)
 
 ---
 
@@ -103,3 +107,4 @@ A página inicial do EventoCar deve exibir uma listagem de eventos automotivos d
 |------|-------|-------------|
 | 2026-06-29 | Analista | Criação do documento |
 | 2026-07-05 | Analista | Critérios de aceite marcados como cumpridos (exceto Playwright, ainda pendente), conforme entrega registrada no diário em 2026-07-01 |
+| 2026-10-03 | Analista | RF11 (modos de visualização escolhidos pelo visitante) e RF12 (espaços de anúncio sem sobreposição) adicionados, com critérios de aceite. Critério do Playwright marcado como cumprido — validado em 2026-07-08 (ver diário) e confirmado em 2026-10-03 com 16 cenários passando |

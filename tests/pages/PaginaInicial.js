@@ -52,6 +52,31 @@ export class PaginaInicial {
     return erros;
   }
 
+  /** Recarrega a página, como quem volta ao site depois (RF11). */
+  async recarregar() {
+    await test.step("Recarrega a página", async () => {
+      await this.page.reload();
+    });
+  }
+
+  // --- Visualização (Agenda / Grade / Linha do tempo) — RF11 ------------
+
+  botaoVisualizacao(nome) {
+    return this.page.getByTestId("seletor-visualizacao").getByRole("button", { name: nome });
+  }
+
+  async selecionarVisualizacao(nome) {
+    await test.step(`Escolhe ver os eventos como "${nome}"`, async () => {
+      await this.botaoVisualizacao(nome).click();
+    });
+  }
+
+  async verificarVisualizacaoAtiva(nome) {
+    await test.step(`Verifica que a visualização "${nome}" está ativa`, async () => {
+      await expect(this.botaoVisualizacao(nome)).toHaveAttribute("aria-pressed", "true");
+    });
+  }
+
   // --- Cards de evento (getters — sem step, não são ações) --------------
 
   cards() {

@@ -11,6 +11,20 @@ nav_order: 4
 
 ---
 
+## 2026-10-03 — Novo layout com 3 modos de visualização e espaços para anúncios
+
+**O que mudou:** A página inicial ganhou três modos de visualização que o visitante escolhe pelos botões "Ver como" na barra de filtros: **Agenda** (padrão, eventos agrupados por mês), **Grade** (cards) e **Linha do tempo** (tema escuro). A escolha fica salva no navegador do visitante. Cada modo tem espaços reservados para anúncios do AdSense em área própria, sem sobreposição. Os cards passaram a destacar a data e a mostrar horário, local, período (eventos de vários dias) e "A partir de R$ X".
+
+**Por quê:** O layout anterior não agradou e não havia espaço para anúncios. Decisão completa em `docs/analista/brainstorms/2026-10-03-layout-visualizacoes-e-espacos-adsense.md`.
+
+**Arquivos criados ou modificados:**
+- Criados: `src/components/layouts/` (Agenda, Grade, Linha do tempo), `SeletorVisualizacao`, `EspacoAnuncio`, `Resumo.js` e `src/lib/formatacao.js`
+- Modificados: `src/app/page.js` (escolha e preferência do modo), `Filtros.js` (aceita estilo de cada modo e ganhou rótulos de acessibilidade), `src/lib/eventos.js` (`agruparPorMes`), `src/lib/fonteInstagram.js` (campos `horario` e `local`), `globals.css` (`--cor-acento-texto`)
+- Removidos: `EventCard.js`, `EventCard.module.css` e `page.module.css`
+- Testes: 5 cenários novos para o RF11 em `tests/pagina-inicial.spec.js`, com os métodos `selecionarVisualizacao`, `verificarVisualizacaoAtiva` e `recarregar` no Page Object
+
+**Resultado:** 16 testes passando e 1 pulado (RF09: o JSON atual não tem evento que já terminou). Lint sem problemas. Conferido no computador (1366px) e no celular (375px), sem erros no console e sem rolagem horizontal.
+
 ## 2026-07-12 — Passos com nome de negócio no relatório de testes
 
 **O que mudou:** Métodos de ação e verificação de `tests/pages/PaginaInicial.js`

@@ -1,6 +1,6 @@
 // Adaptador da fonte de dados do agente do Instagram
 // (C:\Projetos\claude\instagram\eventos.json) para o formato que o site usa
-// ({ id, nome, data, dataFim, cidade, estado, tipo, valor, link, detalhes }).
+// ({ id, nome, data, dataFim, horario, local, cidade, estado, tipo, valor, link, detalhes }).
 // Função pura, sem React/Next.js — usada pela página e pelos testes.
 
 // Palavras-chave do "tipo" livre do Instagram -> tipos fixos de src/lib/tipos.js
@@ -46,6 +46,8 @@ export function converterEventosInstagram(json) {
       nome: evento.titulo,
       data: evento.data_inicio,
       dataFim: evento.data_fim ?? evento.data_inicio,
+      horario: evento.horario ?? null,
+      local: evento.local ?? null,
       ...separarCidadeEstado(evento.cidade),
       tipo: converterTipo(evento.tipo),
       valor: menorValorIngresso(evento.ingressos),

@@ -58,3 +58,25 @@ export function eventosVisiveis(eventos, filtros, hoje = new Date()) {
     )
   );
 }
+
+/**
+ * Agrupa eventos (já ordenados) por mês, para layouts em formato de agenda.
+ * Retorna [{ chave: "2026-10", titulo: "outubro de 2026", eventos: [...] }].
+ */
+export function agruparPorMes(eventos) {
+  const grupos = [];
+  for (const evento of eventos) {
+    const chave = evento.data.slice(0, 7);
+    let grupo = grupos.find((g) => g.chave === chave);
+    if (!grupo) {
+      const titulo = new Date(chave + "-01T00:00:00").toLocaleDateString("pt-BR", {
+        month: "long",
+        year: "numeric",
+      });
+      grupo = { chave, titulo, eventos: [] };
+      grupos.push(grupo);
+    }
+    grupo.eventos.push(evento);
+  }
+  return grupos;
+}

@@ -1,0 +1,237 @@
+.pagina {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: var(--cor-header);
+  color: #fff;
+  padding: 2.5rem 1rem 2rem;
+  border-bottom: 3px solid var(--cor-acento);
+}
+
+.headerConteudo,
+.barraConteudo,
+.corpo {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.header h1 {
+  font-size: 2.25rem;
+  letter-spacing: 0.02em;
+}
+
+.header p {
+  color: #c7c9cc;
+  margin-top: 0.4rem;
+  max-width: 36rem;
+}
+
+.barraFiltros {
+  background: #fff;
+  border-bottom: 1px solid var(--cor-borda);
+  padding: 0.9rem 1rem;
+}
+
+.barraConteudo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.contador {
+  color: var(--cor-texto-secundario);
+  font-size: 0.85rem;
+  margin-bottom: -0.75rem;
+}
+
+.corpo {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 2rem;
+  padding: 1.5rem 1rem 2.5rem;
+  align-items: start;
+}
+
+/* Coluna lateral: o anúncio acompanha a rolagem, mas dentro da sua coluna */
+.lateral {
+  position: sticky;
+  top: 1rem;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  min-width: 0;
+}
+
+.grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mes {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mes::after {
+  content: "";
+  flex: 1;
+  border-top: 1px dashed var(--cor-acento);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) auto;
+  gap: 1.25rem;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  padding: 1rem 1.25rem 1rem 1rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  border-color: var(--cor-acento);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-radius: 6px;
+  background: var(--cor-header);
+  color: #fff;
+  font-family: var(--font-mono), monospace;
+  line-height: 1.1;
+}
+
+.dia {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.mesCurto {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cor-acento);
+}
+
+.semana {
+  font-size: 0.65rem;
+  color: #aeb2b8;
+  margin-top: 0.15rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.tipo {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  color: var(--cor-acento-texto);
+}
+
+.nome {
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
+.detalhe {
+  font-size: 0.85rem;
+  color: var(--cor-texto-secundario);
+}
+
+.acoes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  text-align: right;
+}
+
+.valor {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.vazio {
+  text-align: center;
+  color: var(--cor-texto-secundario);
+  padding: 3rem 1rem;
+}
+
+.soCelular {
+  display: none;
+}
+
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--cor-texto-secundario);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--cor-borda);
+}
+
+@media (max-width: 1023px) {
+  .corpo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lateral {
+    display: none;
+  }
+
+  .soCelular {
+    display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 1.75rem;
+  }
+
+  .card {
+    grid-template-columns: 60px minmax(0, 1fr);
+    gap: 0.9rem;
+  }
+
+  .dia {
+    font-size: 1.5rem;
+  }
+
+  .acoes {
+    grid-column: 2;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+  }
+}

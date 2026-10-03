@@ -38,7 +38,7 @@ nav_order: 2
 
 | # | Ideia | Status | Observações |
 |---|-------|--------|-------------|
-| 2 | Integrar Google AdSense de forma não invasiva — sem poluir a tela ou prejudicar a navegação | 💭 Em aberto | Equilíbrio entre monetização e experiência do usuário é essencial |
+| 2 | Integrar Google AdSense de forma não invasiva — sem poluir a tela ou prejudicar a navegação | ✅ Aprovada | Decidido em 2026-10-03: cada anúncio em área própria, nunca sobreposto ao conteúdo, com altura reservada e rótulo "Publicidade"; posições definidas para cada modo de visualização (RF12). Ver `docs/analista/brainstorms/2026-10-03-layout-visualizacoes-e-espacos-adsense.md` |
 | 3 | Adicionar algum indicador visual de que os anúncios do AdSense são seguros e confiáveis | 💭 Em aberto | Reduzir desconfiança do usuário em clicar nos anúncios |
 
 ---
@@ -96,4 +96,4 @@ nav_order: 2
 
 ---
 
-*Última atualização: 2026-07-14 (ideia #1 descartada — curadoria assistida aprovada no lugar; ideias #10 e #11 aprovadas — CI com smoke test e relatório no Pages; ideia #16 criada — comparação de frameworks de teste)*
+*Última atualização: 2026-10-03 (ideia #2 aprovada — espaços de anúncio em área própria, sem sobreposição, em cada modo de visualização)*

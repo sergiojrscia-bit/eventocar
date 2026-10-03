@@ -1,0 +1,84 @@
+.seletor {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.rotulo {
+  font-size: 0.8rem;
+  color: var(--cor-texto-secundario);
+}
+
+/* Botões grudados, formando um único controle segmentado */
+.botoes {
+  display: inline-flex;
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.85rem;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-right: 1px solid var(--cor-borda);
+  background: transparent;
+  color: var(--cor-texto);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.botao:last-child {
+  border-right: none;
+}
+
+.botao:hover {
+  background: var(--cor-fundo);
+}
+
+.botao[aria-pressed="true"] {
+  background: var(--cor-header);
+  color: #fff;
+}
+
+.botao:focus-visible {
+  outline: 2px solid var(--cor-acento);
+  outline-offset: -2px;
+}
+
+/* Variante para barras sobre fundo escuro (Grade e Linha do tempo) */
+.escuro .rotulo {
+  color: #aeb2b8;
+}
+
+.escuro .botoes {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.escuro .botao {
+  color: #e8e9eb;
+  border-right-color: rgba(255, 255, 255, 0.2);
+}
+
+.escuro .botao:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.escuro .botao[aria-pressed="true"] {
+  background: var(--cor-acento);
+  color: #121417;
+}
+
+@media (max-width: 420px) {
+  .botao {
+    padding-inline: 0.55rem;
+    font-size: 0.8rem;
+  }
+}

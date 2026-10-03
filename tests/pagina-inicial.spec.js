@@ -171,3 +171,36 @@ test.describe("Pagina inicial - listagem e filtros de eventos", () => {
     await paginaInicial.verificarCabecalhoERodapeVisiveis();
   });
 });
+
+test.describe("Pagina inicial - visualizacao escolhida pelo visitante (RF11)", () => {
+  test("Agenda e a visualizacao padrao na primeira visita", async ({ page }) => {
+    const paginaInicial = new PaginaInicial(page);
+    await paginaInicial.abrir();
+
+    await paginaInicial.verificarVisualizacaoAtiva("Agenda");
+  });
+
+  for (const modo of ["Agenda", "Grade", "Linha do tempo"]) {
+    test(`visualizacao "${modo}" mostra todos os eventos, ordenados por data`, async ({ page }) => {
+      const paginaInicial = new PaginaInicial(page);
+      const esperados = eventosVisiveis(eventos, {});
+      await paginaInicial.abrir();
+
+      await paginaInicial.selecionarVisualizacao(modo);
+
+      await paginaInicial.verificarVisualizacaoAtiva(modo);
+      await paginaInicial.verificarQuantidadeDeCards(esperados.length);
+      await paginaInicial.verificarOrdemDosCards(esperados);
+    });
+  }
+
+  test("a visualizacao escolhida e lembrada ao voltar na pagina", async ({ page }) => {
+    const paginaInicial = new PaginaInicial(page);
+    await paginaInicial.abrir();
+
+    await paginaInicial.selecionarVisualizacao("Grade");
+    await paginaInicial.recarregar();
+
+    await paginaInicial.verificarVisualizacaoAtiva("Grade");
+  });
+});

@@ -245,6 +245,8 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | 2026-07-14 | Analista | Curadoria assistida por IA aprovada como processo de alimentação do `eventos.json` | Curador encontra o post no Instagram como usuário comum, IA extrai os campos estruturados no formato do JSON, curador revisa e commita. Risco zero, funciona hoje, controla qualidade e constrói o formato/processo que qualquer automação futura reaproveita. Resolve a ideia #1 do `ideias.md` |
 | 2026-07-14 | Analista | Estratégia de conteúdo "resumos de sites estrangeiros gerados por IA" descartada | AdSense rejeita conteúdo raspado/reescrito sem valor próprio; política de spam da Busca penaliza conteúdo em massa por IA sem originalidade; risco jurídico de resumir sistematicamente produção alheia. Eventual fase de conteúdo deve nascer dos nossos próprios dados de eventos |
 | 2026-07-14 | Analista | CI aprovado: smoke test a cada push + rodada completa agendada + relatório publicado no GitHub Pages via Actions | Smoke test com 3–4 cenários `@smoke` e gatilho filtrado por `paths` (`src/` e `tests/`); rodada completa dos 12 cenários via `schedule` (cron); publicação do Pages migrada de "branch main + /docs" para deploy via GitHub Actions (Opção B), evitando commits automáticos de relatório. Plano de emergência assumido: commitar relatório em `docs/` (Opção A) se a migração travar. Resolve as ideias #10 e #11 do `ideias.md` |
+| 2026-10-03 | Analista | Página inicial ganha 3 modos de visualização escolhidos pelo visitante — Agenda (padrão), Grade e Linha do tempo —, com seletor "Ver como" na barra de filtros e escolha salva no navegador (`localStorage`) | O layout anterior não agradou (cards sem destaque, cabeçalho fraco, filtros soltos, página sem ritmo). Cinco layouts foram montados e comparados no navegador; os três mais diferentes entre si viraram opções do visitante. Três é o limite em que manter código e testes de todos ainda é razoável. Novos RF11 e RF12 no `REQ-001`. Decisão completa em `docs/analista/brainstorms/2026-10-03-layout-visualizacoes-e-espacos-adsense.md` |
+| 2026-10-03 | Analista | Regras para os espaços de anúncio do AdSense: área própria no fluxo da página (nunca sobreposta ao conteúdo, e nada sobreposto a ela), altura fixa reservada, rótulo "Publicidade" e visível só em desenvolvimento até o AdSense ser ativado | Exigência do dono do projeto de que anúncio e conteúdo nunca se sobreponham; altura reservada evita que a página "pule" ao carregar o anúncio (CLS, que pesa no ranking do Google); rótulo exigido pela política do AdSense. Mantém a decisão de 2026-07-12 de só ativar o AdSense junto com o plano Pro da Vercel. Resolve a ideia #2 do `ideias.md` |
 | 2026-07-14 | Analista | Comparação de frameworks de teste adiada e registrada como ideia #16 | Prioridade dada à infraestrutura de CI do que já existe. Dois experimentos desenhados e preservados no `ideias.md`: Playwright vs Cypress (motores) e Playwright puro vs CodeceptJS (camada de abstração) |
 
 
@@ -334,12 +336,20 @@ Basta dizer: **"você esqueceu a regra X"** — e ela retoma o procedimento corr
 | `docs/qa/brainstorms/2026-07-11-separar-automacao-page-object-bdd.md` | QA | Decisão técnica: automação separada com Page Object Model e comentários Dado/Quando/Então (movido de `docs/dev/brainstorms/` em 2026-07-12) |
 | `docs/qa/brainstorms/2026-07-12-teststep-page-object-relatorio.md` | QA | Decisão técnica: `test.step()` nos métodos do Page Object para relatório HTML legível |
 | `tests/pages/PaginaInicial.js` | Dev | Page Object da página inicial — única camada que conhece seletores, ações e passos (`test.step()`) do Playwright |
-| `components/EventCard.js` | Dev | Componente que exibe um evento em formato de card |
-| `components/EventCard.module.css` | Dev | Estilos do card de evento |
+| ~~`components/EventCard.js`~~ | Dev | Componente que exibia um evento em formato de card — removido em 2026-10-03, substituído pelos cards de cada modo de visualização |
+| ~~`components/EventCard.module.css`~~ | Dev | Estilos do card de evento — removido em 2026-10-03 |
 | `components/Filtros.js` | Dev | Componente da barra de filtros (tipo, estado, mês) |
 | `components/Filtros.module.css` | Dev | Estilos da barra de filtros |
 | `docs/analista/brainstorms/2026-07-14-proposito-fonte-de-dados-e-ci.md` | Analista | Brainstorm consolidado: propósito do projeto redefinido, fonte de dados (Instagram descartado, curadoria assistida aprovada), CI e comparação de frameworks adiada |
+| `docs/analista/brainstorms/2026-10-03-layout-visualizacoes-e-espacos-adsense.md` | Analista | Brainstorm: novo layout, 3 modos de visualização escolhidos pelo visitante e regras dos espaços de anúncio |
+| `src/components/layouts/LayoutAgenda.js` (+ `.module.css`) | Dev | Modo de visualização "Agenda" (padrão): eventos agrupados por mês, anúncio em coluna lateral |
+| `src/components/layouts/LayoutGrade.js` (+ `.module.css`) | Dev | Modo de visualização "Grade": cards em grade, faixa de anúncio entre blocos |
+| `src/components/layouts/LayoutLinhaDoTempo.js` (+ `.module.css`) | Dev | Modo de visualização "Linha do tempo" (tema escuro), anúncio entre os meses |
+| `src/components/SeletorVisualizacao.js` (+ `.module.css`) | Dev | Botões "Ver como" para o visitante trocar de modo |
+| `src/components/EspacoAnuncio.js` (+ `.module.css`) | Dev | Espaço reservado para anúncio do AdSense (300×600, 300×250, 728×90 e na lista) |
+| `src/components/Resumo.js` | Dev | Contador de eventos, mensagem de lista vazia e texto do rodapé, comuns aos três modos |
+| `src/lib/formatacao.js` | Dev | Textos de exibição: partes da data, período do evento e valor |
 
 ---
 
-*Última atualização: 2026-07-14 (propósito do projeto redefinido; coleta automatizada do Instagram descartada e curadoria assistida aprovada; CI aprovado — smoke test, rodada agendada e relatório no Pages via Actions; comparação de frameworks adiada como ideia #16)*
+*Última atualização: 2026-10-03 (página inicial com 3 modos de visualização escolhidos pelo visitante — Agenda, Grade e Linha do tempo; regras dos espaços de anúncio do AdSense; `EventCard` removido)*

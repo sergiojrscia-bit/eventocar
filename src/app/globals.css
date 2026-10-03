@@ -4,6 +4,8 @@
   --cor-texto-secundario: #6b7280;
   --cor-header: #1c1f24;
   --cor-acento: #ff4d23;
+  /* versão mais escura do acento, para texto pequeno em fundo claro (contraste AA) */
+  --cor-acento-texto: #b8330f;
   --cor-borda: #e2e4e1;
 }
 
